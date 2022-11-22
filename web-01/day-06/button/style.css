@@ -1,0 +1,74 @@
+.btn {
+    padding: 20px 30px;
+    background-color: black;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 2px;  /*tang khoang cach giua cac ki tu*/
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: brown;
+    transition: all 0.5s;
+    z-index: 4;
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+.btn span {
+    position: relative;
+    z-index: 5;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: brown;
+    transition: all 0.5s;
+    z-index: 4;
+}
+
+.btn:hover::after {
+    right: 0;
+}
+
+.btn1 {
+    background-color: #fff;
+    text-transform: uppercase;
+    border: none;
+    letter-spacing: 2px;  /*tang khoang cach giua cac ki tu*/
+    position: relative;
+    width: 139px;
+    height: 5px;
+}
+
+.btn1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: brown;
+    transition: all 0.5s;
+
+}
+
+.btn1:hover::before {
+    left: 0;
+}
+

@@ -1,0 +1,324 @@
+* {
+    margin: 10;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Finlandica', sans-serif;
+    background-color: rgb(229, 235, 241);
+}
+
+.header {
+    position: relative;
+    color: #fff;
+    width: 100%;
+    height: 600px;
+}
+.taskbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 150px 0px 150px;
+    position: relative;
+    z-index: 1;
+    top: 20px;
+}
+
+.menu {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.hotel-name {
+    font-family: 'Balthazar', serif;
+}
+
+.menu > ul {
+    display: flex;
+}
+
+.header ul {
+    list-style-type: none ;
+    padding: 0%;
+}
+
+.menu-item {
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0px 24px 0px 24px;
+    position: relative;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: rgb(255 255 255 / 15%);
+}
+
+.menu-item:hover .sub-menu {
+    display: flex;
+}
+
+.sub-menu {
+    position: absolute;
+    width: 200px;
+    display: none;
+    flex-direction: column;
+    left: 0;
+    top: 45px;
+    top: 100%;
+    background-color: #4b4646;
+    border-radius: 0.5rem;
+}
+
+.sub-menu-item {
+    text-align: left;
+    font-size: 12px;
+    padding: 16px;
+    color: #ffffff;
+    text-transform: capitalize;
+    cursor: pointer; /*hiển thị hình bàn tay khi di chuột vào */
+}
+
+.sub-menu-item:hover {
+    background-color: #ae2fb5;
+}
+
+.header-img {
+    position: absolute;
+    z-index: 0;
+}
+
+.header-img img {
+    object-fit: 100%;
+    width: 1503px;
+    height: 600px;
+}
+.hotel-name {
+    font-style: italic;
+}
+
+.logo-pullman {
+    width: 200px;
+    height: 36px;
+
+}
+
+.booking {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 200px 0px 200px ;
+    color: #fff;
+    background-color: #4b4646;
+}
+
+.check-menu {
+    padding: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.check-menu:hover {
+    background-color: #ae2fb5;
+    cursor: pointer;
+}
+
+
+.infomation {
+    padding: 60px 250px 30px 250px;
+}
+
+.infomation p {
+    color: #3d3c3c;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.review h2 {
+    text-align: center;
+    font-style: italic;
+}
+
+.roomtype {
+    padding: 60px 250px;
+}
+
+.superior-twin {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+.room-img {
+    object-fit:cover ;
+    position: relative;
+    max-width: 100%;
+}
+
+.booking-room {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #b5abab;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.room-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #b5abab;
+    padding: 16px 0px;
+    position: relative;
+}
+
+
+.book-now {
+    display: flex;
+    text-align: center;
+    margin: 0px;
+    width: 100%;
+
+}
+
+.book-now p {
+    width: 100%;
+}
+
+.book-now:hover {
+    background-color: rgba(226, 63, 63, 0.84);
+
+}
+
+.features {
+    position: relative;
+}
+
+.features ul {
+    display: flex;
+    align-items: left;
+    justify-content: space-around;
+}
+
+.menu-features {
+    width: 65%;
+    overflow: hidden;
+    transition: all 2s;
+}
+
+/* .menu-features:hover .features {
+    display: flex;
+    top: 0px;
+
+}
+
+.menu-features:hover .room-info p {
+    opacity: 0;
+    top: 700px;
+} */
+
+.menu-features:hover {
+    background-color: #b5abab;
+    scale: 1.05;
+
+}
+
+.phongnghi h2 {
+    text-align: center;
+    font-style: italic;
+}
+
+.room-info p {
+    letter-spacing: 1px;
+    padding: 0px 20px 0px 20px;
+    transition: all 2s;
+    position: relative;
+}
+
+.menu-item-1 {
+    flex-direction: column;
+}
+
+.get-info {
+    height: 250px;
+    max-width: 1000px;
+    background-image: url(../day-08/image/sea.jpg);
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.get-info h2 {
+    padding: 30px;
+}
+
+.input {
+    padding: 20px 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.input input {
+    width: 70%;
+    height: 50px;
+    padding: 20px;
+    border-radius: 50px;
+    border: none;
+}
+
+.email-btn {
+    background-color: #c89551;
+    color: white;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    position: absolute;
+    right: 8%;
+    font-weight: bold;
+}
+
+.email-btn:hover {
+    width: 130px;
+    transition: all .4s;
+}
+
+.about {
+    background-color: #ac7e7e;
+    color: #fff;
+    text-align: center;  
+    margin-top: 80px; 
+}
+
+.about h2 {
+    padding-top: 30px;
+}
+
+.card:hover {
+    scale: 1.05;
+    transition: all 1s;
+    box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+}
+
+

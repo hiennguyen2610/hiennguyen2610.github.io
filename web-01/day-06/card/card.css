@@ -11,6 +11,8 @@ body {
 .card {
     width: 320px;
     background-color: #fff;
+    overflow: hidden;
+    position: relative;    /*edit*/
 }
 
 img {
@@ -21,12 +23,27 @@ img {
     color: #464646;
     font-size: 19px;
     font-weight: 400;
+    position: relative;
+    left: 310px;
+    transition: all 2s;
 }
 
+.content:hover h3 {
+    overflow: 1;
+    left: 0;
+}
 .content p {
     color: #757575;
     font size: 14px;
     font width: 100;
+    position: relative;
+    top: 310px;
+    transition: all 1s;
+}
+
+.content:hover p {
+    overflow: 1;
+    top: 0;
 }
 
 .content p span {
@@ -34,12 +51,21 @@ img {
 }
 .content {
     padding: 15px;
+
 }
+
+
 .image {
     height: 220px;
+    position: absolute;
 }
 .image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all 1s;
+}
+
+.image:hover img {
+    transform: scale(1.2);
 }
