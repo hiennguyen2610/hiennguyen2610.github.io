@@ -123,6 +123,7 @@ body {
     padding: 0px 200px 0px 200px ;
     color: #fff;
     background-color: #4b4646;
+    position: relative;
 }
 
 .check-menu {

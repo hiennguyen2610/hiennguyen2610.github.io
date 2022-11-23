@@ -9,6 +9,7 @@ function login() {
         alert("Login failed, please login again!");
         return false;
     } else if(username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
+
         alert("Logged in successfully!");
     }
 }

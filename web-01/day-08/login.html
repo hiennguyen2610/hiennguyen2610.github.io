@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <script src="js/login.js"></script>
+    <link rel="stylesheet" href="./css/login.css">
 </head>
-<body>
-<form action="pullman.html" method="post" onsubmit="return login()">
-    <input type="text" value="" placeholder="username..." id="username">
-    <input type="password" value="" placeholder="password..." id="password">
-    <button type="submit" name="submit" onclick="login()">login</button>
-</form>
+<body id="bodylogin">
+	<form action="pullman.html" method="get" onsubmit="return login()" class="form">
+		<div id="nho">
+		</div>
+		<div id="login1">
+			<div><p>User Name:</p></div>
+			<span><input type="text" value="" placeholder="admin" id="username"></span>
+			<div><p>Password:</p></div>
+			<span><input type="password" value="" placeholder="123456" id="password"></span><br>
+			<span><button type="submit" name="submit" class="dangnhap">Login</button></span>
+		</div>
+	</form>
 </body>
 </html>
