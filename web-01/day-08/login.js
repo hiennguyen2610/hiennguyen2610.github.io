@@ -6,7 +6,7 @@ function login() {
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     if (username !== DEFAULT_USERNAME || password !== DEFAULT_PASSWORD) {
-        alert("Login failed, please login again!");
+        alert("Login failed, please login again! ( id: admin, pass: 123456 )");
         return false;
     } else if(username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD) {
 
