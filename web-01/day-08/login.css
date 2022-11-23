@@ -35,7 +35,7 @@
 	margin: auto;
 	top: 50px;
 	border-radius: 100px 100px 100px 100px;
-	height:400px;
+	height: 400px;
 	border : 3px dashed white;
 	animation: nho 2s cubic-bezier(0.68, -0.3, 0.27, 1.3);
 }
