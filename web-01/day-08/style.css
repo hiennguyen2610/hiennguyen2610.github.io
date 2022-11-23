@@ -31,11 +31,13 @@ body {
     align-items: center;
     justify-content: space-around;
     font-weight: 500;
-    
+    top: 20px;
 }
 
 .hotel-name {
     font-family: 'Balthazar', serif;
+    position: relative;
+    right: 75px;
 }
 
 .menu > ul {
