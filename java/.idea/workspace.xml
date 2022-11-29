@@ -1,83 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c580c86c-60d8-4ee3-b817-a6d383b996bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/day-01/first-app/src/HomeWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day-01/first-app/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/day-01/first-app/src/MethodDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/01. Ex1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/02. Ex2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/03.Practice.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/04.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-01/image/image 01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/cssbasic/01.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/cssbasic/02.index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/form/02_Form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvn2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvn2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvnCS.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/card.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/card.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-02/table/01_table.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-03/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-03/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-03/thuchanh/thuchanh.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-03/thuchanh/thuchanh.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-04/baitapvenha.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-04/btvn.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-04/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-04/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/css-unit/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/css-unit/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/menu-techmaster/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/menu-techmaster/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/position/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/position/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/practice/lazada.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-05/practice/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/button/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/button/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/card/card.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/card/card.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/card/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/css-transition/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-06/css-transition/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-07/giftCard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-07/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/day-08.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/283844409.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Exrerior_1-1024x429.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Main Pool 2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Pool_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Pullman-Phu-Quoc-Overview.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Top-view_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/bocongthuong.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/bot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/deluxe-oceanview.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/header-img.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/logo-pullman.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/phu quoc resort.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/phuquoc.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/pullman-2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/sea.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/shutterstock_1289174389_0.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/suite.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/superior-king-img.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/superior-twin-img.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/pullman.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web-01/day-08/style.css" beforeDir="false" />
-    </list>
+    <list default="true" id="c580c86c-60d8-4ee3-b817-a6d383b996bd" name="Changes" comment="up" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +37,16 @@
       <updated>1669291856726</updated>
       <workItem from="1669291860301" duration="73000" />
       <workItem from="1669705332860" duration="993000" />
+      <workItem from="1669706395919" duration="956000" />
     </task>
+    <task id="LOCAL-00001" summary="up">
+      <created>1669706478231</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669706478231</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,5 +62,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
   </component>
 </project>
