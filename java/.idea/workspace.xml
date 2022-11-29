@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c580c86c-60d8-4ee3-b817-a6d383b996bd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/day-01/first-app/src/HomeWork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day-01/first-app/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/day-01/first-app/src/MethodDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/01. Ex1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/02. Ex2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/03.Practice.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-01/htmlbasic/04.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-01/image/image 01.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/cssbasic/01.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/cssbasic/02.index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/form/02_Form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvn2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvn2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/BTVN/btvnCS.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/card.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/card.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/practice/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-02/table/01_table.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-03/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-03/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-03/thuchanh/thuchanh.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-03/thuchanh/thuchanh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-04/baitapvenha.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-04/btvn.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-04/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-04/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/css-unit/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/css-unit/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/menu-techmaster/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/menu-techmaster/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/position/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/position/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/practice/lazada.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-05/practice/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/button/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/button/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/card/card.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/card/card.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/card/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/css-transition/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-06/css-transition/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-07/giftCard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-07/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/day-08.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/283844409.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Exrerior_1-1024x429.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Main Pool 2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Pool_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Pullman-Phu-Quoc-Overview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/Top-view_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/bocongthuong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/bot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/deluxe-oceanview.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/header-img.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/logo-pullman.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/phu quoc resort.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/phuquoc.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/pullman-2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/sea.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/shutterstock_1289174389_0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/suite.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/superior-king-img.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/image/superior-twin-img.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/pullman.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web-01/day-08/style.css" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HzdTjOMCGZ1rAeBbiZ3P4Ba0IG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/05. TM/01_Units/hiennguyen2610.github.io/java&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c580c86c-60d8-4ee3-b817-a6d383b996bd" name="Changes" comment="" />
+      <created>1669291856726</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669291856726</updated>
+      <workItem from="1669291860301" duration="73000" />
+      <workItem from="1669705332860" duration="993000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

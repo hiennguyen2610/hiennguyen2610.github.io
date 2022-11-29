@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khu Nghỉ Dưỡng Pullman Phú Quốc</title>
+</head>
+<!-- link favicon -->
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+<!-- Link google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Finlandica&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:ital@1&family=Balthazar&family=Supermercado+One&display=swap" rel="stylesheet">
+<!-- Link icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Link file tự viết -->
+    <script src="./login.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./login.css">
+<body onload="checkAdmin()">
+    <div class="home">
+        <div class="header">
+            <div class="header-img"><img src="../day-08/image/phu quoc resort.jpg" alt="header-img"></div>
+            <div class="taskbar">
+                <div class="logo-pullman"><img src="../day-08/image/logo-pullman.svg" alt="logo-pullman"></div>   
+                <div class="hotel-name"><h1>PULLMAN PHU QUOC BEACH RESORT</h1></div>
+                <div ><a href="./login.html" id="user"> tài khoản</a> 
+                <a href="" id="logout" onclick="logout()">LOGOUT</a>
+                </div>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li class="menu-item">
+                        THE RESORT
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">DISCOVER PHU QUOC</li>
+                            <li class="sub-menu-item">SHUTTLE SERVICE</li>
+                            <li class="sub-menu-item">LIMOUSINE SERVICE</li>
+                            <li class="sub-menu-item">PLANET 21</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">MEET/PLAY
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">GRAND BALLROOM</li>
+                            <li class="sub-menu-item">THE BOARDROOM</li>
+                            <li class="sub-menu-item">AROUND THE RESORT</li>
+                            <li class="sub-menu-item">TEAM BUILDING</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">ROOMS
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">SUPERIOR TWIN</li>
+                            <li class="sub-menu-item">SUPERIOR KING</li>
+                            <li class="sub-menu-item">DELUXE TWIN OCEAN VIEW</li>
+                            <li class="sub-menu-item">DELUXE TWIN GARDEN VIEW</li>
+                            <li class="sub-menu-item">PREMIUM FAMILY ROOM</li>
+                            <li class="sub-menu-item">SUITE OCEAN VIEW</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">DINING
+                        <ul class="sub-menu">
+                            <li class="sub-menu-item">MAD COW WINE & GRILL</li>
+                            <li class="sub-menu-item">SEE STARS</li>
+                            <li class="sub-menu-item">THE LIGHTHOUSE BAR</li>
+                            <li class="sub-menu-item">BEACH HOUSE</li>
+                            <li class="sub-menu-item">COCONUTZ</li>
+                            <li class="sub-menu-item">SALT 'N' PEPPER</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">OFFERS & EVENTS</li>
+                    <li class="menu-item">LIFESTYLE</li>
+                    <li class="menu-item">WEDDINGS</li>
+                    <li class="menu-item">ABOUT US</li>
+                </ul>
+            </div>
+            <div class="phuquoc"><img src="./image/phuquoc.svg" alt="phuquoc"></div>
+        </div>
+        <div class="booking">
+            <div class="check-menu">
+                <span>CHECK IN</span>
+                <span><i class="fas fa-calendar-alt"></i></span>
+            </div>
+            <div class="check-menu">
+                <span>CHECK OUT</span>
+                <span><i class="fas fa-calendar-alt"></i></span>
+            </div>
+            <div class="check-menu">ADULTS</div>
+            <div class="check-menu">CHILDREN</div>
+            <div class="check-menu">CHECK AVAILABILITY</div>
+        </div>
+        <div class="infomation">
+            <hr><br>
+            <div class="review"><h2>THE RESORT</h2></div>
+            <span><p>Trotting the world or hopping from the mainland. Revving up or winding down. Solo, as a couple, or with friends and family. This 5-Star Resort in Phu Quoc offers the ultimate in beachfront luxury.</p></span>
+            <div class="video"><iframe width="1000" height="519" src="https://www.youtube.com/embed/Z3bkRZYPGs4" title="Pullman Phu Quoc Beach Resort" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            <span><p>Global nomads seek destinations that are as distinctive and open-minded as they are. That’s why they’re drawn to Pullman Phu Quoc Beach Resort. This flagship resort by Pullman, located on the island’s southwest coast just 12 minutes from the airport, is tailor-made for those in search of serious play and a playful place to work.</p></span>
+            <br>
+            <hr>
+        </div>
+        <div class="phongnghi"><h2>ROOMS</h2></div>
+        <div class="roomtype">
+            <div class="superior-twin">
+                <div class="card">
+                    <div class="room-name"> SUPERIOR TWIN</div>
+                    <div class="room-img">
+                        <img src="../day-08/image/superior-twin-img.jpg" alt="superior-twin-img" style="width: 100%">
+                    </div>
+                    <div class="booking-room">
+                        <div class="book-now"><p>READ MORE</p></div>
+                        <div class="book-now"><p>BOOK A ROOM</p></div>
+                    </div>
+                </div>
+                <div class="menu-features">
+                    <div class="room-info">
+                        <div><p style="color:rgb(135, 58, 58); font-size: 20px; margin-top: 20px;">Room Infomation</p></div>
+                        <div><p>Spacious and airy, the Superior Twin Room is perfectly sized for two people. This 45sqm space features all the high-tech amenities you expect in a Pullman room, such as a JVD® docking station and oversized TV with international channels. The double vanity sink, separate WC and standalone shower stall allow guests to share the bathroom without getting in each other’s way. For a breath of sea-scented air, step outside to the private balcony.</p></div>
+                    </div>
+                    <div class="features">
+                        <ul>
+                            <li class="item-1">
+                                Overview
+                                 <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">45sqm (484 sq ft), lower floor</li>
+                                    <li class="sub-menu-item-1">Sofa bed and armchair</li>
+                                    <li class="sub-menu-item-1">02 twin-size Pullman Signature beds</li>
+                                    <li class="sub-menu-item-1">Tea & coffee making facilities</li>
+                                </ul>
+                            </li>
+                            <li class="item-1">
+                                Equipment
+                                 <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">Night sensor lighting system</li>
+                                    <li class="sub-menu-item-1">Individual climate control</li>
+                                    <li class="sub-menu-item-1">Iron and ironing board</li>
+                                    <li class="sub-menu-item-1">Laptop-sized safety box</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>         
+            <div class="superior-twin">
+                <div class="card">
+                    <div class="room-name">SUPERIOR KING</div>
+                    <div class="room-img"><img src="../day-08/image/superior-king-img.jpg" alt="superior-twin-img" style="width: 100%; height: 200px;"></div>
+                    <div class="booking-room">
+                        <div class="book-now"><p>READ MORE</p></div>
+                        <div class="book-now"><p>BOOK A ROOM</p></div>
+                    </div>
+                </div>
+                <div class="menu-features">
+                    <div class="room-info">
+                        <div><p style="color:rgb(135, 58, 58); font-size: 20px; margin-top: 20px;">Room Infomation</p></div>
+                        <div><p>Share this 45sqm room with a loved one, or keep the king-size Hollywood Twin Pullman Signature Bed all to yourself. The 45sqm Superior King Room is the high-performance space for singles, couples or a small family. Wake up with help of a walk-in rainshower, and wind down in the standalone soaking tub. For a change of scenery, step out onto the private balcony with a freshly brewed coffee or tea, and admire the tropical garden and free-form pool.</p></div>
+                    </div>
+                    <div class="features">
+                        <ul>
+                            <li class="item-1">
+                                Overview
+                                 <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">45sqm (484 sq ft), lower floor</li>
+                                    <li class="sub-menu-item-1">Daily turndown service</li>
+                                    <li class="sub-menu-item-1">Sheers and blackout curtains</li>
+                                    <li class="sub-menu-item-1">Extra bed on request</li>
+                                </ul>
+                            </li>
+                            <li class="item-1">
+                                Equipment
+                                <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">Night sensor lighting system</li>
+                                    <li class="sub-menu-item-1">Individual climate control</li>
+                                    <li class="sub-menu-item-1">Iron and ironing board</li>
+                                    <li class="sub-menu-item-1">Laptop-sized safety box</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="superior-twin">
+                <div class="card">
+                    <div class="room-name">DELUXE OCEAN VIEW</div>
+                    <div class="room-img"><img src="../day-08/image/deluxe-oceanview.jpg" alt="superior-twin-img" style="width: 100%; height: 200px;"></div>
+                    <div class="booking-room">
+                        <div class="book-now"><p>READ MORE</p></div>
+                        <div class="book-now"><p>BOOK A ROOM</p></div>
+                    </div>
+                </div>
+                <div class="menu-features">
+                    <div class="room-info">
+                        <div><p style="color:rgb(135, 58, 58); font-size: 20px; margin-top: 20px;">Room Infomation</p></div>
+                        <div><p>The colours of the seashore on the inside, and the ocean itself just beyond the sliding balcony doors. The Premium Deluxe King Ocean View is a sophisticated nest for those who seek upscale comforts and upper-level lookouts. Settle into a comfortable balcony chair with the beverage of your choice – from the welcome tray, minibar or room service. The king-size Pullman Signature Bed makes everything better: sleeping, resting, working or playing.</p></div>
+                    </div>
+                    <div class="features">
+                        <ul>
+                            <li class="item-1">
+                                Overview
+                                 <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">45sqm (484 sq ft), lower floor</li>
+                                    <li class="sub-menu-item-1">Daily turndown service</li>
+                                    <li class="sub-menu-item-1">Sheers and blackout curtains</li>
+                                    <li class="sub-menu-item-1">Extra bed on request</li>
+                                </ul>
+                            </li>
+                            <li class="item-1">
+                                Equipment
+                                <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">Night sensor lighting system</li>
+                                    <li class="sub-menu-item-1">Individual climate control</li>
+                                    <li class="sub-menu-item-1">Iron and ironing board</li>
+                                    <li class="sub-menu-item-1">Laptop-sized safety box</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="superior-twin">
+                <div class="card">
+                    <div class="room-name">SUITE OCEAN VIEW</div>
+                    <div class="room-img"><img src="../day-08/image/suite.jpg" alt="superior-twin-img" style="width: 100%; height: 200px;"></div>
+                    <div class="booking-room">
+                        <div class="book-now"><p>READ MORE</p></div>
+                        <div class="book-now"><p>BOOK A ROOM</p></div>
+                    </div>
+                </div>
+                <div class="menu-features">
+                    <div class="room-info">
+                        <div><p style="color:rgb(135, 58, 58); font-size: 20px; margin-top: 20px;">Room Infomation</p></div>
+                        <div><p>In this spacious suite, travellers can do what they like. Chill out on the double-wide balcony with the Gulf of Thailand in the background. The generously sized bedroom complements the lounge area, reading nook and two sofas. This upper-floor suite comes with access to the beachfront Executive Lounge and its many amenities: complimentary daily breakfast followed by all-day refreshments, private hangout space, meeting room access and separate check-in. Indulge and enjoy.</p></div>
+                    </div>
+                    <div class="features">
+                        <ul>
+                            <li class="item-1">
+                                Overview
+                                 <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">72sqm (775 sq ft), upper floor</li>
+                                    <li class="sub-menu-item-1">Double balcony with tables and chairs</li>
+                                    <li class="sub-menu-item-1">Lounge area with two sofa beds</li>
+                                    <li class="sub-menu-item-1">King-sized Pullman Signature beds</li>
+                                </ul>
+                            </li>
+                            <li class="item-1">
+                                Equipment
+                                <ul class="menu-item-1">
+                                    <li class="sub-menu-item-1">Night sensor lighting system</li>
+                                    <li class="sub-menu-item-1">Individual climate control</li>
+                                    <li class="sub-menu-item-1">Iron and ironing board</li>
+                                    <li class="sub-menu-item-1">Laptop-sized safety box</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="get-info">
+            <h2>ĐĂNG KÍ NHẬN TIN</h2>
+            <p>Đăng ký với chúng tôi để nhận thông tin mới nhất về khuyến mãi, các dịch vụ và tin tức bạn cần. Nhập email tại đây</p>
+            <div class="input">
+                <input type="text" class="email" placeholder="Email của bạn">
+                <button class="email-btn">Gửi</button>
+            </div>
+        </div>
+        <div class="about">
+            <h2>KHU NGHỈ DƯỠNG PULLMAN PHÚ QUỐC</h2>
+            <br>
+            <span><img src="../day-08/image/logo-pullman.svg" alt="logo-pullman" style="width: 250px"></span>
+            <br><br>
+            <p>Tổ 6, Xóm Bàn Quy, Ấp Đường Bào, Xã Dương Tơ, Phú Quốc, Việt Nam</p>
+            <p>Điện thoại: +84 (0) 297 267 9999 +84 (0) 91 665 0248</p>
+            <p>© 2022 Pullman |  Sitemap  |  Contacts  |  Legal Information  | Website Design</p>
+            <span><img src="../day-08/image/bocongthuong.png" alt="bocongthuong" style="width: 150px"></span>
+            <br>
+            <p>Khu Nghỉ Dưỡng Pullman Phú Quốc - Khách sạn hạng sang</p>
+            <br>
+        </div>
+    </div>
+</body>
+
+
+</html>

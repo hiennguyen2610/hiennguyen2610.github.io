@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 2000px;
+}
+
+.box {
+    width: 300px;
+    height: 200px;
+    background-color: aquamarine;
+
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+.box-1 {
+    width: 300px;
+    height: 200px;
+    background-color: red;
+
+    z-index: 10;
+    position: relative;
+}
+
+.parent {
+    width: 1000px;
+    height: 400px;
+    background-color: blue;
+    position: relative;   /*vị trí tương đối*/
+}
+
+.child {
+    width: 300px;
+    height: 200px;
+    background-color: antiquewhite;
+    position: absolute;  /*vị trí tuyệt đối*/
+    top: 100px;
+    left: 200px;
+}
+
+.btn-top {
+    position: fixed;  /*vị trí cố định*/
+    right: 30px;
+    bottom: 30px;
+    background-color: black;
+    color: aliceblue;
+    padding: 15px 25px;
+}
+
+.btn-top:hover {
+    background-color: orange;
+}
+
+.content {
+    background-color: green;
+    padding: 10px;
+    position: sticky;
+    top: 50px;
+    z-index: 10;
+}
