@@ -1,0 +1,2 @@
+public class bai6 {
+}

@@ -50,6 +50,7 @@ public class HomeWork4 {
             } else {space = true;}
         }
 
+        // Chuyển về chuỗi
         fullName = String.valueOf(arr);
         System.out.println("Họ và tên: " + fullName);
     }
