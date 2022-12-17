@@ -56,7 +56,7 @@ public class Student {
         return className;
     }
 
-    public void setLop(String className) {
+    public void setClassName(String className) {
         if (!className.startsWith("A") && !className.startsWith("C")) {
             System.out.println("Tên lớp phải bắt đầu bằng A hoặc C");
             return;
@@ -75,10 +75,10 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "code='" + id + '\'' +
+                "id='" + id + '\'' +
                 ", avgScore=" + avgScore +
                 ", age=" + age +
-                ", lop='" + className + '\'' +
+                ", className='" + className + '\'' +
                 '}';
     }
 }
