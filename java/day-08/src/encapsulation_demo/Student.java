@@ -16,11 +16,11 @@ public class Student {
         this.className = className;
     }
 
-    public String getCode() {
+    public String getId() {
         return id;
     }
 
-    public void setCode(String id) {
+    public void setId(String id) {
         if (id.length() != 8) {
             System.out.println("Mã sinh viên phải có độ dài 8 ký tự!");
             return;
@@ -68,8 +68,8 @@ public class Student {
         System.out.println(this);
     }
 
-    public boolean checkScholarship(Student code) {
-        return code.avgScore >= 8;
+    public boolean checkScholarship(Student id) {
+        return id.avgScore >= 8;
     }
 
     @Override
