@@ -1,37 +1,31 @@
 package encapsulation_demo;
 
 public class Student {
-    private String code;
+    private String id;
     private double avgScore;
     private int age;
-    private String lop;
+    private String className;
 
     public Student() {
     }
 
-    public Student(String code, double avgScore, int age, String lop) {
-        this.code = code;
+    public Student(String id, double avgScore, int age, String className) {
+        this.id = id;
         this.avgScore = avgScore;
         this.age = age;
-        this.lop = lop;
+        this.className = className;
     }
-//    public Student(String code, double score, int age, String lop) {
-//        setCode(code);
-//        setAvgScore(score);
-//        setAge(age);
-//        setLop(lop);
-//    }
 
     public String getCode() {
-        return code;
+        return id;
     }
 
-    public void setCode(String code) {
-        if (code.length() != 8) {
+    public void setCode(String id) {
+        if (id.length() != 8) {
             System.out.println("Mã sinh viên phải có độ dài 8 ký tự!");
             return;
         }
-        this.code = code;
+        this.id = id;
     }
 
     public double getAvgScore() {
@@ -58,16 +52,16 @@ public class Student {
         this.age = age;
     }
 
-    public String getLop() {
-        return lop;
+    public String getClassName() {
+        return className;
     }
 
-    public void setLop(String lop) {
-        if (!lop.startsWith("A") && !lop.startsWith("C")) {
+    public void setLop(String className) {
+        if (!className.startsWith("A") && !className.startsWith("C")) {
             System.out.println("Tên lớp phải bắt đầu bằng A hoặc C");
             return;
         }
-        this.lop = lop;
+        this.className = className;
     }
 
     public void showInfo() {
@@ -81,10 +75,10 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "code='" + code + '\'' +
+                "code='" + id + '\'' +
                 ", avgScore=" + avgScore +
                 ", age=" + age +
-                ", lop='" + lop + '\'' +
+                ", lop='" + className + '\'' +
                 '}';
     }
 }

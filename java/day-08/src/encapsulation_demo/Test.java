@@ -4,7 +4,7 @@ public class Test {
     public static void main(String[] args) {
         Person person = new Person();
         person.setId(1);
-        person.setName("Hiển");
+        person.setName("Quang Hiển");
         person.setAge(24);
         person.setEmail("hien@gmail.com");
 

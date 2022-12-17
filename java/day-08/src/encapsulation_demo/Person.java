@@ -30,7 +30,7 @@ public class Person {
 
     public void setName(String name) {
         if (name.length() < 5) {
-            System.out.println("Độ dài tên không được nhỏ hơn 5");
+            System.out.println("Độ dài tên ko hợp lệ");
             return;
         }
         this.name = name;
@@ -50,15 +50,5 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", email='" + email + '\'' +
-                '}';
     }
 }
