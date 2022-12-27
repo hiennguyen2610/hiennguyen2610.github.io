@@ -1,9 +1,9 @@
-package book_management.backend.utils;
+package login_project.backend.utils;
 
-import book_management.backend.model.Book;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import login_project.backend.model.Login;
 
 import java.io.Reader;
 import java.io.Writer;
@@ -11,21 +11,17 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class FileUtils {
-    public static ArrayList<Book> getDataFromFile(String fileName) {
+
+    public static ArrayList<Login> getDataFromFile(String fileName) {
         try {
             Gson gson = new Gson();
             Reader reader = Files.newBufferedReader(Paths.get(fileName));
-
-            // TODO : Đang có vấn đề ở đây - Lỗi khi file trống
-            Type type = new TypeToken<ArrayList<Book>>(){}.getType();
-            ArrayList<Book> books = gson.fromJson(reader, type);
-
+            Type type = new TypeToken<ArrayList<Login>>(){}.getType();
+            ArrayList<Login> users = gson.fromJson(reader, type);
             reader.close();
-            return books;
+            return users;
         } catch (Exception e) {
             // e.printStackTrace();
         }

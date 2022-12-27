@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
 import java.util.List;
-@ToString
-@Setter
-@Getter
+
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Getter
+@Setter
+@ToString
 public class Book {
     private int id;
 
