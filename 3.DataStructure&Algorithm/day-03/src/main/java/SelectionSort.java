@@ -17,6 +17,13 @@ public class SelectionSort {
         Arrays.sort(words);
         System.out.println(Arrays.toString(words));
 
+        Student[] students = {
+                new Student(32,"Tai"),
+                new Student(27,"Anh"),
+                new Student(30,"Kien"),
+        };
+        Arrays.sort(students);
+        System.out.println(Arrays.toString(students));
 
     }
 
