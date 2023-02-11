@@ -14,7 +14,7 @@ public class LeetCode344 {
     }
 
     public static void main(String[] args) {
-        char[] s = {'1','2','3','4','5'};
+        char[] s = {'h','e','l','l','o'};
         swap(s,0, s.length-1);
     }
 }

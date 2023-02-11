@@ -1,6 +1,6 @@
 public class Test1 {
     public static void printArray(int[][] array, int i, int j) {
-        // Nếu i bằng độ dài của mảng, dừng hàm
+        // Điều kiện dừng
         if (i == array.length) {
             return;
         }
