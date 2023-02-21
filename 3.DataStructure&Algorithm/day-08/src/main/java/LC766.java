@@ -6,7 +6,7 @@
 // Chạy 2 vòng for với điều kiện  a[i][j] != a[i+1][j+1] thì trả về false
 
 // Thời gian chạy:
-// 0((n-1)*(m-1)) = O(nm) = O(n^2)
+// 0((n-1)*(n-1)) = O(n*n) = O(n^2)
 
 public class LC766 {
     public boolean isToeplitzMatrix(int[][] matrix) {
