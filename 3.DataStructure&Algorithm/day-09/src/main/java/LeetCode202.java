@@ -7,7 +7,7 @@
 
 // Độ phức tạp thuật toán: O(Fn) = O(n)
 
-public class LeetCode202 {
+public class LeetCode202{
     public ListNode removeElements(ListNode head, int val) {
         ListNode current = head;  // tạo con trỏ chỉ tới head
 
