@@ -24,6 +24,8 @@ public class LeetCode20 {
             // nếu trong chuỗi có các kí tự )]} thì kiểm tra xem đỉnh của dãy có
             // phải là các kí tự ([{ không, nếu có thì xóa nó đi
             else {
+                // nếu có kí tự đóng và stack ko rỗng và kí tự đỉnh của stack là mở
+                // thì ta xóa đi kí tự đỉnh đó
                 if (w == ')' && !stack.isEmpty() && stack.peek() == '(') {
                     stack.pop();
                 } else if (w == ']' && !stack.isEmpty() && stack.peek() == '[') {
