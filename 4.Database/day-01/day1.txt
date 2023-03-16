@@ -1,0 +1,14 @@
+1. Lấy ra thông tin của sinh viên có điểm toán cao nhất lớp:
+
+SELECT * FROM `scores` WHERE `diemToan` = (SELECT MAX(`diemToan`) FROM `scores`);
+
+2. Lấy ra thông tin của sinh viên có điểm văn thấp nhất lớp:
+
+SELECT * FROM `scores` WHERE `diemVan` = (SELECT MIN(`diemVan`) FROM `scores`);
+
+3. Lấy ra thông tin của sinh viên có điểm toán hoặc văn hoặc anh thấp nhất lớp:
+
+SELECT * FROM `scores` WHERE 
+`diemVan` = (SELECT MIN(`diemVan`) FROM `scores`) 
+OR `diemToan` = (SELECT MIN(`diemToan`) FROM `scores`) 
+OR `diemAnh` = (SELECT MIN(`diemAnh`) FROM `scores`);
