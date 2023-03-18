@@ -1,17 +1,7 @@
 Câu 1: Lấy ra sinhvien_id có tổng điểm toán cao nhất
-SELECT `sinhvien_id`, SUM(`diem_toan`) AS tongdiemtoan FROM `tbl_diem`
-GROUP BY `sinhvien_id`
-ORDER BY `tongdiemtoan` DESC
-LIMIT 1;
+SELECT `sinhvien_id`, SUM(`diem_toan`) AS tongdiemtoan FROM `tbl_diem` GROUP BY `sinhvien_id` ORDER BY `tongdiemtoan` 
+DESC LIMIT 1;
 Câu 2: Lấy ra email của sinh viên có tổng điểm văn cao nhất
-SELECT `email`,`sinhvien_id`, SUM(`diem_van`) AS tongdiemvan FROM `tbl_sinhvien`,`tbl_diem`
-WHERE tbl_diem.sinhvien_id = tbl_sinhvien.id
-GROUP BY `sinhvien_id`
-ORDER BY `tongdiemvan` DESC
-LIMIT 1;
+SELECT `email`,`sinhvien_id`, SUM(`diem_van`) AS tongdiemvan FROM `tbl_sinhvien`,`tbl_diem` WHERE tbl_diem.sinhvien_id = tbl_sinhvien.id GROUP BY `sinhvien_id` ORDER BY `tongdiemvan` DESC LIMIT 1;
 Câu 3: Cho biết sinh viên có tổng điểm anh cao nhất học lớp nào?
-SELECT `lop_id`,`sinhvien_id`, SUM(`diem_anh`) AS tongdiemanh FROM `tbl_sinhvien`,`tbl_diem`
-WHERE tbl_diem.sinhvien_id = tbl_sinhvien.id
-GROUP BY `sinhvien_id`
-ORDER BY `tongdiemanh` DESC
-LIMIT 1;
+SELECT `lop_id`,`sinhvien_id`, SUM(`diem_anh`) AS tongdiemanh FROM `tbl_sinhvien`,`tbl_diem` WHERE tbl_diem.sinhvien_id = tbl_sinhvien.id GROUP BY `sinhvien_id` ORDER BY `tongdiemanh` DESC LIMIT 1;
