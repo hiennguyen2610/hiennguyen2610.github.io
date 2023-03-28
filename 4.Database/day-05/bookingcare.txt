@@ -1,0 +1,79 @@
+CREATE TABLE `patients` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `email` varchar(255),
+  `password` varchar(255),
+  `name` varchar(255),
+  `phone` varchar(255),
+  `address` varchar(255)
+);
+CREATE TABLE `doctors` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `email` varchar(255),
+  `password` varchar(255),
+  `name` varchar(255),
+  `phone` varchar(255),
+  `address` varchar(255),
+    `department_id` int
+);
+CREATE TABLE `department` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255),
+  `phone` varchar(255),
+  `description` varchar(255)
+);
+CREATE TABLE `services` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `department_id` int,
+  `name` varchar(255),
+  `price` varchar(255)
+);
+CREATE TABLE `diagnosis` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `doctors_id` int,
+  `patient_id` int,
+  `medication` varchar(255)
+);
+CREATE TABLE `time_slots` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `date` date,
+  `doctors_id` int,
+  `is_available` boolean
+);
+CREATE TABLE `appointments` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `date` date,
+  `doctors_id` int,
+  `patient_id` int
+);
+CREATE TABLE `medicaltion` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `diagnosis_id` int,
+  `doctors_id` int,
+  `patient_id` int,
+    `user manual` varchar(255)
+);
+CREATE TABLE `payment` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `medicaltion_id` int,
+  `services_id` int
+);
+CREATE TABLE `feedback` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+    `patients_id` int,
+  `doctors_id` int,
+    `contents` varchar(255)
+);
+ALTER TABLE `medicaltion` ADD FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`);
+ALTER TABLE `medicaltion` ADD FOREIGN KEY (`diagnosis_id`) REFERENCES `diagnosis` (`id`);
+ALTER TABLE `medicaltion` ADD FOREIGN KEY (`doctors_id`) REFERENCES `doctors` (`id`);
+ALTER TABLE `diagnosis` ADD FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`);
+ALTER TABLE `feedback` ADD FOREIGN KEY (`patients_id`) REFERENCES `patients` (`id`);
+ALTER TABLE `doctors` ADD FOREIGN KEY (`department_id`) REFERENCES `department` (`id`);
+ALTER TABLE `diagnosis` ADD FOREIGN KEY (`doctors_id`) REFERENCES `doctors` (`id`);
+ALTER TABLE `time_slots` ADD FOREIGN KEY (`doctors_id`) REFERENCES `doctors` (`id`);
+ALTER TABLE `appointments` ADD FOREIGN KEY (`doctors_id`) REFERENCES `doctors` (`id`);
+ALTER TABLE `feedback` ADD FOREIGN KEY (`doctors_id`) REFERENCES `doctors` (`id`);
+ALTER TABLE `feedback` ADD FOREIGN KEY (`patients_id`) REFERENCES `patients` (`id`);
+ALTER TABLE `payment` ADD FOREIGN KEY (`services_id`) REFERENCES `services` (`id`);
+ALTER TABLE `payment` ADD FOREIGN KEY (`medicaltion_id`) REFERENCES `medicaltion` (`id`);
+ALTER TABLE `services` ADD FOREIGN KEY (`department_id`) REFERENCES `department` (`id`);
