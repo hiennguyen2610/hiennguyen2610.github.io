@@ -1,0 +1,54 @@
+Các bảng cơ sở dữ liệu quản lý lớp học gồm có: 
+
+1. Bảng `registers` (đăng kí giáo viên và học sinh)
+  id : mã đăng kí (định dạng int)
+  email : email của người đăng kí (định dạng varchar)
+  password : mật khẩu (định dạng md5)
+  name : tên người đăng kí (định dạng varchar)
+  phone : số điện thoại (định dạng varchar)
+  address : địa chỉ (định dạng varchar)
+  role : phân biệt người đăng kí thuộc nhóm học sinh hay giáo viên (định dạng int)
+  created_at (timestamp)
+  updated_at (timestamp)
+
+2. Bảng `classes ` (thông tin lớp học)
+  id : mã lớp học (định dạng int)
+  class_name : tên lớp (định dạng varchar)
+  teacher_id : mã của giáo viên quản lý lớp đó,khóa ngoại được lấy từ bảng `register` (định dạng int)
+  infomation : một số thông tin của lớp (định dạng varchar)
+  created_at timestamp
+  updated_at timestamp
+
+3. Bảng `enrollments` (thêm học sinh vào lớp học)
+  id : mã quản lý (định dạng int)
+  class_id : mã của lớp học, khóa ngoại lấy từ bảng `classes` (định dạng int)
+  student_id : mã sinh viên muốn thêm vào lớp, khóa ngoại được lấy từ bảng `register` (định dạng int)
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp
+
+4. Bảng `lectures` (bài giảng)
+  id int : mã bài giảng (định dạng int)
+  class_id : mã lớp học muốn thêm bài giảng, lấy từ bảng `classes` (định dạng int)
+  teacher_id : mã giáo viên thêm bài giảng, lấy từ bảng `register` (định dạng int)
+  title : tiêu đề bài giảng (định dạng varchar)
+  content : nội dung bài giảng (định dạng varchar)
+  created_at timestamp
+  updated_at timestamp
+
+5. Bảng `grades` (chấm điểm cho học sinh)
+  id : mã phách
+  class_id : mã lớp học chấm bài, lấy từ bảng `classes` (định dạng int)
+  student_id mã học sinh, lấy từ bảng `register` (định dạng int)
+  date : ngày chấm bài (định dạng datetime)
+  score : điểm số (định dạng int)
+  created_at timestamp
+  updated_at timestamp
+
+6. Bảng `attendence` (điểm danh)
+  id int 
+  role_id : mã giáo viên hoặc học sinh điểm danh, lấy từ bảng `register` (định dạng int)
+  date : thời gian điểm danh (định dạng datetime)
+  status : trạng thái (muộn, ko điểm danh được, điểm danh thành công...) (định dạng int)
+  created_at timestamp
+  updated_at timestamp
