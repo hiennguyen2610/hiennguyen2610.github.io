@@ -10,8 +10,8 @@
       --- Random Generate Color ---
     </h1>
     <div class="justify-center text-center mt-4 mb-4">
-      <button class="px-8 py-4 text-lg border border-2 border-green-400 bg-green-400 hover:border-orange-400 text-black text-center rounded-2xl hover:bg-white" onclick="generate_random_color()">
-        Generate
+      <button class="px-8 py-4 text-lg border border-2 border-green-400 bg-green-400 hover:border-orange-400 text-black text-center rounded-2xl hover:bg-white" onclick="add_random_color()">
+        ADD RANDOM COLOR
       </button>
     </div>
     <div class="mt-16">
@@ -36,26 +36,9 @@
         </div>
       </div>
     </div>
-    <div>
-        <h2>About DOM Properties <span>Hello</span></h2>
-    </div>
     <script>
-      let color_1_element = document.getElementById("color_1");
-      color_1_element.style.backgroundColor = "#723486";
-      console.log(color_1_element);
 
-      let p_tags = document.getElementsByTagName("p");
-      console.log(p_tags);
-
-      let color_2_element = document.getElementById("color_2");
-      console.log(color_2_element.innerHTML); // hien thi the duoi dang html ra man hinh
-      console.log(color_2_element.innerText); // hien thi noi dung cua the ra man hinh
-      console.log(color_2_element.textContent);
-
-      const textContext = document.querySelector("h2");
-      console.log(textContext.textContent);
-      console.log(textContext.innerText);
-
+      let num_color_box = document.getElementsByClassName("color_review").length
       let hex_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
       function generate_hex_code() {
         let hex_code = "#"
@@ -67,7 +50,7 @@
       }
 
       function generate_random_color() {
-        for (let i = 1; i <= 6; i++) {
+        for (let i = 1; i <= num_color_box; i++) {
           let color_hex_code = generate_hex_code()
           document.getElementById("color_" + i).style.backgroundColor =
             color_hex_code
@@ -75,6 +58,19 @@
             color_hex_code
         }
       }
+      generate_random_color()
+
+      function add_random_color() {
+        num_color_box = num_color_box + 1
+        let color_id = num_color_box
+        let color_hex_code = generate_hex_code()
+        let html = '<div id="color_'+color_id+'" class="color_review h-48 bg-yellow-400 relative">' + '<p class="absolute bottom-0 text-center w-full font-bold text-2xl mb-8 text-gray-700" id="color_'+color_id+'_code">#217262</p>'
+      }
+      let end_color_box = document.getElementById("color_"+(num_color_box-1))
+      end_color_box.insertAdjacentHTML("afterend", html)
+
+      document.getElementById("color_"+color_id).style.backgroundColor = color_hex_code
+      document.getElementById("color_" +color_id+"_code").innerText = color_hex_code
     </script>
   </body>
 </html>
