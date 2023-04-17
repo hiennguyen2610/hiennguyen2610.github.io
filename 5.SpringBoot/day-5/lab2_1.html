@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-screen bg-gray-400">
+    <script>
+
+      // Ve hinh tron
+      document.addEventListener("click", function (event) {
+        console.log(event.screenX + " __ " + event.screenY)
+        let html = '<div id="div_1" class="bg-red-600 rounded-full absolute" style = "width:50px; height: 50px; margin-top: '+(event.offsetY -25)+'px; margin-left: '+(event.offsetX -25)+'px;"></div>'
+      document.body.insertAdjacentHTML("beforeend",html)
+      });
+
+      // Ve hinh chu nhat
+      document.addEventListener("keydown", function (event) {
+            let rectangle = document.createElement("div")
+            rectangle.className = "rectangle"
+            if (event.key === "b") {
+                let width = Math.floor(Math.random() * 100 + 100)
+                let height = Math.floor(Math.random() * 50 + 50)
+                let pointX = Math.floor(Math.random() * (window.innerWidth - width))
+                let pointY = Math.floor(Math.random() * (window.innerHeight - height))
+                rectangle.style.backgroundColor = "red"
+                rectangle.style.width = width + "px"
+                rectangle.style.height = height + "px"
+                rectangle.style.marginLeft = pointX + "px"
+                rectangle.style.marginTop = pointY + "px"
+                document.body.appendChild(rectangle)
+            }
+        })
+    </script>
+  </body>
+</html>

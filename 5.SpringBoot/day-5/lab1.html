@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+<body>
+    <h1 id="title" class="font-bold text-red-600 text-center text-3xl">Hello</h1>
+    <div class="text_1 text-center mt-10 mb-10">
+        <button id="btn_1" class="text-red-600 px-8 py-4 bg-gray-400 border-gray-400 justify-center">Change Content</button>
+    </div>
+    <div class="text_1 text-center mt-10 mb-10">
+        <button id="btn_2" class="text-red-600 px-8 py-4 bg-gray-400 border-gray-400 justify-center" onclick="generate_random_color()">Change Color</button>
+    </div>
+    <div class="text_1 text-center mt-10 mb-10">
+        <button id="btn_3" class="text-red-600 px-8 py-4 bg-gray-400 border-gray-400 justify-center">Change Background</button>
+    </div>
+    <script>
+
+        // Hiển thị nội dung bất kì
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+        const characterLength = characters.length
+        function random_text(text_length) {
+            let result = ''
+            let counter = 0
+            while (counter < text_length) {
+                result += characters.charAt(Math.floor(Math.random() * characterLength))
+                counter += 1
+            }
+            return result
+        }
+        let btn1 = document.getElementById("btn_1")
+        btn1.addEventListener("click", function() {
+            let text = random_text(16)
+            document.getElementById("title").innerHTML = text
+        } )
+
+        // Thay đổi màu đoạn text
+        let hex_numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"]
+        function generate_hex_code() {
+            let hex_code = "#"
+            for (i = 0; i < 6; i++) {
+                random = Math.floor(Math.random() * hex_numbers.length)
+                hex_code += hex_numbers[random]
+            }
+            return hex_code
+        }
+      
+        let new_text = document.getElementById("title")
+        function generate_random_color() {
+            new_text.style.color = generate_hex_code()
+        }
+
+        // Thay đổi màu background
+        function random_rgb_color() {
+            return `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`
+        }
+
+        document.getElementById("btn_3").addEventListener("click", function () {
+            new_text.style.backgroundColor = random_rgb_color()
+        })
+    </script>
+</body>
+</html>

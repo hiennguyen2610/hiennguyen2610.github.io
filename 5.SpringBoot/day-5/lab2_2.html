@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="text-center mt-10 mb-10 px-4 py-4 bg-red-200">
+        <input type="password" id="password" placeholder="Enter password..." />
+    </div>
+    
+    <div class="text-center">
+        <button id="btn" onclick="show_password()" class="text-red-600 px-8 py-4 bg-gray-200">Show</button>
+    </div>
+  </body>
+  <script>
+    function show_password() {
+      const nhap_pass = document.getElementById("password")
+      const show_pass = document.getElementById("btn")
+      if (nhap_pass.type === "password") {
+        nhap_pass.type = "text"
+        show_pass.innerText = "Hide"
+      } else {
+        nhap_pass.type = "password"
+        show_pass.innerText = "Show"
+      }
+    }
+  </script>
+</html>
