@@ -1,0 +1,2 @@
+2023-04-25 20:16:20 INFO  Main:12 - Student{id=3, name='abc', dob=null, hometown='HN', address='null', gpa=7.0}
+2023-04-27 11:35:49 INFO  main:60 - [btvn.worker@63e31ee]
