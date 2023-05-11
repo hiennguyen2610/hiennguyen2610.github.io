@@ -1,4 +1,4 @@
-Spring Web MVC
+<h2>Spring Web MVC</h2>
 <br>
 I.	Khái niệm
 Spring Web MVC là một framework phát triển ứng dụng web Java, được phát triển bởi Spring Framework. Nó được sử dụng để xây dựng các ứng dụng web Java và được thiết kế để cung cấp một cơ chế để xử lý yêu cầu HTTP, phân chia ứng dụng thành các thành phần tương tác và hỗ trợ các kỹ thuật bảo mật để bảo vệ ứng dụng của bạn. <br>
@@ -6,7 +6,7 @@ Spring Web MVC được xây dựng trên các tiêu chuẩn Java EE như Servle
 Spring Web MVC cung cấp một kiến trúc tổ chức ứng dụng linh hoạt, cho phép bạn chia ứng dụng thành các thành phần khác nhau như Controllers, Models và Views. Kiến trúc này giúp tách biệt các phần khác nhau của ứng dụng và giúp cho việc bảo trì, phát triển và tái sử dụng ứng dụng dễ dàng hơn.<br>
 II.	Cách sử dụng Spring MVC
 <br>
-
+https://user-images.githubusercontent.com/117910903/237563414-28065b35-81fc-4050-bc31-f254b244d4a5.png <br>
  
 Hình 1. Mô hình của Spring MVC
 <br>
