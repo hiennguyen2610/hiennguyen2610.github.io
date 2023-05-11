@@ -24,48 +24,48 @@ III. Cách sử dụng <br> <br>
 
 1. Thêm Thymeleaf vào file pom.xml (nếu sử dụng Maven) hoặc build.gradle (nếu sử dụng Gradle) của dự án:
 <br>
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
-            <version>3.0.12.RELEASE</version>
-        </dependency>
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring5</artifactId>
+                <version>3.0.12.RELEASE</version>
+            </dependency>
 <br>
 
 2. Cấu hình Thymeleaf trong file cấu hình ứng dụng của bạn. Ví dụ, nếu bạn sử dụng Spring Framework, bạn có thể thêm các cấu hình sau vào file application.properties:
 <br>
-    spring.thymeleaf.prefix=classpath:/templates/
-    spring.thymeleaf.suffix=.html
-    spring.thymeleaf.cache=false
+        spring.thymeleaf.prefix=classpath:/templates/
+        spring.thymeleaf.suffix=.html
+        spring.thymeleaf.cache=false
 <br>
 
 3. Tạo các file mẫu HTML với Thymeleaf. Các file mẫu này sẽ chứa các thẻ Thymeleaf để tạo các trang web động. Ví dụ:<br>
 
-    <!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>My Page</title>
-    </head>
-    <body>
-        <h1 th:text="${pageTitle}"></h1>
-        <ul>
-            <li th:each="item : ${items}" th:text="${item}"></li>
-        </ul>
-    </body>
-    </html>
+        <!DOCTYPE html>
+        <html xmlns:th="http://www.thymeleaf.org">
+        <head>
+            <title>My Page</title>
+        </head>
+        <body>
+            <h1 th:text="${pageTitle}"></h1>
+            <ul>
+                <li th:each="item : ${items}" th:text="${item}"></li>
+            </ul>
+        </body>
+        </html>
 <br>
 Trong ví dụ trên, chúng ta sử dụng th:each để lặp qua một danh sách các mục và th:text để hiển thị nội dung của một biến.<br>
 
 4. Trong mã Java của bạn, tạo các đối tượng Model và đặt các giá trị vào chúng để truyền đến các file mẫu Thymeleaf. Ví dụ:<br>
 
-    @Controller
-    public class MyController {
-        
-        @GetMapping("/my-page")
-        public String myPage(Model model) {
-            model.addAttribute("pageTitle", "My Page");
-            model.addAttribute("items", Arrays.asList("Item 1", "Item 2", "Item 3"));
-            return "my-page";
+        @Controller
+        public class MyController {
+            
+            @GetMapping("/my-page")
+            public String myPage(Model model) {
+                model.addAttribute("pageTitle", "My Page");
+                model.addAttribute("items", Arrays.asList("Item 1", "Item 2", "Item 3"));
+                return "my-page";
+            }
         }
-    }
 <br>
 Trong ví dụ trên, chúng ta tạo một đối tượng Model và đặt các giá trị vào đó bằng phương thức addAttribute. Cuối cùng, chúng ta trả về tên của file mẫu HTML để hiển thị trang web (trong trường hợp này là "my-page").
