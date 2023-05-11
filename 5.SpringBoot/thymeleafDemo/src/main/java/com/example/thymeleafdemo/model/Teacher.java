@@ -16,4 +16,5 @@ public class Teacher {
     String address;
     String phone;
     LocalDate dob;
+    String chuyenNganh;
 }

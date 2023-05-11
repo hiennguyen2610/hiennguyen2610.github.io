@@ -4,6 +4,7 @@ import com.example.thymeleafdemo.model.Student;
 import com.example.thymeleafdemo.model.Teacher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
@@ -12,6 +13,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/teachers")
 public class TeacherController {
+
+    @Autowired
+    public TeacherService teacherService;
+
     @RequestMapping
     public String getTeacher(Model model) {
         List<Teacher> teachers = new ArrayList<>();
