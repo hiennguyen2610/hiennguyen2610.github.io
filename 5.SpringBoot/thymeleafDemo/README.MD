@@ -24,20 +24,21 @@ III. Cách sử dụng <br> <br>
 
 1. Thêm Thymeleaf vào file pom.xml (nếu sử dụng Maven) hoặc build.gradle (nếu sử dụng Gradle) của dự án:
 <br>
-```c
-<dependency>
-    <groupId>org.thymeleaf</groupId>
-    <artifactId>thymeleaf-spring5</artifactId>
-    <version>3.0.12.RELEASE</version>
-</dependency>
-```c
+
+    <dependency>
+        <groupId>org.thymeleaf</groupId>
+        <artifactId>thymeleaf-spring5</artifactId>
+        <version>3.0.12.RELEASE</version>
+    </dependency>
+
 <br>
 
 2. Cấu hình Thymeleaf trong file cấu hình ứng dụng của bạn. Ví dụ, nếu bạn sử dụng Spring Framework, bạn có thể thêm các cấu hình sau vào file application.properties:
 <br>
 spring.thymeleaf.prefix=classpath:/templates/
 spring.thymeleaf.suffix=.html
-spring.thymeleaf.cache=false<br>
+spring.thymeleaf.cache=false
+<br>
 
 3. Tạo các file mẫu HTML với Thymeleaf. Các file mẫu này sẽ chứa các thẻ Thymeleaf để tạo các trang web động. Ví dụ:<br>
 
