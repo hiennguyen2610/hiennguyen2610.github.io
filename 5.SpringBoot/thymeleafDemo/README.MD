@@ -19,21 +19,26 @@ Thymeleaf cho phép các lập trình viên tạo ra các trang web động mộ
 6. Hỗ trợ i18n: Thymeleaf cung cấp tính năng hỗ trợ i18n (internationalization), giúp cho việc phát triển các trang web đa ngôn ngữ trở nên dễ dàng hơn.<br>
 
 7. Dễ dàng kiểm tra và sửa lỗi: Với Thymeleaf, các lỗi có thể được phát hiện và sửa đổi dễ dàng trong quá trình phát triển, giúp tiết kiệm thời gian và nâng cao chất lượng sản phẩm.<br><br>
+
 III. Cách sử dụng <br> <br>
 
 1. Thêm Thymeleaf vào file pom.xml (nếu sử dụng Maven) hoặc build.gradle (nếu sử dụng Gradle) của dự án:
 <br>
+```c
 <dependency>
     <groupId>org.thymeleaf</groupId>
     <artifactId>thymeleaf-spring5</artifactId>
     <version>3.0.12.RELEASE</version>
 </dependency>
+```c
 <br>
+
 2. Cấu hình Thymeleaf trong file cấu hình ứng dụng của bạn. Ví dụ, nếu bạn sử dụng Spring Framework, bạn có thể thêm các cấu hình sau vào file application.properties:
 <br>
 spring.thymeleaf.prefix=classpath:/templates/
 spring.thymeleaf.suffix=.html
 spring.thymeleaf.cache=false<br>
+
 3. Tạo các file mẫu HTML với Thymeleaf. Các file mẫu này sẽ chứa các thẻ Thymeleaf để tạo các trang web động. Ví dụ:<br>
 
 <!DOCTYPE html>
