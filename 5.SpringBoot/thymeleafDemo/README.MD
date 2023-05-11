@@ -33,9 +33,9 @@ III. Cách sử dụng <br> <br>
 
 2.  Cấu hình Thymeleaf trong file cấu hình ứng dụng của bạn. Ví dụ, nếu bạn sử dụng Spring Framework, bạn có thể thêm các cấu hình sau vào file application.properties:
     <br>
-        spring.thymeleaf.prefix=classpath:/templates/
-        spring.thymeleaf.suffix=.html
-        spring.thymeleaf.cache=false
+            spring.thymeleaf.prefix=classpath:/templates/
+            spring.thymeleaf.suffix=.html
+            spring.thymeleaf.cache=false
     <br>
 
 3.  Tạo các file mẫu HTML với Thymeleaf. Các file mẫu này sẽ chứa các thẻ Thymeleaf để tạo các trang web động. Ví dụ:<br>
