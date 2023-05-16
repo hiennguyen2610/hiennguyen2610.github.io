@@ -1,4 +1,4 @@
-package com.example.student_maganement_02.model;
+package com.example.thymeleaf01.entity;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -6,15 +6,17 @@ import lombok.experimental.FieldDefaults;
 import java.time.LocalDate;
 
 @Data
-@FieldDefaults(level = AccessLevel.PRIVATE)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Student {
+
     int id;
     String name;
     String address;
     String phone;
     LocalDate dob;
     float gpa;
+
 }
