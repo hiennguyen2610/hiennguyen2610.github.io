@@ -25,7 +25,6 @@ public class StudentService {
     private static int AUTO_ID = 1;
 
 
-
 //    private void createData() {
 //        for (int i = 0; i < 10; i++) {
 //            StudentModel student = StudentModel.builder()
@@ -86,7 +85,7 @@ public class StudentService {
     }
 
 
-    public void saveStudent(StudentModel studentModel){
+    public void saveStudent(StudentModel studentModel) {
         Student student = objectMapper.convertValue(studentModel, Student.class);
         students.add(student);
     }
