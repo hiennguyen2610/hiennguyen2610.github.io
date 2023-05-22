@@ -61,6 +61,9 @@ public class PhanCongService {
                 return pc1.getLaiXe().getHoTen().compareTo(pc2.getLaiXe().getHoTen());
             }
         });
+        for (PhanCong phanCong : danhSachPhanCong) {
+            System.out.println(phanCong);
+        }
     }
 
     public void sapXepTheoSoLuongTuyen() {
@@ -70,13 +73,35 @@ public class PhanCongService {
                 return pc2.getSoLuot() - pc1.getSoLuot();
             }
         });
+        for (PhanCong phanCong : danhSachPhanCong) {
+            System.out.println(phanCong);
+        }
     }
 
     public void inBangKeKhoangCach() {
-        System.out.println("----- BẢNG KÊ TỔNG KHOẢNG CÁCH CHẠY XE -----");
-        for (LaiXe laiXe : bangKeKhoangCach.keySet()) {
-            double khoangCach = bangKeKhoangCach.get(laiXe);
-            System.out.println("Lái xe: " + laiXe.getHoTen() + ", Tổng khoảng cách: " + khoangCach);
+        Map<LaiXe, Double> tongKhoangCachLaiXe = new HashMap<>();
+
+        for (PhanCong phanCong : danhSachPhanCong) {
+            LaiXe laiXe = phanCong.getLaiXe();
+            double khoangCach = phanCong.getTuyen().getKhoangCach();
+            int soLuot = phanCong.getSoLuot();
+
+            double tongKhoangCach = khoangCach * soLuot;
+
+            if (tongKhoangCachLaiXe.containsKey(laiXe)) {
+                double tong = tongKhoangCachLaiXe.get(laiXe);
+                tong += tongKhoangCach;
+                tongKhoangCachLaiXe.put(laiXe, tong);
+            } else {
+                tongKhoangCachLaiXe.put(laiXe, tongKhoangCach);
+            }
+        }
+
+        for (Map.Entry<LaiXe, Double> entry : tongKhoangCachLaiXe.entrySet()) {
+            LaiXe laiXe = entry.getKey();
+            double tong = entry.getValue();
+
+            System.out.println("Lái xe: " + laiXe.getHoTen() + ", Tổng khoảng cách: " + tong);
         }
     }
 }
