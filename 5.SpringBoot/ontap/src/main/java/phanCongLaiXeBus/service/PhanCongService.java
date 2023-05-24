@@ -83,10 +83,7 @@ public class PhanCongService {
 
         for (PhanCong phanCong : danhSachPhanCong) {
             LaiXe laiXe = phanCong.getLaiXe();
-            double khoangCach = phanCong.getTuyen().getKhoangCach();
-            int soLuot = phanCong.getSoLuot();
-
-            double tongKhoangCach = khoangCach * soLuot;
+            double tongKhoangCach = tinhTongKhoangCachLaiXe(laiXe);
 
             if (tongKhoangCachLaiXe.containsKey(laiXe)) {
                 double tong = tongKhoangCachLaiXe.get(laiXe);
