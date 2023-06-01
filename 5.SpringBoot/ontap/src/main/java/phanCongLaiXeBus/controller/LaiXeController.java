@@ -1,34 +1,28 @@
 package phanCongLaiXeBus.controller;
 
-
 import phanCongLaiXeBus.model.LaiXe;
 import phanCongLaiXeBus.service.LaiXeService;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
+
 
 public class LaiXeController {
-    private static LaiXeService laiXeService;
-    private static Scanner scanner;
+    private LaiXeService laiXeService;
 
     public LaiXeController() {
         laiXeService = new LaiXeService();
-        scanner = new Scanner(System.in);
     }
 
-    public static void nhapDanhSachLaiXe() {
-        System.out.print("Nhập số lượng lái xe: ");
-        int soLuongLaiXe = scanner.nextInt();
-        scanner.nextLine();
-        laiXeService.nhapDanhSachLaiXe(soLuongLaiXe, scanner);
+    public void nhapDanhSachLaiXe() {
+        laiXeService.nhapDanhSachLaiXe();
     }
 
-    public static void inDanhSachLaiXe() {
-        laiXeService.inDanhSachLaiXe();
-    }
-
-    public static ArrayList<LaiXe> getDanhSachLaiXe() {
-        return laiXeService.getDanhSachLaiXe();
+    public void inDanhSachLaiXe() {
+        List<LaiXe> danhSachLaiXe = laiXeService.layDanhSachLaiXe();
+        System.out.println("Danh sách lái xe:");
+        for (LaiXe laiXe : danhSachLaiXe) {
+            System.out.println(laiXe);
+        }
     }
 }
 

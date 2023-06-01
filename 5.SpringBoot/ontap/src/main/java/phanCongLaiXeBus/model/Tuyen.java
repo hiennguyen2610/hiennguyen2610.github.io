@@ -9,7 +9,7 @@ import lombok.*;
 @Data
 @ToString
 public class Tuyen {
-    private int maTuyen;
+    private String maTuyen;
     private double khoangCach;
     private int soDiemDung;
 }

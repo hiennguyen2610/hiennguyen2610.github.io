@@ -10,8 +10,7 @@ import lombok.*;
 @ToString
 public class LaiXe {
 
-
-    private int maLaiXe;
+    private String maLX;
     private String hoTen;
     private String diaChi;
     private String soDienThoai;

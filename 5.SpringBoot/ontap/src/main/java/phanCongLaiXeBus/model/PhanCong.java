@@ -2,6 +2,8 @@ package phanCongLaiXeBus.model;
 
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -10,6 +12,6 @@ import lombok.*;
 @ToString
 public class PhanCong {
     private LaiXe laiXe;
-    private Tuyen tuyen;
+    private List<Tuyen> danhSachTuyen;
     private int soLuot;
 }

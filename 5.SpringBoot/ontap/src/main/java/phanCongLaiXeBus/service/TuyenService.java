@@ -4,25 +4,26 @@ package phanCongLaiXeBus.service;
 import phanCongLaiXeBus.model.Tuyen;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TuyenService {
-    private ArrayList<Tuyen> danhSachTuyen;
+    private List<Tuyen> danhSachTuyen;
+    private Scanner scanner;
 
     public TuyenService() {
         danhSachTuyen = new ArrayList<>();
+        scanner = new Scanner(System.in);
     }
 
-    public ArrayList<Tuyen> getDanhSachTuyen() {
-        return danhSachTuyen;
-    }
-
-    public void nhapDanhSachTuyen(int soLuongTuyen, Scanner scanner) {
+    public void nhapDanhSachTuyen() {
+        System.out.print("\nNhập số lượng tuyến: ");
+        int soLuongTuyen = scanner.nextInt();
+        scanner.nextLine(); // Đọc bỏ ký tự new line
         for (int i = 0; i < soLuongTuyen; i++) {
-            System.out.println("Nhập thông tin tuyến thứ " + (i + 1) + ":");
+            System.out.println("\nNhập thông tin tuyến thứ " + (i + 1) + ":");
             System.out.print("Mã tuyến: ");
-            int maTuyen = scanner.nextInt();
-            scanner.nextLine(); // Đọc bỏ dòng new line sau khi nhập mã tuyến
+            String maTuyen = scanner.nextLine();
             System.out.print("Khoảng cách: ");
             double khoangCach = scanner.nextDouble();
             System.out.print("Số điểm dừng: ");
@@ -33,11 +34,8 @@ public class TuyenService {
         }
     }
 
-    public void inDanhSachTuyen() {
-        System.out.println("----- DANH SÁCH TUYẾN -----");
-        for (Tuyen tuyen : danhSachTuyen) {
-            System.out.println(tuyen);
-        }
+    public List<Tuyen> layDanhSachTuyen() {
+        return danhSachTuyen;
     }
 }
 

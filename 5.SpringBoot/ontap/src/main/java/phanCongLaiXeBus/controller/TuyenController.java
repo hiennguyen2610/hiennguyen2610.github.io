@@ -3,31 +3,25 @@ package phanCongLaiXeBus.controller;
 import phanCongLaiXeBus.model.Tuyen;
 import phanCongLaiXeBus.service.TuyenService;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
+
 
 public class TuyenController {
-    private static TuyenService tuyenService;
-    private static Scanner scanner;
+    private TuyenService tuyenService;
 
     public TuyenController() {
         tuyenService = new TuyenService();
-        scanner = new Scanner(System.in);
     }
 
-    public static void nhapDanhSachTuyen() {
-        System.out.print("Nhập số lượng tuyến: ");
-        int soLuongTuyen = scanner.nextInt();
-        scanner.nextLine();
-
-        tuyenService.nhapDanhSachTuyen(soLuongTuyen, scanner);
+    public void nhapDanhSachTuyen() {
+        tuyenService.nhapDanhSachTuyen();
     }
 
-    public static void inDanhSachTuyen() {
-        tuyenService.inDanhSachTuyen();
-    }
-
-    public ArrayList<Tuyen> getDanhSachTuyen() {
-        return tuyenService.getDanhSachTuyen();
+    public void inDanhSachTuyen() {
+        List<Tuyen> danhSachTuyen = tuyenService.layDanhSachTuyen();
+        System.out.println("Danh sách tuyến:");
+        for (Tuyen tuyen : danhSachTuyen) {
+            System.out.println(tuyen);
+        }
     }
 }

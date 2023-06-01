@@ -8,27 +8,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         LaiXeController laiXeController = new LaiXeController();
         TuyenController tuyenController = new TuyenController();
         PhanCongController phanCongController = new PhanCongController();
-        Scanner scanner = new Scanner(System.in);
 
-        int choice;
-        do {
-            System.out.println("----- MENU -----");
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("\n---- MENU ----");
             System.out.println("1. Nhập danh sách lái xe");
             System.out.println("2. In danh sách lái xe");
             System.out.println("3. Nhập danh sách tuyến");
             System.out.println("4. In danh sách tuyến");
             System.out.println("5. Nhập danh sách phân công");
             System.out.println("6. In danh sách phân công");
-            System.out.println("7. Sắp xếp danh sách phân công theo họ tên lái xe");
-            System.out.println("8. Sắp xếp danh sách phân công theo số lượt");
-            System.out.println("9. In bảng kê tổng khoảng cách chạy xe");
             System.out.println("0. Thoát");
             System.out.print("Nhập lựa chọn của bạn: ");
             choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // Đọc bỏ ký tự new line
 
             switch (choice) {
                 case 1:
@@ -49,22 +46,14 @@ public class Main {
                 case 6:
                     phanCongController.inDanhSachPhanCong();
                     break;
-                case 7:
-                    phanCongController.sapXepTheoHoTen();
-                    break;
-                case 8:
-                    phanCongController.sapXepTheoSoLuongTuyen();
-                    break;
-                case 9:
-                    phanCongController.inBangKeKhoangCach();
-                    break;
                 case 0:
-                    System.out.println("Kết thúc chương trình.");
+                    System.out.println("Đã thoát chương trình.");
                     break;
                 default:
-                    System.out.println("Lựa chọn ko hợp lệ. ");
+                    System.out.println("Lựa chọn không hợp lệ. Vui lòng chọn lại.");
+                    break;
             }
-        } while (choice != 0);
+        }
     }
 }
 

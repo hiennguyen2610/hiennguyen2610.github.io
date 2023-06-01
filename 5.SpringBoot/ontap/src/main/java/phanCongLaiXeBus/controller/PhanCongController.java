@@ -1,46 +1,28 @@
 package phanCongLaiXeBus.controller;
 
-import phanCongLaiXeBus.model.LaiXe;
-import phanCongLaiXeBus.model.Tuyen;
+import phanCongLaiXeBus.model.PhanCong;
 import phanCongLaiXeBus.service.PhanCongService;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
+
 
 public class PhanCongController {
-    private static PhanCongService phanCongService;
-    private static LaiXeController laiXeController;
-    private static TuyenController tuyenController;
-    private static Scanner scanner;
+    private PhanCongService phanCongService;
 
     public PhanCongController() {
         phanCongService = new PhanCongService();
-        laiXeController = new LaiXeController();
-        tuyenController = new TuyenController();
-        scanner = new Scanner(System.in);
     }
 
-    public static void nhapDanhSachPhanCong() {
-        ArrayList<LaiXe> danhSachLaiXe = laiXeController.getDanhSachLaiXe();
-        ArrayList<Tuyen> danhSachTuyen = tuyenController.getDanhSachTuyen();
-
-        phanCongService.nhapDanhSachPhanCong(danhSachLaiXe, danhSachTuyen, scanner);
+    public void nhapDanhSachPhanCong() {
+        phanCongService.nhapDanhSachPhanCong();
     }
 
-    public static void inDanhSachPhanCong() {
-        phanCongService.inDanhSachPhanCong();
-    }
-
-    public static void sapXepTheoHoTen() {
-        phanCongService.sapXepTheoHoTen();
-    }
-
-    public static void sapXepTheoSoLuongTuyen() {
-        phanCongService.sapXepTheoSoLuongTuyen();
-    }
-
-    public static void inBangKeKhoangCach() {
-        phanCongService.inBangKeKhoangCach();
+    public void inDanhSachPhanCong() {
+        List<PhanCong> danhSachPhanCong = phanCongService.layDanhSachPhanCong();
+        System.out.println("Danh sách phân công:");
+        for (PhanCong phanCong : danhSachPhanCong) {
+            System.out.println(phanCong);
+        }
     }
 }
 
