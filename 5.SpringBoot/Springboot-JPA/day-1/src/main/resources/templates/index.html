@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .active {
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<h2>Todo Application 1</h2>
+
+<input type="text" placeholder="Enter title">
+<button id="btn-add">Add</button>
+
+<ul>
+<!--    <li>-->
+<!--        <input type="checkbox" checked>-->
+<!--        <span class="active">Todo 1</span>-->
+<!--        <button>Edit</button>-->
+<!--        <button>Delete</button>-->
+<!--    </li>-->
+    <li th:each="todo : ${todos}">
+        <input type="checkbox" th:checked="${todo.status}">
+        <span th:text="${todo.title}" th:class="${todo.status} ? 'active' : ''">Todo 1</span>
+        <button>Edit</button>
+        <button>Delete</button>
+    </li>
+</ul>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script th:inline="javascript">
+
+    // Xoa todo
+    function deleteTodo(id) {
+        const  isConfirm = window.confirm("Ban co muon xoa ko?")
+        if(isConfirm) {
+            $.ajax({
+                url: "api/todos/" + id,
+                type: "DELETE",
+                contentType: "appication/json; charset=utf-8",
+                success: function (res) {
+                    $(`#id-${id}`).remove()
+                    alert("Xoa thanh cong")
+                },
+                error : function (err) {
+                    console.log(err)
+                }
+            })
+        }
+    }
+
+    // Theem todo
+    $(`#btn-add`).click(function () {
+        // lay ra noi dung trong o input
+        const title = $(`#todo-input`).val();
+
+        // Kiem tra title
+        if (title.trim().length===0) {
+            alert("tieu de ko de trong")
+            return;
+        }
+
+        // Goi API
+        const request = {
+            title : title
+        }
+        $.ajax({
+            url: "api/v1/todos/" + id,
+            type: "POST",
+            contentType: "appication/json; charset=utf-8",
+            data : JSON.stringify(request),
+            success: function (res) {
+                $("ul").append(`
+                <li id="id-${res.id}">
+                <input type="checkbox">
+                <span>${res.title}</span>
+                <button onclick="editTodo">Edit</button>
+</li>
+                `)
+            },
+            error : function (err) {
+                console.log(err)
+            }
+        })
+    })
+</script>
