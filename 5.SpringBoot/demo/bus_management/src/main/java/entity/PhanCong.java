@@ -12,8 +12,11 @@ public class PhanCong {
     private LaiXe laiXe;
     private PhanCongDetail[] phanCongDetail;
 
-    public PhanCong(LaiXe laiXe, PhanCongDetail[] phanCongDetails) {
+    public PhanCong() {
     }
 
-
+    public PhanCong(LaiXe laiXe, PhanCongDetail[] phanCongDetail) {
+        this.laiXe = laiXe;
+        this.phanCongDetail = phanCongDetail;
+    }
 }

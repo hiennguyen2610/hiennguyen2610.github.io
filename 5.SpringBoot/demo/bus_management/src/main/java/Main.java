@@ -83,6 +83,15 @@ public class Main {
         }
     }
 
+    // In danh sách phân công
+    private static void inDanhSachPhanCong() {
+        for (int i = 0; i < Main.DanhSachPhanCong.length; i++) {
+            if (Main.DanhSachPhanCong[i] != null) {
+                System.out.println(Main.DanhSachPhanCong[i]);
+            }
+        }
+    }
+
     private static PhanCongDetail[] nhapDanhSachTuyenPhanCong() {
         System.out.print("Nhập số lượng tuyến muốn chạy: ");
         int soLuongTuyen = new Scanner(System.in).nextInt();
@@ -122,6 +131,7 @@ public class Main {
             for (int h = 0; h < phanCongDetails.length; h++) {
                 if (phanCongDetails[h] == null) {
                     phanCongDetails[h] = phanCongDetail;
+                    break;
                 }
             }
         }
@@ -145,15 +155,6 @@ public class Main {
             System.out.println("Không tìm thấy mã lái xe trên, vui lòng nhập lại.");
         } while (true);
         return laiXe;
-    }
-
-    // In danh sách phân công
-    private static void inDanhSachPhanCong() {
-        for (int i = 0; i < Main.DanhSachPhanCong.length; i++) {
-            if (Main.DanhSachPhanCong[i] != null) {
-                System.out.println(Main.DanhSachPhanCong[i]);
-            }
-        }
     }
 
     // Check xem danh sách lái xe có rỗng không

@@ -30,4 +30,14 @@ public class TodoTest {
             todoRepository.save(todo);
         }
     }
+
+    @Test
+    void update_todo() {
+        todoRepository.updateTodo(1,"abc update", true);
+    }
+
+    @Test
+    void delete_todo() {
+        todoRepository.deleteTodo(1);
+    }
 }
