@@ -6,10 +6,10 @@ import entity.Teaching;
 import entity.TeachingDetail;
 import main.Main;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class TeachingService {
+
 
     public void createNewTeaching() {
         System.out.print("Nhập số giáo viên muốn phân công: ");
@@ -131,5 +131,45 @@ public class TeachingService {
         }
     }
 
-    // Kiểm tra xem danh sách giáo viên và môn học có bị rỗng ko
+    public void sortByName() {
+        for (int i = 0; i < Main.TEACHINGS.length - 1; i++) {
+            if (Main.TEACHINGS[i] == null) {
+                continue;
+            }
+            for (int j = i + 1; j < Main.TEACHINGS.length; j++) {
+                if (Main.TEACHINGS[j] == null) {
+                    continue;
+                }
+                if (Main.TEACHINGS[i].getTeacher().getName().trim().compareToIgnoreCase(Main.TEACHINGS[j].getTeacher().getName().trim()) > 0) {
+                    Teaching temp = Main.TEACHINGS[i];
+                    Main.TEACHINGS[i] = Main.TEACHINGS[j];
+                    Main.TEACHINGS[j] = temp;
+                }
+            }
+        }
+        showTeachingList();
+    }
+
+    private void showTeachingList() {
+        for (int i = 0; i < Main.TEACHINGS.length; i++) {
+            if (Main.TEACHINGS[i] != null) {
+                System.out.println(Main.TEACHINGS[i]);
+            }
+        }
+    }
+
+    public void sortByTeachingDetail() {
+    }
+
+    public void tinhTienCong() {
+        for (int i = 0; i < Main.TEACHINGS.length; i++) {
+            double tongThuNhap = 0;
+            Teaching teaching = Main.TEACHINGS[i];
+            TeachingDetail[] danhSachMonHoc = teaching.getTeachingDetails();
+            for (int j = 0; j < danhSachMonHoc.length; j++) {
+                 tongThuNhap += danhSachMonHoc[j].getSubject().getTheory()*danhSachMonHoc[j].getSubject().getExpense()+(danhSachMonHoc[j].getSubject().getTotal()-danhSachMonHoc[j].getSubject().getTheory())*0.7*danhSachMonHoc[j].getSubject().getExpense();
+            }
+            System.out.println("Tổng thu nhập của giáo viên " + Main.TEACHINGS[i].getTeacher().getName() + " là " + tongThuNhap);
+        }
+    }
 }

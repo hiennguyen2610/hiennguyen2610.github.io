@@ -43,10 +43,13 @@ public class Main {
                     teachingService.showTeachingDetail();
                     break;
                 case 7:
+                    teachingService.sortByName();
                     break;
                 case 8:
+                    teachingService.sortByTeachingDetail();
                     break;
                 case 9:
+                    teachingService.tinhTienCong();
                     break;
                 case 10:
                     isExit = true;
@@ -127,7 +130,7 @@ public class Main {
         int choice = 0;
         do {
             choice = new Scanner(System.in).nextInt();
-            if (choice >= 1 && choice <= 8) {
+            if (choice >= 1 && choice <= 9) {
                 break;
             }
             System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
