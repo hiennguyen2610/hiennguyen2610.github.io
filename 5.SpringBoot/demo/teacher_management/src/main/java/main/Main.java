@@ -3,6 +3,8 @@ package main;
 import entity.Subject;
 import entity.Teacher;
 import entity.Teaching;
+import service.SubjectService;
+import service.TeacherService;
 import service.TeachingService;
 
 import java.util.Scanner;
@@ -14,6 +16,8 @@ public class Main {
     public static Teaching[] TEACHINGS = new Teaching[200];
 
     public static TeachingService teachingService = new TeachingService();
+    public static TeacherService teacherService = new TeacherService();
+    public static SubjectService subjectService = new SubjectService();
 
     public static void main(String[] args) {
         menu();
@@ -24,102 +28,18 @@ public class Main {
         do {
             int functionChoice = functionChoice();
             switch (functionChoice) {
-                case 1:
-                    inputNewTeacher();
-                    break;
-                case 2:
-                    showTeacher();
-                    break;
-                case 3:
-                    inputNewSubject();
-                    break;
-                case 4:
-                    showSubject();
-                    break;
-                case 5:
-                    teachingService.createNewTeaching();
-                    break;
-                case 6:
-                    teachingService.showTeachingDetail();
-                    break;
-                case 7:
-                    teachingService.sortByName();
-                    break;
-                case 8:
-                    teachingService.sortByTeachingDetail();
-                    break;
-                case 9:
-                    teachingService.tinhTienCong();
-                    break;
-                case 10:
-                    isExit = true;
+                case 1 -> teacherService.inputNewTeacher();
+                case 2 -> teacherService.showTeacher();
+                case 3 -> subjectService.inputNewSubject();
+                case 4 -> subjectService.showSubject();
+                case 5 -> teachingService.createNewTeaching();
+                case 6 -> teachingService.showTeachingDetail();
+                case 7 -> teachingService.sortByName();
+                case 8 -> teachingService.sortByTeachingDetail();
+                case 9 -> teachingService.tinhTienCong();
+                case 10 -> isExit = true;
             }
         } while (!isExit);
-    }
-
-    private static void createNewTeaching() {
-    }
-
-    // In danh sách môn học
-    private static void showSubject() {
-        for (Subject subject : Main.SUBJECTS) {
-            if (subject != null) {
-                System.out.println(subject);
-            }
-        }
-    }
-
-    // Nhập danh sách môn học
-    private static void inputNewSubject() {
-        System.out.print("Nhập số lượng môn học muốn thêm: ");
-        int numberSubject = new Scanner(System.in).nextInt();
-        for (int i = 0; i < numberSubject; i++) {
-            Subject subject = new Subject();
-            System.out.print("Nhập tên môn học thứ "+(i+1)+" :");
-            subject.inputInfo();
-            saveSubject(subject);
-        }
-    }
-
-    // Lưu danh sách môn học
-    private static void saveSubject(Subject subject) {
-        for (int i = 0; i < Main.SUBJECTS.length; i++) {
-            if (Main.SUBJECTS[i] == null) {
-                Main.SUBJECTS[i] = subject;
-                return;
-            }
-        }
-    }
-
-    // Nhập danh sách giảng viên
-    private static void inputNewTeacher() {
-        System.out.print("Nhập số lượng giảng viên muốn thêm: ");
-        int numberTeacher = new Scanner(System.in).nextInt();
-        for (int i = 0; i < numberTeacher; i++) {
-            Teacher teacher = new Teacher();
-            System.out.print("Nhập tên giảng viên thứ "+(i+1)+" :");
-            teacher.inputInfo();
-            saveTeacher(teacher);
-        }
-    }
-
-    // Lưu thông tin giảng viên
-    private static void saveTeacher(Teacher teacher) {
-        for (int i = 0; i < Main.TEACHERS.length; i++) {
-            if (Main.TEACHERS[i] == null) {
-                Main.TEACHERS[i] = teacher;
-                return;
-            }
-        }
-    }
-
-    // In danh sách giảng viên
-    private static void showTeacher() {
-        for (Teacher teacher : Main.TEACHERS) {
-            if (teacher != null) {
-                System.out.println(teacher);
-            }
-        }
     }
 
     // Chọn menu
@@ -130,7 +50,7 @@ public class Main {
         int choice = 0;
         do {
             choice = new Scanner(System.in).nextInt();
-            if (choice >= 1 && choice <= 9) {
+            if (choice >= 1 && choice <= 10) {
                 break;
             }
             System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");

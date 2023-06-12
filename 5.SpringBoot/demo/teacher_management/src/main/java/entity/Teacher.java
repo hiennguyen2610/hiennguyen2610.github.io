@@ -23,6 +23,7 @@ public class Teacher extends Person{
     }
 
     private void inputLevel() {
+        System.out.println("Nhập trình độ giảng viên, vui lòng chọn 1 trong các lựa chọn sau: ");
         System.out.println("1. Giáo sư - Tiến sĩ");
         System.out.println("2. Phó Giáo sư - Tiến sĩ");
         System.out.println("3. Giảng viên chính");
@@ -37,18 +38,10 @@ public class Teacher extends Person{
             System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
         } while (true);
         switch (selectLevel) {
-            case 1:
-                this.setLevel(Level.GS_TS);
-                break;
-            case 2:
-                this.setLevel(Level.PGS_TS);
-                break;
-            case 3:
-                this.setLevel(Level.GV);
-                break;
-            case 4:
-                this.setLevel(Level.TS);
-                break;
+            case 1 -> this.setLevel(Level.GS_TS);
+            case 2 -> this.setLevel(Level.PGS_TS);
+            case 3 -> this.setLevel(Level.GV);
+            case 4 -> this.setLevel(Level.TS);
         }
     }
 

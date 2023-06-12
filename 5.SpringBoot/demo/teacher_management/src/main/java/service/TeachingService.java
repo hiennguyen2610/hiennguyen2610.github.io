@@ -7,6 +7,7 @@ import entity.TeachingDetail;
 import main.Main;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TeachingService {
 
@@ -26,12 +27,11 @@ public class TeachingService {
             TeachingDetail[] teachingDetails = new TeachingDetail[subjectNumber];
 
             // Method nhập thông tin giảng dạy
-            createTeachingDetail(teachingDetails, subjectNumber , teacher);
+            createTeachingDetail(teachingDetails, subjectNumber, teacher);
             Teaching teaching = new Teaching(teacher, teachingDetails);
             saveTeaching(teaching);
         }
     }
-
 
 
     private void saveTeaching(Teaching teaching) {
@@ -62,14 +62,14 @@ public class TeachingService {
     }
 
     private int inputNumberOfClasses(Subject subject, int i, Teacher teacher) {
-        System.out.print("Nhập số lượng lớp môn "+subject.getName()+" để giảng viên "+teacher.getName()+" dạy: ");
+        System.out.print("Nhập số lượng lớp môn " + subject.getName() + " để giảng viên " + teacher.getName() + " dạy: ");
         int numberOfClasses = -1;
         do {
             try {
                 numberOfClasses = new Scanner(System.in).nextInt();
-                if (numberOfClasses > 0 && numberOfClasses <=3) {
+                if (numberOfClasses > 0 && numberOfClasses <= 3) {
                     int tongSoTietDay = 0;
-                    tongSoTietDay += subject.getTotal()*numberOfClasses;
+                    tongSoTietDay += subject.getTotal() * numberOfClasses;
                     if (tongSoTietDay > 200) {
                         System.out.print("Số tiết dạy đã vượt quá 200, vui lòng nhập lại số lớp: ");
                         continue;
@@ -85,7 +85,7 @@ public class TeachingService {
     }
 
     private Subject inputIDSubject(int i, Teacher teacher) {
-        System.out.print("Chọn id môn học cho giáo viên " +teacher.getName()+" muốn dạy: ");
+        System.out.print("Chọn id môn học cho giáo viên " + teacher.getName() + " muốn dạy: ");
         Subject subject = null;
         do {
             int subjectID = new Scanner(System.in).nextInt();
@@ -105,7 +105,7 @@ public class TeachingService {
 
     // Nhập id giáo viên muốn phân công
     private Teacher inputIDTeacher(int num) {
-        System.out.print("Nhập ID của giáo viên thứ " +(num+1) + ": ");
+        System.out.print("Nhập ID của giáo viên thứ " + (num + 1) + ": ");
         Teacher teacher = null;
         do {
             int teacherID = new Scanner(System.in).nextInt();
@@ -132,44 +132,49 @@ public class TeachingService {
     }
 
     public void sortByName() {
-        for (int i = 0; i < Main.TEACHINGS.length - 1; i++) {
-            if (Main.TEACHINGS[i] == null) {
-                continue;
-            }
-            for (int j = i + 1; j < Main.TEACHINGS.length; j++) {
-                if (Main.TEACHINGS[j] == null) {
-                    continue;
-                }
-                if (Main.TEACHINGS[i].getTeacher().getName().trim().compareToIgnoreCase(Main.TEACHINGS[j].getTeacher().getName().trim()) > 0) {
-                    Teaching temp = Main.TEACHINGS[i];
-                    Main.TEACHINGS[i] = Main.TEACHINGS[j];
-                    Main.TEACHINGS[j] = temp;
-                }
-            }
-        }
-        showTeachingList();
+//        for (int i = 0; i < Main.TEACHINGS.length - 1; i++) {
+//            if (Main.TEACHINGS[i] == null) {
+//                continue;
+//            }
+//            for (int j = i + 1; j < Main.TEACHINGS.length; j++) {
+//                if (Main.TEACHINGS[j] == null) {
+//                    continue;
+//                }
+//                if (Main.TEACHINGS[i].getTeacher().getName().trim().compareToIgnoreCase(Main.TEACHINGS[j].getTeacher().getName().trim()) > 0) {
+//                    Teaching temp = Main.TEACHINGS[i];
+//                    Main.TEACHINGS[i] = Main.TEACHINGS[j];
+//                    Main.TEACHINGS[j] = temp;
+//                }
+//            }
+//        }
+//        showTeachingList();
+
+        Arrays.stream(Main.TEACHINGS)
+                .filter(Objects::nonNull)
+                .sorted((o1, o2) -> o1.getTeacher().getName().compareToIgnoreCase(o2.getTeacher().getName()))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
     }
 
-    private void showTeachingList() {
-        for (int i = 0; i < Main.TEACHINGS.length; i++) {
-            if (Main.TEACHINGS[i] != null) {
-                System.out.println(Main.TEACHINGS[i]);
-            }
-        }
-    }
+//    private void showTeachingList() {
+//        for (int i = 0; i < Main.TEACHINGS.length; i++) {
+//            if (Main.TEACHINGS[i] != null) {
+//                System.out.println(Main.TEACHINGS[i]);
+//            }
+//        }
+//    }
 
     public void sortByTeachingDetail() {
     }
 
     public void tinhTienCong() {
-        for (int i = 0; i < Main.TEACHINGS.length; i++) {
-            double tongThuNhap = 0;
-            Teaching teaching = Main.TEACHINGS[i];
-            TeachingDetail[] danhSachMonHoc = teaching.getTeachingDetails();
-            for (int j = 0; j < danhSachMonHoc.length; j++) {
-                 tongThuNhap += danhSachMonHoc[j].getSubject().getTheory()*danhSachMonHoc[j].getSubject().getExpense()+(danhSachMonHoc[j].getSubject().getTotal()-danhSachMonHoc[j].getSubject().getTheory())*0.7*danhSachMonHoc[j].getSubject().getExpense();
-            }
-            System.out.println("Tổng thu nhập của giáo viên " + Main.TEACHINGS[i].getTeacher().getName() + " là " + tongThuNhap);
-        }
+        Arrays.stream(Main.TEACHINGS)
+                .filter(Objects::nonNull)
+                .map(teaching -> {
+                    double tongThuNhap = Arrays.stream(teaching.getTeachingDetails())
+                            .filter(Objects::nonNull)
+                            .mapToDouble(t -> (t.getSubject().getTheory() * t.getSubject().getExpense() * t.getNumberOfClasses()) + (((t.getSubject().getTotal() - t.getSubject().getTheory()) * 0.7 * t.getSubject().getExpense()) * t.getNumberOfClasses())).sum();
+                    return "Tổng thu nhập của giáo viên " + teaching.getTeacher().getName() + " là " + tongThuNhap;
+                }).forEach(System.out::println);
     }
 }
