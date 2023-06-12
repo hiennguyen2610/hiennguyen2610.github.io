@@ -11,8 +11,13 @@ import java.util.stream.Collectors;
 
 public class TeachingService {
 
-
     public void createNewTeaching() {
+
+        if (checkNullTeacher() || checkNullSubject()) {
+            System.out.println("Cần thực hiện nhập giáo viên và môn học.");
+            return;
+        }
+
         System.out.print("Nhập số giáo viên muốn phân công: ");
         int teacherNumber = new Scanner(System.in).nextInt();
 
@@ -186,5 +191,25 @@ public class TeachingService {
                             .mapToDouble(t -> (t.getSubject().getTheory() * t.getSubject().getExpense() * t.getNumberOfClasses()) + (((t.getSubject().getTotal() - t.getSubject().getTheory()) * 0.7 * t.getSubject().getExpense()) * t.getNumberOfClasses())).sum();
                     return "Tổng thu nhập của giáo viên " + teaching.getTeacher().getName() + " là " + tongThuNhap;
                 }).forEach(System.out::println);
+    }
+
+    // Check xem danh sách lái xe có rỗng không
+    private static boolean checkNullTeacher() {
+        for (int i = 0; i < Main.TEACHERS.length; i++) {
+            if (Main.TEACHERS[i] != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Check xem danh sách tuyến có rỗng không
+    private static boolean checkNullSubject() {
+        for (int i = 0; i < Main.SUBJECTS.length; i++) {
+            if (Main.SUBJECTS[i] != null) {
+                return false;
+            }
+        }
+        return true;
     }
 }
