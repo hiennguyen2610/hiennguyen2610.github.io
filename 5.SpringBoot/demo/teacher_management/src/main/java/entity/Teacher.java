@@ -3,13 +3,12 @@ package entity;
 import constant.Level;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @Getter
 @Setter
-@ToString
 public class Teacher extends Person{
 
     private static int AUTO_ID = 100;
@@ -29,13 +28,17 @@ public class Teacher extends Person{
         System.out.println("3. Giảng viên chính");
         System.out.println("4. Thạc sĩ");
 
-        int selectLevel = 0;
+        int selectLevel;
         do {
-            selectLevel = new Scanner(System.in).nextInt();
-            if (selectLevel >= 1 && selectLevel <= 4) {
-                break;
+            try {
+                selectLevel = new Scanner(System.in).nextInt();
+                if (selectLevel >= 1 && selectLevel <= 4) {
+                    break;
+                }
+                System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
+            } catch (InputMismatchException e) {
+                System.out.print("Vui lòng nhập lại trình độ là một số: ");
             }
-            System.out.print("Lựa chọn không hợp lệ, vui lòng chọn lại: ");
         } while (true);
         switch (selectLevel) {
             case 1 -> this.setLevel(Level.GS_TS);

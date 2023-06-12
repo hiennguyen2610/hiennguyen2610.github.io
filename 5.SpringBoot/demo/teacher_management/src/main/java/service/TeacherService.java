@@ -2,7 +2,6 @@ package service;
 
 import entity.Teacher;
 import main.Main;
-
 import java.util.Scanner;
 
 public class TeacherService {
@@ -21,12 +20,7 @@ public class TeacherService {
 
     // Lưu thông tin giảng viên
     public static void saveTeacher(Teacher teacher) {
-        for (int i = 0; i < Main.TEACHERS.length; i++) {
-            if (Main.TEACHERS[i] == null) {
-                Main.TEACHERS[i] = teacher;
-                return;
-            }
-        }
+        Main.TEACHERS.add(teacher);
     }
 
     // In danh sách giảng viên

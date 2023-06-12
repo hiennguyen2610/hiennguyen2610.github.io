@@ -13,11 +13,6 @@ public class TeachingService {
 
     public void createNewTeaching() {
 
-        if (checkNullTeacher() || checkNullSubject()) {
-            System.out.println("Cần thực hiện nhập giáo viên và môn học.");
-            return;
-        }
-
         System.out.print("Nhập số giáo viên muốn phân công: ");
         int teacherNumber = new Scanner(System.in).nextInt();
 
@@ -40,18 +35,13 @@ public class TeachingService {
 
 
     private void saveTeaching(Teaching teaching) {
-        for (int i = 0; i < Main.TEACHINGS.length; i++) {
-            if (Main.TEACHINGS[i] == null) {
-                Main.TEACHINGS[i] = teaching;
-                return;
-            }
-        }
+            Main.TEACHINGS.add(teaching);
     }
 
     private void createTeachingDetail(TeachingDetail[] teachingDetails, int subjectNumber, Teacher teacher) {
         for (int i = 0; i < subjectNumber; i++) {
-            Subject subject = inputIDSubject(i, teacher);
-            int numberOfClasses = inputNumberOfClasses(subject, i, teacher);
+            Subject subject = inputIDSubject(teacher);
+            int numberOfClasses = inputNumberOfClasses(subject, teacher);
             TeachingDetail teachingDetail = new TeachingDetail(subject, numberOfClasses);
             saveTeachingDetail(teachingDetail, teachingDetails);
         }
@@ -66,9 +56,9 @@ public class TeachingService {
         }
     }
 
-    private int inputNumberOfClasses(Subject subject, int i, Teacher teacher) {
+    private int inputNumberOfClasses(Subject subject, Teacher teacher) {
         System.out.print("Nhập số lượng lớp môn " + subject.getName() + " để giảng viên " + teacher.getName() + " dạy: ");
-        int numberOfClasses = -1;
+        int numberOfClasses;
         do {
             try {
                 numberOfClasses = new Scanner(System.in).nextInt();
@@ -89,15 +79,15 @@ public class TeachingService {
         return numberOfClasses;
     }
 
-    private Subject inputIDSubject(int i, Teacher teacher) {
+    private Subject inputIDSubject(Teacher teacher) {
         System.out.print("Chọn id môn học cho giáo viên " + teacher.getName() + " muốn dạy: ");
         Subject subject = null;
         do {
             try {
                 int subjectID = new Scanner(System.in).nextInt();
-                for (int j = 0; j < Main.SUBJECTS.length; j++) {
-                    if (Main.SUBJECTS[j].getId() == subjectID) {
-                        subject = Main.SUBJECTS[j];
+                for (Subject subj : Main.SUBJECTS) {
+                    if (subj.getId() == subjectID) {
+                        subject = subj;
                         break;
                     }
                 }
@@ -120,9 +110,9 @@ public class TeachingService {
         do {
             try {
                 int teacherID = new Scanner(System.in).nextInt();
-                for (int j = 0; j < Main.TEACHERS.length; j++) {
-                    if (Main.TEACHERS[j].getId() == teacherID) {
-                        teacher = Main.TEACHERS[j];
+                for (Teacher t : Main.TEACHERS) {
+                    if (t.getId() == teacherID) {
+                        teacher = t;
                         break;
                     }
                 }
@@ -139,51 +129,26 @@ public class TeachingService {
     }
 
     public void showTeachingDetail() {
-        for (int i = 0; i < Main.TEACHINGS.length; i++) {
-            if (Main.TEACHINGS[i] != null) {
-                System.out.println(Main.TEACHINGS[i]);
+        for (Teaching teaching : Main.TEACHINGS) {
+            if (teaching != null) {
+                System.out.println(teaching);
             }
         }
     }
 
     public void sortByName() {
-//        for (int i = 0; i < Main.TEACHINGS.length - 1; i++) {
-//            if (Main.TEACHINGS[i] == null) {
-//                continue;
-//            }
-//            for (int j = i + 1; j < Main.TEACHINGS.length; j++) {
-//                if (Main.TEACHINGS[j] == null) {
-//                    continue;
-//                }
-//                if (Main.TEACHINGS[i].getTeacher().getName().trim().compareToIgnoreCase(Main.TEACHINGS[j].getTeacher().getName().trim()) > 0) {
-//                    Teaching temp = Main.TEACHINGS[i];
-//                    Main.TEACHINGS[i] = Main.TEACHINGS[j];
-//                    Main.TEACHINGS[j] = temp;
-//                }
-//            }
-//        }
-//        showTeachingList();
-
-        Arrays.stream(Main.TEACHINGS)
+        Main.TEACHINGS.stream()
                 .filter(Objects::nonNull)
                 .sorted((o1, o2) -> o1.getTeacher().getName().compareToIgnoreCase(o2.getTeacher().getName()))
                 .collect(Collectors.toList())
                 .forEach(System.out::println);
     }
 
-//    private void showTeachingList() {
-//        for (int i = 0; i < Main.TEACHINGS.length; i++) {
-//            if (Main.TEACHINGS[i] != null) {
-//                System.out.println(Main.TEACHINGS[i]);
-//            }
-//        }
-//    }
-
     public void sortByTeachingDetail() {
     }
 
     public void tinhTienCong() {
-        Arrays.stream(Main.TEACHINGS)
+        Main.TEACHINGS.stream()
                 .filter(Objects::nonNull)
                 .map(teaching -> {
                     double tongThuNhap = Arrays.stream(teaching.getTeachingDetails())
@@ -191,25 +156,5 @@ public class TeachingService {
                             .mapToDouble(t -> (t.getSubject().getTheory() * t.getSubject().getExpense() * t.getNumberOfClasses()) + (((t.getSubject().getTotal() - t.getSubject().getTheory()) * 0.7 * t.getSubject().getExpense()) * t.getNumberOfClasses())).sum();
                     return "Tổng thu nhập của giáo viên " + teaching.getTeacher().getName() + " là " + tongThuNhap;
                 }).forEach(System.out::println);
-    }
-
-    // Check xem danh sách lái xe có rỗng không
-    private static boolean checkNullTeacher() {
-        for (int i = 0; i < Main.TEACHERS.length; i++) {
-            if (Main.TEACHERS[i] != null) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    // Check xem danh sách tuyến có rỗng không
-    private static boolean checkNullSubject() {
-        for (int i = 0; i < Main.SUBJECTS.length; i++) {
-            if (Main.SUBJECTS[i] != null) {
-                return false;
-            }
-        }
-        return true;
     }
 }

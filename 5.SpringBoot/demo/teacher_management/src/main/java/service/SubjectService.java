@@ -30,11 +30,6 @@ public class SubjectService {
 
     // Lưu danh sách môn học
     public   void saveSubject(Subject subject) {
-        for (int i = 0; i < Main.SUBJECTS.length; i++) {
-            if (Main.SUBJECTS[i] == null) {
-                Main.SUBJECTS[i] = subject;
-                return;
-            }
-        }
+        Main.SUBJECTS.add(subject);
     }
 }

@@ -6,14 +6,17 @@ import entity.Teaching;
 import service.SubjectService;
 import service.TeacherService;
 import service.TeachingService;
+import java.util.List;
 
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
-    public static Teacher[] TEACHERS = new Teacher[200];
-    public static Subject[] SUBJECTS = new Subject[200];
-    public static Teaching[] TEACHINGS = new Teaching[200];
+    public static List<Teacher> TEACHERS = new ArrayList<>();
+    public static List<Subject> SUBJECTS = new ArrayList<>();
+    public static List<Teaching> TEACHINGS = new ArrayList<>();
 
     public static TeachingService teachingService = new TeachingService();
     public static TeacherService teacherService = new TeacherService();
@@ -26,18 +29,22 @@ public class Main {
     private static void menu() {
         boolean isExit = false;
         do {
-            int functionChoice = functionChoice();
-            switch (functionChoice) {
-                case 1 -> teacherService.inputNewTeacher();
-                case 2 -> teacherService.showTeacher();
-                case 3 -> subjectService.inputNewSubject();
-                case 4 -> subjectService.showSubject();
-                case 5 -> teachingService.createNewTeaching();
-                case 6 -> teachingService.showTeachingDetail();
-                case 7 -> teachingService.sortByName();
-                case 8 -> teachingService.sortByTeachingDetail();
-                case 9 -> teachingService.tinhTienCong();
-                case 10 -> isExit = true;
+            try {
+                int functionChoice = functionChoice();
+                switch (functionChoice) {
+                    case 1 -> teacherService.inputNewTeacher();
+                    case 2 -> teacherService.showTeacher();
+                    case 3 -> subjectService.inputNewSubject();
+                    case 4 -> subjectService.showSubject();
+                    case 5 -> teachingService.createNewTeaching();
+                    case 6 -> teachingService.showTeachingDetail();
+                    case 7 -> teachingService.sortByName();
+                    case 8 -> teachingService.sortByTeachingDetail();
+                    case 9 -> teachingService.tinhTienCong();
+                    case 10 -> isExit = true;
+                }
+            } catch (InputMismatchException exception) {
+                System.out.print("Vui lòng nhập lại là một số nguyên: ");
             }
         } while (!isExit);
     }
@@ -47,7 +54,7 @@ public class Main {
         showMenu();
         System.out.print("Xin mời chọn chức năng: ");
 
-        int choice = 0;
+        int choice;
         do {
             choice = new Scanner(System.in).nextInt();
             if (choice >= 1 && choice <= 10) {
