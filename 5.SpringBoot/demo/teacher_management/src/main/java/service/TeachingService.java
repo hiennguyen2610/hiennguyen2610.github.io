@@ -88,17 +88,22 @@ public class TeachingService {
         System.out.print("Chọn id môn học cho giáo viên " + teacher.getName() + " muốn dạy: ");
         Subject subject = null;
         do {
-            int subjectID = new Scanner(System.in).nextInt();
-            for (int j = 0; j < Main.SUBJECTS.length; j++) {
-                if (Main.SUBJECTS[j].getId() == subjectID) {
-                    subject = Main.SUBJECTS[j];
+            try {
+                int subjectID = new Scanner(System.in).nextInt();
+                for (int j = 0; j < Main.SUBJECTS.length; j++) {
+                    if (Main.SUBJECTS[j].getId() == subjectID) {
+                        subject = Main.SUBJECTS[j];
+                        break;
+                    }
+                }
+                if (subject != null) {
                     break;
                 }
+                System.out.println("Không tìm thấy mã môn học trên, vui lòng nhập lại.");
+            } catch (InputMismatchException exception) {
+                System.out.print("Id môn học phải là số, vui lòng nhập lại: ");
             }
-            if (subject != null) {
-                break;
-            }
-            System.out.println("Không tìm thấy mã môn học trên, vui lòng nhập lại.");
+
         } while (true);
         return subject;
     }
@@ -108,17 +113,22 @@ public class TeachingService {
         System.out.print("Nhập ID của giáo viên thứ " + (num + 1) + ": ");
         Teacher teacher = null;
         do {
-            int teacherID = new Scanner(System.in).nextInt();
-            for (int j = 0; j < Main.TEACHERS.length; j++) {
-                if (Main.TEACHERS[j].getId() == teacherID) {
-                    teacher = Main.TEACHERS[j];
+            try {
+                int teacherID = new Scanner(System.in).nextInt();
+                for (int j = 0; j < Main.TEACHERS.length; j++) {
+                    if (Main.TEACHERS[j].getId() == teacherID) {
+                        teacher = Main.TEACHERS[j];
+                        break;
+                    }
+                }
+                if (teacher != null) {
                     break;
                 }
+                System.out.println("Không tìm thấy mã giáo viên trên, vui lòng nhập lại.");
+            } catch (InputMismatchException exception) {
+                System.out.print("Id giáo viên phải là số, vui lòng nhập lại: ");
             }
-            if (teacher != null) {
-                break;
-            }
-            System.out.println("Không tìm thấy mã giáo viên trên, vui lòng nhập lại.");
+
         } while (true);
         return teacher;
     }
