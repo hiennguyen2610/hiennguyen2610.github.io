@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
 <head>
     <!-- Basic -->
     <meta charset="utf-8"/>
@@ -11,7 +12,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>Drool Admin- Products</title>
+    <title>Drool Admin - Products</title>
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
@@ -31,7 +32,7 @@
 <body>
 <div class="container-fluid p-0">
 
-    <div th:insert="fragments/nav::nav"></div>
+<!--    <div th:insert="fragments/nav :: nav"></div>-->
 
     <div class="row mt-3 ml-3">
         <div class="col">
@@ -57,19 +58,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!--                <tr th:each="product: ${products}">-->
-                <!--                    <td th:text="${product.id}"/>-->
-                <!--                    <td th:text="${product.name}"/>-->
-                <!--                    <td th:text="${product.price}"/>-->
-                <!--                    <td th:text="${product.describe}"/>-->
-                <!--                    <td th:text="${product.avatar}"/>-->
-                <!--                    <td class="text-center d-flex justify-content-around">-->
-                <!--                        <a role="button" class="mr-3 text-primary update-product "-->
-                <!--                           th:attr="product-id=${product.id}">-->
-                <!--                            <i class="fas fa-pencil-alt "></i>-->
-                <!--                        </a>-->
-                <!--                    </td>-->
-                <!--                </tr>-->
+<!--                                <tr th:each="product: ${products}">-->
+<!--                                    <td th:text="${product.id}"/>-->
+<!--                                    <td th:text="${product.name}"/>-->
+<!--                                    <td th:text="${product.price}"/>-->
+<!--                                    <td th:text="${product.describe}"/>-->
+<!--                                    <td th:text="${product.avatar}"/>-->
+<!--                                    <td class="text-center d-flex justify-content-around">-->
+<!--                                        <a role="button" class="mr-3 text-primary update-product "-->
+<!--                                           th:attr="product-id=${product.id}">-->
+<!--                                            <i class="fas fa-pencil-alt "></i>-->
+<!--                                        </a>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
                 </tbody>
             </table>
         </div>
