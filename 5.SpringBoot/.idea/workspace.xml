@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4af397f9-a5ed-4e30-93b9-bda1445c0902" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/day-8/src/main/java/btvn/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/day-8/src/main/java/btvn/main.java" afterDir="false" />
+    <list default="true" id="af3a450f-dfe2-4928-b445-91e528319cbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/config/BeanConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/controller/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/entity/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/model/request/TaskRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/model/response/TaskDetailResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/model/response/TaskResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/model/response/TaskStatusResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/repository/TaskRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/service/TaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/java/com/example/kanban_board/statics/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/resources/static/js/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/resources/templates/fragments/embedded-js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/resources/templates/fragments/head.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/resources/templates/fragments/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/resources/templates/fragments/task-modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-tutorial-practice/Kanban_Board/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/5.SpringBoot.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-1/baitapSlide.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-1/baitapSlide.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-1/btvn.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-1/btvn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-10/image/logo-light.svg" beforeDir="false" afterPath="$PROJECT_DIR$/day-10/image/logo-light.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-10/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-10/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-10/minimal_bag.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-10/minimal_bag.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-10/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-10/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-14/src/main/java/com/example/book_management/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/day-14/src/main/java/com/example/book_management/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-14/src/main/resources/templates/book_management/create_book.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-14/src/main/resources/templates/book_management/create_book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-2/array_demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-2/array_demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-2/btvn.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-2/btvn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-2/btvn2.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-2/btvn2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-3/HOF.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-3/HOF.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-3/Homework.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-3/Homework.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-3/object.js" beforeDir="false" afterPath="$PROJECT_DIR$/day-3/object.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-4/homework.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-4/homework.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-4/index_sample.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-4/index_sample.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-4/lab2.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-4/lab2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-5/dom_p2.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-5/dom_p2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-5/lab1.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-5/lab1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-5/lab2_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-5/lab2_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-5/lab2_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-5/lab2_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-5/mouse_event.html" beforeDir="false" afterPath="$PROJECT_DIR$/day-5/mouse_event.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-8/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/day-8/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-8/src/main/java/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/day-8/src/main/java/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-8/src/main/java/btvn/factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/day-8/src/main/java/btvn/factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-8/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/day-8/src/main/resources/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day-8/target/classes/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/day-8/target/classes/log4j.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-web-01/src/main/java/com/example/demoweb01/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo-web-01/src/main/java/com/example/demoweb01/controller/TeacherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/bus_management/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/bus_management/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/bus_management/src/main/java/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/bus_management/src/main/java/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/bus_management/src/main/java/entity/PhanCongDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/bus_management/src/main/java/entity/PhanCongDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/teacher_management/src/main/java/entity/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/teacher_management/src/main/java/entity/Teacher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/teacher_management/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/teacher_management/src/main/java/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/teacher_management/src/main/java/service/SubjectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/teacher_management/src/main/java/service/SubjectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/teacher_management/src/main/java/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/teacher_management/src/main/java/service/TeacherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/teacher_management/src/main/java/service/TeachingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/teacher_management/src/main/java/service/TeachingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ontap/HELP.md" beforeDir="false" afterPath="$PROJECT_DIR$/ontap/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ontap/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ontap/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ontap/src/main/java/com/example/bus_management/BusManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ontap/src/main/java/com/example/bus_management/BusManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ontap/src/main/java/phanCongLaiXeBus/service/PhanCongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ontap/src/main/java/phanCongLaiXeBus/service/PhanCongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ontap/src/test/java/com/example/bus_management/BusManagementApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ontap/src/test/java/com/example/bus_management/BusManagementApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-tutorial-practice/05-tiny-student-management-05/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-tutorial-practice/05-tiny-student-management-05/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-tutorial-practice/06-tiny-task-management/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-tutorial-practice/06-tiny-task-management/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springMVC/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/springMVC/README.MD" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,44 +78,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2PKM8o1r0Ly5D8LjMuV1CdlIbeb" />
+  <component name="ProjectId" id="2R9PSdqjgJBZeXgPxH1dCYy89zY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/05. TM/01_Units/hiennguyen2610.github.io/5.SpringBoot/day-9"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4af397f9-a5ed-4e30-93b9-bda1445c0902" name="Changes" comment="" />
-      <created>1683201162808</created>
+      <changelist id="af3a450f-dfe2-4928-b445-91e528319cbf" name="Default Changelist" comment="" />
+      <created>1686659327638</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1683201162808</updated>
-      <workItem from="1683201163981" duration="94000" />
+      <updated>1686659327638</updated>
+      <workItem from="1686659328860" duration="75000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>

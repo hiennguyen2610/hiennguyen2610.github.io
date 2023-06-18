@@ -35,7 +35,7 @@ public class TeachingService {
 
 
     private void saveTeaching(Teaching teaching) {
-            Main.TEACHINGS.add(teaching);
+        Main.TEACHINGS.add(teaching);
     }
 
     private void createTeachingDetail(TeachingDetail[] teachingDetails, int subjectNumber, Teacher teacher) {

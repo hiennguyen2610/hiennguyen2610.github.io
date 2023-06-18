@@ -21,6 +21,7 @@ public class factory {
         id++;
         this.id = id;
     }
+
     public void addFactory() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập tên xưởng: ");

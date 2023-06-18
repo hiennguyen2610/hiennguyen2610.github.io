@@ -2,6 +2,7 @@ package service;
 
 import entity.Teacher;
 import main.Main;
+
 import java.util.Scanner;
 
 public class TeacherService {
@@ -12,7 +13,7 @@ public class TeacherService {
         int numberTeacher = new Scanner(System.in).nextInt();
         for (int i = 0; i < numberTeacher; i++) {
             Teacher teacher = new Teacher();
-            System.out.print("Nhập tên giảng viên thứ "+(i+1)+" :");
+            System.out.print("Nhập tên giảng viên thứ " + (i + 1) + " :");
             teacher.inputInfo();
             saveTeacher(teacher);
         }

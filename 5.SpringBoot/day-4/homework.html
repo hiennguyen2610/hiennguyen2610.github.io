@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Homework Day 4</title>
-  </head>
-  <body>
-    <p id="text">
-      Tôi có thể làm <em> bất cứ điều gì</em> tôi muốn với JavaScript
-    </p>
-    <ul id="item">
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
-    <ul id="list">
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-      <li>Item 4</li>
-      <li>Item 5</li>
-      <li>Item 6</li>
-      <li>Item 7</li>
-    </ul>
+</head>
+<body>
+<p id="text">
+    Tôi có thể làm <em> bất cứ điều gì</em> tôi muốn với JavaScript
+</p>
+<ul id="item">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+<ul id="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+    <li>Item 6</li>
+    <li>Item 7</li>
+</ul>
 
-    <script>
-      // bai 1
-      let element_text = document.getElementById("text");
-      element_text.style.color = "#777";
-      element_text.style.fontSize = "2rem";
+<script>
+    // bai 1
+    let element_text = document.getElementById("text");
+    element_text.style.color = "#777";
+    element_text.style.fontSize = "2rem";
 
-      // bai 2
-      let list_item = document.querySelectorAll("#item li");
-      for (const x of list_item) x.style.color = "blue";
+    // bai 2
+    let list_item = document.querySelectorAll("#item li");
+    for (const x of list_item) x.style.color = "blue";
 
-      // bai 3
-      let add_element = document.getElementById("list");
-      for (let i = 8; i <= 10; i++)
+    // bai 3
+    let add_element = document.getElementById("list");
+    for (let i = 8; i <= 10; i++)
         add_element.insertAdjacentHTML("beforeend", "<li>Item " + i + "</li>");
 
-      add_element.querySelector("li").style.color = "red";
-      add_element.querySelector("li:nth-child(3)").style.backgroundColor =
+    add_element.querySelector("li").style.color = "red";
+    add_element.querySelector("li:nth-child(3)").style.backgroundColor =
         "blue";
-      let item_4 = list.querySelector("li:nth-child(4)");
-      item_4.parentNode.removeChild(item_4);
-    </script>
-  </body>
+    let item_4 = list.querySelector("li:nth-child(4)");
+    item_4.parentNode.removeChild(item_4);
+</script>
+</body>
 </html>

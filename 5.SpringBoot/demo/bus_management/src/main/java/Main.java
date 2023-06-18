@@ -183,7 +183,7 @@ public class Main {
         int soLuongLX = new Scanner(System.in).nextInt();
         for (int i = 0; i < soLuongLX; i++) {
             LaiXe laiXe = new LaiXe();
-            System.out.print("Nhập tên lái xe thứ "+(i+1) +": ");
+            System.out.print("Nhập tên lái xe thứ " + (i + 1) + ": ");
             laiXe.nhapThongTin();
             luuThongTinLaiXe(laiXe);
         }
@@ -214,14 +214,14 @@ public class Main {
         int soLuongTuyen = new Scanner(System.in).nextInt();
         for (int i = 0; i < soLuongTuyen; i++) {
             Tuyen tuyen = new Tuyen();
-            System.out.print("Nhập khoảng cách tuyến số "+(i+1) + ": ");
+            System.out.print("Nhập khoảng cách tuyến số " + (i + 1) + ": ");
             tuyen.nhapThongTin();
             luuThongTinTuyen(tuyen);
         }
     }
 
     // Lưu thông tin tuyến
-    private static void luuThongTinTuyen( Tuyen tuyen) {
+    private static void luuThongTinTuyen(Tuyen tuyen) {
         for (int j = 0; j < DanhSachTuyen.length; j++) {
             if (DanhSachTuyen[j] == null) {
                 DanhSachTuyen[j] = tuyen;

@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Stack;
 
 public class Main {
-   static Logger log = Logger.getLogger(Main.class);
+    static Logger log = Logger.getLogger(Main.class);
+
     public static void main(String[] args) {
         Student student = Student.builder()
                 .id(3)

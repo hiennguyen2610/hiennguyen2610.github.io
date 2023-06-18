@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 @Getter
 @Setter
-public class Teacher extends Person{
+public class Teacher extends Person {
 
     private static int AUTO_ID = 100;
     private Level level;
-    
+
     @Override
     public void inputInfo() {
         super.inputInfo();

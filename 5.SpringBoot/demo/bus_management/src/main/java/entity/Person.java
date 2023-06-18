@@ -9,7 +9,7 @@ import java.util.Scanner;
 @Getter
 @Setter
 
-public class Person implements Inputable{
+public class Person implements Inputable {
     protected int id;
     protected String name;
     protected String address;
