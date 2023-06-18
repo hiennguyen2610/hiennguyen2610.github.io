@@ -27,12 +27,12 @@ public class Order {
     @JoinColumn(name = "product_id")
     Product product;
 
-    @Column(name = "created_at")
-    LocalDateTime created_at;
+    @Column(name = "create_at")
+    LocalDateTime create_at;
 
     @PrePersist
 public void prePersist() {
-        this.created_at = LocalDateTime.now();
+        this.create_at = LocalDateTime.now();
     }
 }
 
