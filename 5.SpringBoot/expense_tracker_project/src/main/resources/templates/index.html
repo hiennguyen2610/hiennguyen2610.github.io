@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <!--add data-->
+
+      <div class="col-lg-12 col-md-11">
+        <div class="card">
+          <div class="header">
+            <div class="d-flex justify-content-between flex-sm-row flex-column">
+              <div class="pb-3 pb-md-0">
+                <h4 class="title"><?php echo trans('lang.account_list');?></h4>
+              </div>
+              <div class="">
+                <div class="d-flex flex-row">
+                  <a href="#'" data-toggle="modal" data-target="#add" class="btn btn-sm btn-fill btn-info"><i class="ti-plus"></i> <?php echo trans('lang.add_new_account');?></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="content">
+
+            <div id="message2" style="display:none" class="alert alert-success"><?php echo trans('lang.data_added');?></div>
+            <div id="message3" style="display:none" class="alert alert-success"><?php echo trans('lang.data_deleted');?></div>
+            <div id="message4" style="display:none" class="alert alert-success"><?php echo trans('lang.data_updated');?></div>
+            <div class="table-responsive">
+              <table id="data" class="table" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                  <th><?php echo trans('lang.account_id');?></th>
+                  <th><?php echo trans('lang.name');?></th>
+                  <th><?php echo trans('lang.opening_balance');?></th>
+                  <th><?php echo trans('lang.description');?></th>
+                  <th><?php echo trans('lang.action');?></th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<!--add new data -->
+<div id="add" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="#" id="formadd"  autocomplete="off">
+        <div class="modal-header">
+          <h5 class="modal-title"><?php echo trans('lang.add_new_account');?></h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div id="message" style="display:none;" class="alert alert-warning"><?php echo trans('lang.all_field_required');?></div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label><small class="req text-danger">* </small><?php echo trans('lang.name');?></label>
+            <input type="text" class="form-control" name="name"  id="name" placeholder="<?php echo trans('lang.name');?>" required>
+          </div>
+          <div class="form-group">
+            <label><small class="req text-danger">* </small><?php echo trans('lang.opening_balance');?></label>
+            <div class="input-group">
+              <span class="input-group-addon currency" id="currency" style="border: 1px solid #cecece;"></span>
+              <input class="form-control number" required placeholder="<?php echo trans('lang.opening_balance');?>" id="balance" name="balance" type="text" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label><small class="req text-danger">* </small><?php echo trans('lang.account_number');?></label>
+            <input class="form-control" required placeholder="<?php echo trans('lang.account_number');?>" id="accountnumber" name="accountnumber" type="text">
+          </div>
+          <div class="form-group">
+            <label><?php echo trans('lang.description');?></label>
+            <textarea class="form-control" name="description" id="description" placeholder="<?php echo trans('lang.description');?>"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-fill" data-dismiss="modal"><?php echo trans('lang.close');?></button>
+          <input type="submit" class="btn btn-sm btn-fill btn-info" id="save" value="<?php echo trans('lang.save');?>"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--delete data -->
+<div class="modal fade" id="delete" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><?php echo trans('lang.delete');?></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+          <p class="text-danger"><?php echo trans('lang.delete_warning');?></p>
+          <p><?php echo trans('lang.delete_confirm');?></p>
+          <input type="hidden" value="" name="iddelete" id="iddelete"/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-fill" data-dismiss="modal"><?php echo trans('lang.close');?></button>
+        <input type="submit" class="btn btn-sm btn-fill btn-info" id="dodelete" value="<?php echo trans('lang.delete');?>"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--edit data -->
+<div id="edit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="#" id="formedit"  autocomplete="off">
+        <div class="modal-header">
+          <h5 class="modal-title"><?php echo trans('lang.edit');?></h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div id="message" style="display:none;" class="alert alert-warning"><?php echo trans('lang.all_field_required');?></div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label><small class="req text-danger">* </small><?php echo trans('lang.name');?></label>
+            <input type="text" class="form-control" name="editname"  id="editname" placeholder="<?php echo trans('lang.name');?>" required>
+          </div>
+          <div class="form-group">
+            <label><small class="req text-danger">* </small><?php echo trans('lang.opening_balance');?></label>
+            <div class="input-group">
+              <span class="input-group-addon currency" id="editcurrency" style="border: 1px solid #cecece;"></span>
+              <input class="form-control number" required placeholder="<?php echo trans('lang.opening_balance');?>" id="editbalance" name="editbalance" type="text" placeholder="Amount">
+            </div>
+          </div>
+          <div class="form-group">
+            <label><small class="req text-danger">* </small><?php echo trans('lang.account_number');?></label>
+            <input class="form-control" required placeholder="<?php echo trans('lang.account_number');?>" id="editaccountnumber" name="editaccountnumber" type="text">
+          </div>
+          <div class="form-group">
+            <label><?php echo trans('lang.description');?></label>
+            <textarea class="form-control" name="editdescription" id="editdescription" placeholder="<?php echo trans('lang.description');?>"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" value="" name="id" id="idedit"/>
+          <button type="button" class="btn btn-sm btn-fill" data-dismiss="modal"><?php echo trans('lang.close');?></button>
+          <input type="submit" class="btn btn-sm btn-fill btn-info" value="<?php echo trans('lang.save');?>"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

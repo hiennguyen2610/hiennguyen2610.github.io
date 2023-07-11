@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Component
@@ -29,18 +30,28 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Role userRole = Role.builder().name(Roles.USER).build();
-        Role adminRole = Role.builder().name(Roles.ADMIN).build();
-        roleRepository.save(userRole);
-        roleRepository.save(adminRole);
+        Optional<Role> roleUserOptinal = roleRepository.findByName(Roles.USER);
+        if(roleUserOptinal.isEmpty()){
+            Role userRole = Role.builder().name(Roles.USER).build();
+            roleRepository.save(userRole);
+        }
 
-        User user = new User();
-        user.setUsername("admin");
-        user.setPassword(passwordEncoder.encode("admin123")); // Encrypt the password
-        Set<Role> roles = new HashSet<>();
-        roles.add(adminRole);
-        user.setRoles(roles);
-        userRepository.save(user);
+        Optional<Role> roleAdminOptinal = roleRepository.findByName(Roles.ADMIN);
+        if(roleAdminOptinal.isEmpty()){
+            Role adminRole = Role.builder().name(Roles.ADMIN).build();
+            roleRepository.save(adminRole);
+
+            Optional<User> admin = userRepository.findByEmail("admin@gmail.com");
+            if(admin.isEmpty()){
+                User user = new User();
+                user.setEmail("admin@gmail.com");
+                user.setPassword(passwordEncoder.encode("admin123")); // Encrypt the password
+                Set<Role> roles = new HashSet<>();
+                roles.add(adminRole);
+                user.setRoles(roles);
+                userRepository.save(user);
+            }
+        }
     }
 
 }

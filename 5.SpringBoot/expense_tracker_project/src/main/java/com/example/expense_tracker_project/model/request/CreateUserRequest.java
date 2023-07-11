@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 public class CreateUserRequest {
 
     @NotBlank
-    @Length(max = 50, message = "username không được vượt quá 50 ký tự")
-    String username;
+    @Length(max = 50, message = "Email không được vượt quá 50 ký tự")
+    String email;
 
 }
