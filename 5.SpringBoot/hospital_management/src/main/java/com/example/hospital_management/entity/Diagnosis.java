@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -14,20 +15,16 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Diagnosis extends BaseEntity{
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "user_id")
-    User user;
-
-    @ManyToOne(targetEntity = Speciality.class)
+    @OneToOne
     @JoinColumn(name = "appointment_id")
     Appointment appointment;
 
-    @Column(name = "name")
-    String name;
+    @Column(name = "detail")
+    String detail;
 
-    @Column(name = "phone")
-    String phone;
+    @Column(name = "result")
+    String result;
 
-    @Column(name = "address")
-    String address;
+    @Column(name = "re_excamination_datetime")
+    LocalDate re_excamination_datetime;
 }

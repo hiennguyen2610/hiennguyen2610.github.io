@@ -1,5 +1,6 @@
 package com.example.hospital_management.entity;
 
+import com.example.hospital_management.statics.HealthInsuranceType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -15,9 +16,8 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Patient extends BaseEntity {
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "user_id")
-    User user;
+    @Column(name = "email")
+    String email;
 
     @Column(name = "name")
     String name;
@@ -33,4 +33,10 @@ public class Patient extends BaseEntity {
 
     @Column(name = "symptom")
     String symptom;
+
+    @Column(name = "health_insurance_number")
+    int healthInsuranceNumber;
+
+    @Column(name = "health_insurance_type")
+    HealthInsuranceType healthInsuranceType;
 }

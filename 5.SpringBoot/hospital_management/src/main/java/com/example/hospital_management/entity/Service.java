@@ -14,13 +14,9 @@ import javax.persistence.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Service extends BaseEntity {
 
-    @ManyToOne(targetEntity = Speciality.class)
-    @JoinColumn(name = "department_id")
-    Speciality department;
-
     @Column(name = "name")
     String name;
 
     @Column(name = "price")
-    Integer price;
+    int price;
 }

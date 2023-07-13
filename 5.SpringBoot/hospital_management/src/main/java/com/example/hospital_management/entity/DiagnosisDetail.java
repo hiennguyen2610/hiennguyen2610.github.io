@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "bills")
+@Table(name = "dianosis_detail")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class DiagnosisDetail extends BaseEntity {
     @ManyToOne
@@ -22,9 +22,9 @@ public class DiagnosisDetail extends BaseEntity {
     @JoinColumn(name = "service_id")
     Service service;
 
-    @Column(name = "total")
-    Integer total;
+    @Column(name = "detail")
+    String detail;
 
-    @Column(name = "date")
-    LocalDate date;
+    @Column(name = "result")
+    String result;
 }

@@ -17,22 +17,18 @@ import java.time.LocalDate;
 
 public class Doctor extends BaseEntity {
 
-    @ManyToOne(targetEntity = User.class)
+    @OneToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     User user;
-
-    @ManyToOne(targetEntity = Speciality.class)
-    @JoinColumn(name = "department_id")
-    Speciality department;
-
-    @Column(name = "name")
-    String name;
 
     @Column(name = "phone")
     String phone;
 
     @Column(name = "address")
     String address;
+
+    @Column(name = "introduce")
+    String introduce;
 
     @Column(name = "dob")
     LocalDate dob;

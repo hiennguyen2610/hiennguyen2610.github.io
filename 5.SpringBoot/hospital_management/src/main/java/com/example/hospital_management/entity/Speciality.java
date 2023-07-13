@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "departments")
+@Table(name = "specialities")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class Speciality extends BaseEntity{

@@ -28,6 +28,6 @@ public class OtpVerification extends BaseEntity{
     boolean success;
 
     @Column(nullable = false)
-    Integer timesVerification;
+    int timesVerification;
 
 }

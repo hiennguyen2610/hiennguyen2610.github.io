@@ -1,5 +1,6 @@
 package com.example.hospital_management.entity;
 
+import com.example.hospital_management.statics.NotificationStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,13 +16,18 @@ import javax.persistence.*;
 @Table(name = "notifications")
 public class Notification extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "from_to_id")
+    User formUser;
+
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "to_user_id")
+    User toUser;
 
     @Column(name = "content")
     String content;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN default false")
-    boolean seen;
+    @Column(name = "notification_status")
+    @Enumerated(EnumType.STRING)
+    NotificationStatus notificationStatus;
 }

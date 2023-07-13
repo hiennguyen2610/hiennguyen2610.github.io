@@ -24,6 +24,12 @@ public class User extends BaseEntity {
     @Column(name = "password")
     String password;
 
+    @Column(name = "name")
+    String name;
+
+    @Column(name = "avatar")
+    String avatar;
+
     @Column(nullable = false)
     @Type(type = "org.hibernate.type.NumericBooleanType")
     boolean activated;
