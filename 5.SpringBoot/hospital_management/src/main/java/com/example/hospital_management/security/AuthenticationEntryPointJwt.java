@@ -12,7 +12,6 @@ import java.io.IOException;
 @Component
 public class AuthenticationEntryPointJwt implements AuthenticationEntryPoint {
 
-
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException)
             throws IOException {

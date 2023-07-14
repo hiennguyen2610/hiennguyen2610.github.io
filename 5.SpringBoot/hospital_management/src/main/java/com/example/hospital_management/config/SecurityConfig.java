@@ -61,7 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/v1/authentication/login", "/api/v1/authentication/signup").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/v1/authentication/refresh-token", "/api/v1/authentication/logout").authenticated()
                 .antMatchers(HttpMethod.GET, "/api/v1/users", "/api/v1/users/{id}").hasAnyAuthority(Roles.USER.toString(), Roles.ADMIN.toString(), Roles.DOCTOR.toString())
-                .antMatchers(HttpMethod.POST, "/api/v1/users").hasAnyAuthority(Roles.ADMIN.toString())
+                .antMatchers(HttpMethod.POST, "/api/v1/admin", "/doctors","/admin/**").hasAnyAuthority(Roles.ADMIN.toString())
+                .antMatchers(HttpMethod.GET, "/api/v1/admin", "/doctors","/admin/**").hasAnyAuthority(Roles.ADMIN.toString())
                 .anyRequest().permitAll()
                 .and()
                 .httpBasic()
@@ -69,5 +70,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().sameOrigin();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
-
 }

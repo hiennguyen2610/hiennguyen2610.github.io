@@ -19,4 +19,14 @@ public class AdminController {
     public String adminHome() {
         return "admin/index";
     }
+
+    @GetMapping("/doctors")
+    public String doctorList() {
+        return "admin/doctors";
+    }
+
+    @GetMapping("/add-doctor")
+    public String addDoctor() {
+        return "admin/add-doctor";
+    }
 }
