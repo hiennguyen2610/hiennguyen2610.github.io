@@ -1,5 +1,6 @@
 package com.example.hospital_management.entity;
 
+import com.example.hospital_management.statics.Gender;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.Type;
@@ -26,6 +27,9 @@ public class User extends BaseEntity {
 
     @Column(name = "name")
     String name;
+
+    @Column(name = "gender")
+    Gender gender;
 
     @Column(name = "avatar")
     String avatar;

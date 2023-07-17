@@ -24,7 +24,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Set;
 import java.util.UUID;
@@ -48,7 +48,7 @@ public class AuthenticationController {
     AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest request) {
+    public JwtResponse authenticateUser(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -77,10 +77,20 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
-        return userRepository.findByEmail(request.getUsername())
-                .map(user -> new ResponseEntity<>("Username is existed", HttpStatus.BAD_REQUEST))
+        return userRepository.findByEmail(request.getEmail())
+                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
                     userService.registerUser(request);
+                    return new ResponseEntity<>(null, HttpStatus.CREATED);
+                });
+    }
+
+    @PostMapping("/signupDoctor")
+    public ResponseEntity<?> registerDoctor(@Valid @RequestBody RegistrationRequest request) {
+        return userRepository.findByEmail(request.getEmail())
+                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
+                .orElseGet(() -> {
+                    userService.registerDocter(request);
                     return new ResponseEntity<>(null, HttpStatus.CREATED);
                 });
     }

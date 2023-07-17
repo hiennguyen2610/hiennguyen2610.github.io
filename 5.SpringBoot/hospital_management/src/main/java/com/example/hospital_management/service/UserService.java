@@ -67,7 +67,19 @@ public class UserService {
         Set<Role> roles = new HashSet<>();
         roles.add(optionalRole.get());
         User user = User.builder()
-                .email(registrationRequest.getUsername())
+                .email(registrationRequest.getEmail())
+                .password(passwordEncoder.encode(registrationRequest.getPassword()))
+                .roles(roles)
+                .build();
+        userRepository.save(user);
+    }
+
+    public void registerDocter(RegistrationRequest registrationRequest) {
+        Optional<Role> optionalRole = roleRepository.findByName(Roles.DOCTOR);
+        Set<Role> roles = new HashSet<>();
+        roles.add(optionalRole.get());
+        User user = User.builder()
+                .email(registrationRequest.getEmail())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))
                 .roles(roles)
                 .build();

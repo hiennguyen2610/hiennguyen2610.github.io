@@ -415,6 +415,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <!-- Login JS-->
 <script th:inline="javascript">
@@ -450,16 +451,18 @@
             let loginPassword = $('#password').val()
             let request = {
                 email: loginEmail,
-                password: loginPassword
+                password: loginPassword,
             }
-
-            let jwtToken = getJwtToken()
 
             $.ajax({
                 url: '/api/v1/authentication/login',
                 type: 'POST',
                 data: JSON.stringify(request),
                 contentType: "application/json; charset=utf-8",
+                beforeSend: function(xhr) {
+                    let jwtToken = localStorage.getItem('jwt');
+                    xhr.setRequestHeader('Authorization', `Bearer ${jwtToken}`); // Truyền jwtToken vào tiêu đề
+                },
                 success: function (data) {
                     console.log(data)
                     localStorage.clear()
@@ -468,26 +471,19 @@
                     let userInfomation = {
                         email: data.email,
                         userId: data.id,
-                        roles: data.roles
+                        roles: data.roles,
                     }
                     localStorage.setItem('userInfomation', JSON.stringify(userInfomation))
                     toastr.success("Đăng nhập thành công");
                     if (data.roles[0] === "USER") {
                         setTimeout(function () {
-                            window.location.href = 'http://localhost:8080/'
+                            window.location.href = 'http://localhost:8080'
                         }, 1000)
                     } else if (data.roles[0] === "ADMIN") {
-                        setTimeout(function () {
-                            $.ajax({
-                                url: '/admin',
-                                type: 'GET',
-                                headers: {
-                                    'Authorization': 'Bearer' + " " + jwtToken
-                                },
-                            })
-                        }, 1000)
-                    }
-                },
+                        document.cookie = `jwtToken=${data.jwt}; path=/`;
+                        window.location.href = 'http://localhost:8080/admin'
+                        }
+                    },
                 error: function (data) {
                     toastr.error("Mật khẩu hoặc tài khoản không chính xác!")
                 },
@@ -496,7 +492,7 @@
     })
 
     function getJwtToken() {
-        return localStorage.getItem('jwtToken')
+        return localStorage.getItem('jwt')
     }
 
     function getRefreshToken() {
