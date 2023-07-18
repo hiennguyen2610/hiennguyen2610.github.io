@@ -14,8 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/admin-bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" type="text/css" href="css/admin-style.css">
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.min.js"></script>
-    <script src="js/respond.min.js"></script>
+
     <![endif]-->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
@@ -326,12 +325,12 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <form class="register" id="register-form" method="post">
+                    <form class="register-form" id="register-form" method="post">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text" id="fullname" placeholder="Your name" name="fullname">
+                                    <input class="form-control" type="text" id="name" placeholder="Your name" name="name">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -363,6 +362,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Phone </label>
+                                    <input class="form-control" type="text" id="phone">
+                                </div>
+                            </div>
 <!--                            <div class="col-sm-6">-->
 <!--                                <div class="form-group gender-select" id="gender">-->
 <!--                                    <label class="gen-label">Gender:</label>-->
@@ -388,12 +393,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label>Phone </label>
-                                    <input class="form-control" type="text" id="phone">
-                                </div>
-                            </div>
+
 <!--                            <div class="col-sm-6">-->
 <!--                                <div class="form-group">-->
 <!--                                    <label>Avatar</label>-->
@@ -418,6 +418,7 @@
                             </button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -633,6 +634,9 @@
     </div>
 </div>
 <div class="sidebar-overlay" data-reff=""></div>
+
+
+</body>
 <!--&lt;!&ndash;<script src="js/admin-jquery-3.2.1.min.js"></script>&ndash;&gt;-->
 <!--<script src="js/admin-popper.min.js"></script>-->
 <!--<script src="js/admin-bootstrap.min.js"></script>-->
@@ -641,7 +645,9 @@
 <!--<script src="js/admin-moment.min.js"></script>-->
 <!--<script src="js/admin-bootstrap-datetimepicker.min.js"></script>-->
 <!--<script src="js/admin-app.js"></script>-->
-
+<!--<script src="js/html5shiv.min.js"></script>-->
+<!--<script src="js/respond.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
@@ -653,7 +659,7 @@
             positionClass: 'toast-center',
             timeOut: 1500
         }
-        $(".register").validate({
+        $(".register-form").validate({
             onfocusout: false,
             onkeyup: false,
             onclick: false,
@@ -693,10 +699,10 @@
         $('#signup').click(function (event) {
             event.preventDefault();
 
-            var isValidForm = $('.register').valid();
+            var isValidForm = $('.register-form').valid();
             if (!isValidForm) return;
 
-            var fullname = $('#fullname').val();
+            var name = $('#name').val();
             var email = $('#email').val();
             var phone = $('#phone').val();
             var password = $('#password').val();
@@ -705,7 +711,7 @@
             var dob = $('#dob').val();
 
             var formData = {
-                fullname: fullname,
+                name: name,
                 email: email,
                 phone: phone,
                 password: password,
@@ -715,7 +721,7 @@
             };
 
             $.ajax({
-                url: '/api/v1/authentication/signupDoctor',
+                url: '/api/v1/authentication/signup',
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(formData),
@@ -731,9 +737,6 @@
         })
     })
 </script>
-
-</body>
-
 
 <!-- add-doctor24:06-->
 </html>
