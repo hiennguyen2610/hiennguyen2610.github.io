@@ -1,6 +1,8 @@
 package com.example.hospital_management.controller.user;
 
 import com.example.hospital_management.entity.RefreshToken;
+import com.example.hospital_management.entity.User;
+import com.example.hospital_management.exception.AccountNotActivedException;
 import com.example.hospital_management.exception.RefreshTokenNotFoundException;
 import com.example.hospital_management.model.request.LoginRequest;
 import com.example.hospital_management.model.request.RefreshTokenRequest;
@@ -59,6 +61,12 @@ public class AuthenticationController {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toSet());
 
+        User user = userRepository.findById(userDetails.getId()).get();
+
+        if (!user.isActivated()) {
+            throw new AccountNotActivedException("Account not activated");
+        }
+
         String refreshToken = UUID.randomUUID().toString();
         RefreshToken refreshTokenEntity = RefreshToken.builder()
                 .refreshToken(refreshToken)
@@ -85,15 +93,15 @@ public class AuthenticationController {
                 });
     }
 
-//    @PostMapping("/signupDoctor")
-//    public ResponseEntity<?> registerDoctor(@Valid @RequestBody RegistrationRequest request) {
-//        return userRepository.findByEmail(request.getEmail())
-//                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
-//                .orElseGet(() -> {
-//                    userService.registerDocter(request);
-//                    return new ResponseEntity<>(null, HttpStatus.CREATED);
-//                });
-//    }
+    @PostMapping("/signupDoctor")
+    public ResponseEntity<?> registerDoctor(@Valid @RequestBody RegistrationRequest request) {
+        return userRepository.findByEmail(request.getEmail())
+                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
+                .orElseGet(() -> {
+                    userService.registerDoctor(request);
+                    return new ResponseEntity<>(null, HttpStatus.CREATED);
+                });
+    }
 
     @PostMapping("/refresh-token")
     public ResponseEntity<?> refreshToken(@RequestBody @Valid RefreshTokenRequest request) {

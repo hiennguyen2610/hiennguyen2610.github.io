@@ -22,11 +22,10 @@ public class AdminController {
 
     @GetMapping("/login")
     public String login() {
-        return "anonymous/login";
+        return "account/login";
     }
 
-    @GetMapping("/admin")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin/dashboard")
     public String adminHome() {
         return "admin/index";
     }

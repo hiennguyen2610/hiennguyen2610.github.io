@@ -35,4 +35,8 @@ public class Doctor extends BaseEntity {
 
     @Column(name = "level")
     DoctorLevel doctorLevel;
+
+//    @Column(name = "speciality")
+//    @JoinColumn(name = "speciality_id")
+//    Speciality speciality;
 }

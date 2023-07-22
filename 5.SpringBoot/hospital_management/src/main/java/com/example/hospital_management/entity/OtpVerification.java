@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -16,10 +17,6 @@ import javax.persistence.*;
 public class OtpVerification extends BaseEntity{
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    User user;
-
-    @ManyToOne
     @JoinColumn(name = "otp_id")
     Otp otp;
 
@@ -28,6 +25,6 @@ public class OtpVerification extends BaseEntity{
     boolean success;
 
     @Column(nullable = false)
-    int timesVerification;
+    LocalDateTime timesVerification;
 
 }

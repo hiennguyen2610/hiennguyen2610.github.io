@@ -42,15 +42,17 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/**")
+        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
 //        registry.addResourceHandler("/vendor/**").addResourceLocations("classpath:/static/vendor/")
 //                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/**")
+        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/**")
+        registry.addResourceHandler("/jsmain/**").addResourceLocations("classpath:/static/jsmain/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
-        registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/static/fonts/**")
+        registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/")
+                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
+        registry.addResourceHandler("/fonts/**").addResourceLocations("classpath:/static/fonts/")
                 .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
     }
 }

@@ -727,8 +727,8 @@
                 data: JSON.stringify(formData),
                 success: function(response) {
                     console.log(response);
-                    toastr.success('Đăng ký thành công');
-                    window.location.href = 'http://localhost:8080/login';
+                    toastr.success('Đăng ký thành công, vui lòng kiểm tra email để kích hoạt tài khoản!');
+                    window.location.href = 'http://localhost:8080/doctors';
                 },
                 error: function(data) {
                     toastr.error("Đăng ký không thành công!");
