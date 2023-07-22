@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers( "/api/v1/authentication/login", "/api/v1/authentication/signup").permitAll()
                 .antMatchers("/api/v1/authentication/refresh-token", "/api/v1/authentication/logout").authenticated()
-                .antMatchers( "/api/v1/users", "/api/v1/users/{id}").hasAnyAuthority(Roles.USER.toString(), Roles.ADMIN.toString(), Roles.DOCTOR.toString())
+//                .antMatchers( "/api/v1/users", "/api/v1/users/{id}").hasAnyAuthority(Roles.USER.toString(), Roles.ADMIN.toString(), Roles.DOCTOR.toString())
 //                .antMatchers( "/api/v1/admin", "/doctors","/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
