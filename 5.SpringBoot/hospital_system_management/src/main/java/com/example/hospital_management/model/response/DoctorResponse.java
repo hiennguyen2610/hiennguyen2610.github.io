@@ -18,7 +18,8 @@ import java.util.Set;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class DoctorResponse extends BaseEntity {
+public class DoctorResponse {
+    Long id;
 
     User user;
 

@@ -4,7 +4,6 @@ import com.example.hospital_management.entity.Doctor;
 import com.example.hospital_management.entity.Speciality;
 import com.example.hospital_management.entity.User;
 import com.example.hospital_management.exception.NotFoundException;
-import com.example.hospital_management.model.request.DoctorRequest;
 import com.example.hospital_management.model.request.RegistrationRequest;
 import com.example.hospital_management.model.response.DoctorResponse;
 import com.example.hospital_management.repository.DoctorRepository;
@@ -12,7 +11,6 @@ import com.example.hospital_management.repository.SpecialityRepository;
 import com.example.hospital_management.repository.UserRepository;
 import com.example.hospital_management.statics.Gender;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -37,6 +35,7 @@ public class DoctorService {
         List<DoctorResponse> doctorResponses = new ArrayList<>();
         for (Doctor d : doctors) {
             DoctorResponse doctorResponse = DoctorResponse.builder()
+                    .id(d.getId())
                     .doctorLevel(d.getDoctorLevel() == null ? "" : d.getDoctorLevel().getName())
                     .dob(d.getDob())
                     .address(d.getAddress())
