@@ -1,22 +1,18 @@
 package com.example.hospital_management.controller.admin;
 
+import com.example.hospital_management.entity.Service;
 import com.example.hospital_management.entity.Speciality;
-import com.example.hospital_management.model.request.DoctorRequest;
-import com.example.hospital_management.model.request.LoginRequest;
-import com.example.hospital_management.model.request.RegistrationRequest;
-import com.example.hospital_management.model.request.SpecialityRequest;
+import com.example.hospital_management.model.request.*;
 import com.example.hospital_management.model.response.ErrorResponse;
 import com.example.hospital_management.service.DoctorService;
+import com.example.hospital_management.service.SvService;
 import com.example.hospital_management.service.SpecialityService;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,6 +27,7 @@ public class AdminController {
 
     DoctorService doctorService;
     SpecialityService specialityService;
+    SvService svService;
 
     @GetMapping("/doctor/{id}")
     public ResponseEntity<?> getDoctor(@PathVariable("id") Long id) {
@@ -47,6 +44,26 @@ public class AdminController {
     public ResponseEntity<?> deleteDoctor(@PathVariable Long id) {
         doctorService.deleteDoctor(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/services")
+    public ResponseEntity<?> createService(@RequestBody ServiceRequest serviceRequest) {
+        try {
+            Service service = svService.createService(serviceRequest.getName(), serviceRequest.getPrice());
+            return ResponseEntity.ok(service);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST,e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PutMapping("/services/{id}")
+    public ResponseEntity<?> updateService(@PathVariable("id") Long id, @RequestBody ServiceRequest serviceRequest) {
+        try {
+            Service service = svService.updateService(id, serviceRequest.getName(), serviceRequest.getPrice());
+            return ResponseEntity.ok(service);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new ErrorResponse(HttpStatus.BAD_REQUEST,e.getMessage()), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping("/specialities")
@@ -74,9 +91,15 @@ public class AdminController {
         }
     }
 
-    @DeleteMapping("specialities/{id}")
+    @DeleteMapping("/specialities/{id}")
     public ResponseEntity<?> deleteSpeciality(@PathVariable("id") Long id) {
         specialityService.deleteSpeciality(id);
+        return ResponseEntity.ok(HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/services/{id}")
+    public ResponseEntity<?> deleteService(@PathVariable("id") Long id) {
+        svService.deleteService(id);
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
     }
 

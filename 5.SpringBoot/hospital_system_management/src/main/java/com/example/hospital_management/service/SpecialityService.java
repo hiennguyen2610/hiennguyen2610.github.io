@@ -62,7 +62,7 @@ public class SpecialityService {
     }
 
     public void deleteSpeciality(Long id) throws BadRequestException {
-        Optional<Speciality> specialityOptional = specialityRepository.findById(id.longValue());
+        Optional<Speciality> specialityOptional = specialityRepository.findById(id);
         if (specialityOptional.isEmpty()) {
             throw new NotFoundException("Không tìm thấy chuyên khoa");
         }
