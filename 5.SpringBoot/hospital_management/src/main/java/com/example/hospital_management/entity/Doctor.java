@@ -6,6 +6,8 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -23,6 +25,13 @@ public class Doctor extends BaseEntity {
 
     @Column(name = "phone")
     String phone;
+
+    @ManyToMany
+    @JoinTable(name = "doctor_speciality",
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "speciality_id")
+    )
+    Set<Speciality> specialities = new LinkedHashSet<>();
 
     @Column(name = "address")
     String address;

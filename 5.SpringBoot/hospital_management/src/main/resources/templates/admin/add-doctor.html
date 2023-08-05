@@ -6,13 +6,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
-    <link rel="stylesheet" type="text/css" href="css/admin-bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/admin-font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/admin-select2.min.css">
-    <link rel="stylesheet" type="text/css" href="css/admin-bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="css/admin-style.css">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
+
+    <!-- Link select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <title>Thêm bác sĩ</title>
+
+    <link rel="stylesheet" th:href="@{/css/admin-bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-select2.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-bootstrap-datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin-style.css}">
     <!--[if lt IE 9]>
 
     <![endif]-->
@@ -330,7 +335,8 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text" id="name" placeholder="Your name" name="name">
+                                    <input class="form-control" type="text" id="name" placeholder="Your name"
+                                           name="name">
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -357,8 +363,9 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Date of Birth</label>
-                                    <div class="cal-icon">
-                                        <input type="text" class="form-control datetimepicker" id="dob">
+                                    <div>
+                                        <label for="dob" class="form-label">Ngày sinh</label>
+                                        <input type="date" class="form-control" id="dob" name="dob">
                                     </div>
                                 </div>
                             </div>
@@ -368,21 +375,38 @@
                                     <input class="form-control" type="text" id="phone">
                                 </div>
                             </div>
-<!--                            <div class="col-sm-6">-->
-<!--                                <div class="form-group gender-select" id="gender">-->
-<!--                                    <label class="gen-label">Gender:</label>-->
-<!--                                    <div class="form-check-inline">-->
-<!--                                        <label class="form-check-label">-->
-<!--                                            <input type="radio" name="gender" class="form-check-input">Male-->
-<!--                                        </label>-->
-<!--                                    </div>-->
-<!--                                    <div class="form-check-inline">-->
-<!--                                        <label class="form-check-label">-->
-<!--                                            <input type="radio" name="gender" class="form-check-input">Female-->
-<!--                                        </label>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="gender">Gender</label><br>
+                                    <select id="gender" name="gender">
+                                        <option th:each="gender : ${T(com.example.hospital_management.statics.Gender).values()}"
+                                                th:value="${gender}"
+                                                th:text="${#strings.capitalize(gender.toString().toLowerCase())}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="speciality" class="form-label">Chuyên khoa</label>
+                                <select class="form-control" id="speciality" multiple="multiple" name="speciality" required>
+                                    <option th:each="speciality : ${listAllSpecialities}" th:value="${speciality.id}" th:text="${speciality.name}">Backend</option>
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="doctorLevel">Doctor Level</label><br>
+                                    <select id="doctorLevel" name="doctorLevel">
+                                        <option th:each="level : ${T(com.example.hospital_management.statics.DoctorLevel).values()}"
+                                                th:value="${level}"
+                                                th:text="${#strings.capitalize(level.toString().toLowerCase())}">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -393,24 +417,38 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="form-group">
 
-<!--                            <div class="col-sm-6">-->
-<!--                                <div class="form-group">-->
-<!--                                    <label>Avatar</label>-->
-<!--                                    <div class="profile-upload">-->
-<!--                                        <div class="upload-img">-->
-<!--                                            <img alt="" src="img/user.jpg">-->
-<!--                                        </div>-->
-<!--                                        <div class="upload-input">-->
-<!--                                            <input type="file" class="form-control" id="avatar">-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
                         </div>
                         <div class="form-group">
                             <label>Short Biography</label>
                             <textarea class="form-control" rows="3" cols="30" id="introduce"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="fw-500">Images</div>
+                            <div class="row x-gap-20 y-gap-20 pt-15">
+                                <div class="col-auto">
+                                    <div class="w-200">
+                                        <div id="image-book"
+                                             class="d-flex ratio ratio-1:1">
+
+                                            <button
+                                                    class="btn-upload-image flex-center flex-column text-center bg-blue-2 h-full w-1/1 absolute rounded-4 border-type-1">
+                                                <div class="icon-upload-file text-40 text-blue-1 mb-10"></div>
+                                                <div class="text-blue-1 fw-500">Upload
+                                                    Images
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <div class="text-center mt-10 text-14 text-light-1">
+                                            <input type="file" id="fileInput"
+                                                   style="display:none">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="m-t-20 text-center">
                             <button class="btn btn-primary submit-btn" type="submit" name="signup" id="signup">Create
@@ -637,27 +675,57 @@
 
 
 </body>
-<!--&lt;!&ndash;<script src="js/admin-jquery-3.2.1.min.js"></script>&ndash;&gt;-->
-<!--<script src="js/admin-popper.min.js"></script>-->
-<!--<script src="js/admin-bootstrap.min.js"></script>-->
-<!--<script src="js/admin-jquery.slimscroll.js"></script>-->
-<!--<script src="js/admin-select2.min.js"></script>-->
-<!--<script src="js/admin-moment.min.js"></script>-->
-<!--<script src="js/admin-bootstrap-datetimepicker.min.js"></script>-->
-<!--<script src="js/admin-app.js"></script>-->
-<!--<script src="js/html5shiv.min.js"></script>-->
-<!--<script src="js/respond.min.js"></script>-->
-<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+
+
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<!-- axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+<!--  toastr.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<!--<script type="text/javascript" src="jsmain/check-permission.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!--<script src="../../static/jsmain/add-doctor.js"></script>-->
 
 <script th:inline="javascript">
+
+    // Cấu hình thông tin Firebase của bạn
+    let firebaseConfig = {
+        apiKey: "AIzaSyCPfxKN6sz8b7ndgoENeNqZ3FnwVjKTCZM",
+        projectId: "hospital-management-syst-24909",
+        storageBucket: "hospital-management-syst-24909.appspot.com",
+    };
+
+    // Khởi tạo Firebase
+    // firebase.initializeApp(firebaseConfig);
+
+    // Lấy tham chiếu đến Firebase Storage bucket
+    // let storage = firebase.storage();
+    // let storageRef = storage.ref();
+
     $(document).ready(function () {
+
+        const doctor_speciality = $("#speciality");
+
+        // Kích hoạt select2
+        doctor_speciality.select2({
+            placeholder: "- Chọn chủ đề",
+        });
+
         toastr.options = {
             positionClass: 'toast-center',
-            timeOut: 1500
+            timeOut: 0
         }
         $(".register-form").validate({
             onfocusout: false,
@@ -709,6 +777,13 @@
             var address = $('#address').val();
             var introduce = $('#introduce').val();
             var dob = $('#dob').val();
+            var gender = $('#gender').val();
+            var avatar = $('#avatar').val();
+            var doctorLevel = $('#doctorLevel').val();
+            var selectedSpecialities = [];
+            $('#speciality option:selected').each(function () {
+                selectedSpecialities.push($(this).val());
+            })
 
             var formData = {
                 name: name,
@@ -717,20 +792,26 @@
                 password: password,
                 address: address,
                 introduce: introduce,
-                dob: dob
+                dob: dob,
+                gender: gender,
+                avatar: avatar,
+                specialityIds: selectedSpecialities,
+                doctorLevel: doctorLevel
+
             };
 
             $.ajax({
-                url: '/api/v1/authentication/signup',
+                url: '/api/v1/authentication/signupDoctor',
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(formData),
-                success: function(response) {
+                success: function (response) {
                     console.log(response);
-                    toastr.success('Đăng ký thành công, vui lòng kiểm tra email để kích hoạt tài khoản!');
-                    window.location.href = 'http://localhost:8080/doctors';
+                    localStorage.setItem('formData', JSON.stringify(formData));
+                    toastr.success('Đăng ký thành công!');
+                    window.location.href = 'http://localhost:8080/admin/doctors';
                 },
-                error: function(data) {
+                error: function (data) {
                     toastr.error("Đăng ký không thành công!");
                 }
             });

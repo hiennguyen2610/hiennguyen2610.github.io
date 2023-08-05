@@ -37,36 +37,6 @@ public class EmailService {
     Random rd = new Random();
 
 
-
-
-//    public void sendSimpleMail(String receiver) {
-//        // Creating a simple mail message
-//        SimpleMailMessage mailMessage = new SimpleMailMessage();
-//
-//
-//        Optional<User> userOptional =userRepository.findByEmail(receiver);
-//        if (userOptional.isPresent()){
-//            User user=userOptional.get();
-//            Otp otp=Otp.builder()
-//                    .otpCode(otpService.generateOTP())
-//                    .creatTime(LocalDateTime.now())
-//                    .expiredTime(LocalDateTime.now().plus(30, ChronoUnit.MINUTES))
-//                    .user(user)
-//                    .build();
-//            otpRepository.save(otp);
-//            mailMessage.setFrom(sender);
-//            mailMessage.setTo(receiver);
-//            mailMessage.setText("Mã OTP của bạn là:"+otp.getOtpCode()+". Không chia sẻ mã này cho bất kỳ ai!");
-//            mailMessage.setSubject("[SkyHub] OTP Vefification");
-//
-//            // Sending the mail
-//            javaMailSender.send(mailMessage);
-//        }
-//
-//        // Setting up necessary details
-//    }
-
-
     @Async
     public void sendActivationEmail(String email) {
         MimeMessage message = javaMailSender.createMimeMessage();
@@ -84,7 +54,8 @@ public class EmailService {
 
             javaMailSender.send(message);
         } catch (MessagingException e) {
-            // Xử lý ngoại lệ khi gửi email không thành công
+            System.out.println("Error while sending mail!!!");
+
         }
     }
 

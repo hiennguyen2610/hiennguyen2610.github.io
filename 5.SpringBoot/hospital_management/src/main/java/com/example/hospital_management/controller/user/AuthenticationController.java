@@ -83,15 +83,15 @@ public class AuthenticationController {
                 .build();
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
-        return userRepository.findByEmail(request.getEmail())
-                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
-                .orElseGet(() -> {
-                    userService.registerUser(request);
-                    return new ResponseEntity<>(null, HttpStatus.CREATED);
-                });
-    }
+//    @PostMapping("/signup")
+//    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
+//        return userRepository.findByEmail(request.getEmail())
+//                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
+//                .orElseGet(() -> {
+//                    userService.registerUser(request);
+//                    return new ResponseEntity<>(null, HttpStatus.CREATED);
+//                });
+//    }
 
     @PostMapping("/signupDoctor")
     public ResponseEntity<?> registerDoctor(@Valid @RequestBody RegistrationRequest request) {

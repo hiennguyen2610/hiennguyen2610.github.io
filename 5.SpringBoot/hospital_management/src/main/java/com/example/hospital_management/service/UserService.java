@@ -1,9 +1,6 @@
 package com.example.hospital_management.service;
 
-import com.example.hospital_management.entity.Doctor;
-import com.example.hospital_management.entity.Otp;
-import com.example.hospital_management.entity.Role;
-import com.example.hospital_management.entity.User;
+import com.example.hospital_management.entity.*;
 import com.example.hospital_management.exception.ActivatedAccountException;
 import com.example.hospital_management.exception.ExistedUserException;
 import com.example.hospital_management.exception.OtpExpiredException;
@@ -18,6 +15,7 @@ import com.example.hospital_management.repository.*;
 import com.example.hospital_management.security.CustomUserDetails;
 import com.example.hospital_management.security.JwtUtils;
 import com.example.hospital_management.security.SecurityUtils;
+import com.example.hospital_management.statics.Gender;
 import com.example.hospital_management.statics.Roles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
@@ -53,12 +51,13 @@ public class UserService {
     @Autowired
     final EmailService emailService;
 
-    @Autowired
     final DoctorRepository doctorRepository;
 
     @Autowired
     OtpRepository otpRepository;
 
+
+    final SpecialityRepository specialityRepository;
 
     @Value("${application.security.refreshToken.tokenValidityMilliseconds}")
     long refreshTokenValidityMilliseconds;
@@ -67,7 +66,7 @@ public class UserService {
 
     public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository,
                        RoleRepository roleRepository, ObjectMapper objectMapper,
-                       RefreshTokenRepository refreshTokenRepository, EmailService emailService, DoctorRepository doctorRepository, JwtUtils jwtUtils) {
+                       RefreshTokenRepository refreshTokenRepository, EmailService emailService, DoctorRepository doctorRepository, JwtUtils jwtUtils,SpecialityRepository specialityRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -76,41 +75,44 @@ public class UserService {
         this.emailService = emailService;
         this.doctorRepository = doctorRepository;
         this.jwtUtils = jwtUtils;
+        this.specialityRepository=specialityRepository;
     }
 
-    public void registerUser(RegistrationRequest registrationRequest) {
-        Optional<Role> optionalRole = roleRepository.findByName(Roles.USER);
-        Set<Role> roles = new HashSet<>();
-        roles.add(optionalRole.get());
-        User user = User.builder()
-                .name(registrationRequest.getName().equals("") ? registrationRequest.getEmail() : registrationRequest.getName())
-                .email(registrationRequest.getEmail())
-                .password(passwordEncoder.encode(registrationRequest.getPassword()))
-                .roles(roles)
-                .build();
-        userRepository.save(user);
-        emailService.sendActivationEmail(user.getEmail());
-
-    }
 
     public void registerDoctor(RegistrationRequest registrationRequest) {
         Optional<Role> optionalRole = roleRepository.findByName(Roles.DOCTOR);
         Set<Role> roles = new HashSet<>();
         roles.add(optionalRole.get());
+        User userDoctor = User.builder()
+                .name(registrationRequest.getName().equals("") ? registrationRequest.getEmail() : registrationRequest.getName())
+                .email(registrationRequest.getEmail())
+                .password(passwordEncoder.encode(registrationRequest.getPassword()))
+                .gender(Gender.valueOf(registrationRequest.getGender()))
+                .roles(roles)
+                .build();
+        userRepository.save(userDoctor);
+        emailService.sendActivationEmail(userDoctor.getEmail());
+
+//
+        long[] specialityId = registrationRequest.getSpecialityIds();
+        Set<Speciality> specialities = new HashSet<>();
+        for (long id:specialityId) {
+            Speciality speciality=specialityRepository.findById(id).orElse(null);
+            specialities.add(speciality);
+        }
+
+
         Doctor doctor = Doctor.builder()
-                .user(User.builder()
-                        .email(registrationRequest.getEmail())
-                        .password(passwordEncoder.encode(registrationRequest.getPassword()))
-                        .roles(roles)
-                        .name(registrationRequest.getName())
-                        .build())
+                .user(userDoctor)
                 .phone(registrationRequest.getPhone())
                 .dob((registrationRequest.getDob()))
                 .doctorLevel(registrationRequest.getDoctorLevel())
                 .address(registrationRequest.getAddress())
                 .introduce(registrationRequest.getIntroduce())
+                .specialities(specialities)
                 .build();
         doctorRepository.save(doctor);
+
     }
 
 
@@ -180,14 +182,13 @@ public class UserService {
 
     // Active account
     public void activeAccount(String email) throws ActivatedAccountException {
-        Optional<User> userOptional=userRepository.findByEmail(email);
-        if (userOptional.isPresent()){
-            User user=userOptional.get();
-            if (!user.isActivated()){
+        Optional<User> userOptional = userRepository.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (!user.isActivated()) {
                 user.setActivated(true);
                 userRepository.save(user);
-            }
-            else {
+            } else {
                 throw new ActivatedAccountException("Tài Khoản Đã Được Kích Hoạt RỒi");
             }
         }

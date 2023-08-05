@@ -6,9 +6,12 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum DoctorLevel {
-    GIAO_SU,
-    TIEN_SI,
-    THAC_SI,
-    BSCK_II,
-    BSCK_I;
+    GIAO_SU("Giáo Sư"),
+    TIEN_SI("Tiến Sĩ"),
+    THAC_SI("Thạc Sĩ"),
+    BSCK_II("BS Chuyên Khoa II"),
+    BSCK_I("BS Chuyên Khoa I");
+
+    String name;
+
 }
