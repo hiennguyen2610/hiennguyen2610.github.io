@@ -6,14 +6,18 @@ import com.example.hospital_management.entity.User;
 import com.example.hospital_management.exception.NotFoundException;
 import com.example.hospital_management.model.request.DoctorRequest;
 import com.example.hospital_management.model.request.RegistrationRequest;
+import com.example.hospital_management.model.response.DoctorReponse;
 import com.example.hospital_management.repository.DoctorRepository;
 import com.example.hospital_management.repository.SpecialityRepository;
 import com.example.hospital_management.repository.UserRepository;
+import com.example.hospital_management.statics.DoctorLevel;
 import com.example.hospital_management.statics.Gender;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,20 +25,41 @@ import java.util.Set;
 @Service
 @AllArgsConstructor
 public class DoctorService {
+    ObjectMapper objectMapper;
 
     DoctorRepository doctorRepository;
-   final SpecialityRepository specialityRepository;
+    final SpecialityRepository specialityRepository;
     UserRepository userRepository;
 
     public List<Doctor> getAllDoctor() {
         return doctorRepository.findAll();
     }
 
+    public List<DoctorReponse> getAllDoctorResponse() {
+        List<Doctor> doctors = doctorRepository.findAll();
+
+        List<DoctorReponse> doctorReponses = new ArrayList<>();
+        for (Doctor doctor : doctors) {
+            DoctorReponse doctorReponse = DoctorReponse.builder()
+                    .user(doctor.getUser())
+                    .doctorLevel(doctor.getDoctorLevel() == null ? "" : doctor.getDoctorLevel().getName())
+                    .dob(doctor.getDob())
+                    .address(doctor.getAddress())
+                    .introduce(doctor.getIntroduce())
+                    .phone(doctor.getPhone())
+                    .specialities(doctor.getSpecialities())
+                    .build();
+            doctorReponses.add(doctorReponse);
+        }
+        return doctorReponses;
+    }
+
+
     public void updateDoctor(Long id, RegistrationRequest registrationRequest) {
 
         Doctor doctor = doctorRepository.findById(id).orElse(null);
         Set<Speciality> specialities = new LinkedHashSet<>();
-        for (Long speciality:registrationRequest.getSpecialityIds()) {
+        for (Long speciality : registrationRequest.getSpecialityIds()) {
             specialities.add(specialityRepository.findById(speciality).orElse(null));
         }
         if (doctor != null) {

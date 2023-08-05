@@ -2,6 +2,7 @@ package com.example.hospital_management.controller.admin;
 
 import com.example.hospital_management.entity.Doctor;
 import com.example.hospital_management.entity.Speciality;
+import com.example.hospital_management.model.response.DoctorReponse;
 import com.example.hospital_management.service.DoctorService;
 import com.example.hospital_management.service.SpecialityService;
 import lombok.AccessLevel;
@@ -39,8 +40,8 @@ public class WebAdminController {
 
     @GetMapping("/admin/departments")
     public String department(@RequestParam(required = false, defaultValue = "1") Integer page,
-                             @RequestParam(required = false, defaultValue = "6") Integer pageSize,Model model) {
-        Page<Speciality> pageInfo = specialityService.getAllSpecialityPage( page, pageSize);
+                             @RequestParam(required = false, defaultValue = "6") Integer pageSize, Model model) {
+        Page<Speciality> pageInfo = specialityService.getAllSpecialityPage(page, pageSize);
         List<Speciality> specialityList = specialityService.getAllSpecialities();
         model.addAttribute("listAllSpecialities", specialityList);
         model.addAttribute("pageInfo", pageInfo);
@@ -56,7 +57,7 @@ public class WebAdminController {
 
     @GetMapping("/admin/doctors")
     public String doctorList(Model model) {
-        List<Doctor> doctorResponsePage = doctorService.getAllDoctor();
+        List<DoctorReponse> doctorResponsePage = doctorService.getAllDoctorResponse();
         List<Speciality> specialityList = specialityService.getAllSpecialities();
         model.addAttribute("getAllDoctor", doctorResponsePage);
         model.addAttribute("listAllSpecialities", specialityList);

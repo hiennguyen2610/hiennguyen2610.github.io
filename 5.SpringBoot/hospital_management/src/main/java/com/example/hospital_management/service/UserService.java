@@ -15,6 +15,7 @@ import com.example.hospital_management.repository.*;
 import com.example.hospital_management.security.CustomUserDetails;
 import com.example.hospital_management.security.JwtUtils;
 import com.example.hospital_management.security.SecurityUtils;
+import com.example.hospital_management.statics.DoctorLevel;
 import com.example.hospital_management.statics.Gender;
 import com.example.hospital_management.statics.Roles;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -66,7 +67,7 @@ public class UserService {
 
     public UserService(PasswordEncoder passwordEncoder, UserRepository userRepository,
                        RoleRepository roleRepository, ObjectMapper objectMapper,
-                       RefreshTokenRepository refreshTokenRepository, EmailService emailService, DoctorRepository doctorRepository, JwtUtils jwtUtils,SpecialityRepository specialityRepository) {
+                       RefreshTokenRepository refreshTokenRepository, EmailService emailService, DoctorRepository doctorRepository, JwtUtils jwtUtils, SpecialityRepository specialityRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -75,7 +76,7 @@ public class UserService {
         this.emailService = emailService;
         this.doctorRepository = doctorRepository;
         this.jwtUtils = jwtUtils;
-        this.specialityRepository=specialityRepository;
+        this.specialityRepository = specialityRepository;
     }
 
 
@@ -96,8 +97,8 @@ public class UserService {
 //
         long[] specialityId = registrationRequest.getSpecialityIds();
         Set<Speciality> specialities = new HashSet<>();
-        for (long id:specialityId) {
-            Speciality speciality=specialityRepository.findById(id).orElse(null);
+        for (long id : specialityId) {
+            Speciality speciality = specialityRepository.findById(id).orElse(null);
             specialities.add(speciality);
         }
 

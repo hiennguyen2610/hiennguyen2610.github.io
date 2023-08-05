@@ -3,8 +3,6 @@ package com.example.hospital_management.statics;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
 public enum DoctorLevel {
     GIAO_SU("Giáo Sư"),
     TIEN_SI("Tiến Sĩ"),
@@ -14,4 +12,11 @@ public enum DoctorLevel {
 
     String name;
 
+    DoctorLevel(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
