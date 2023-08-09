@@ -30,6 +30,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -93,14 +96,12 @@ public class UserService {
         userRepository.save(userDoctor);
         emailService.sendActivationEmail(userDoctor.getEmail());
 
-//
         long[] specialityId = registrationRequest.getSpecialityIds();
         Set<Speciality> specialities = new HashSet<>();
         for (long id:specialityId) {
             Speciality speciality=specialityRepository.findById(id).orElse(null);
             specialities.add(speciality);
         }
-
 
         Doctor doctor = Doctor.builder()
                 .user(userDoctor)
@@ -128,7 +129,7 @@ public class UserService {
         return userRepository.findById(id).map(u -> objectMapper.convertValue(u, UserResponse.class)).orElseThrow(ClassNotFoundException::new);
     }
 
-    public JwtResponse refreshToken(RefreshTokenRequest request) throws RefreshTokenNotFoundException {
+    public JwtResponse refreshToken(RefreshTokenRequest request, HttpServletResponse response) throws RefreshTokenNotFoundException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         String newToken = userRepository.findById(userDetails.getId())
@@ -149,6 +150,13 @@ public class UserService {
         if (newToken == null) {
             throw new RefreshTokenNotFoundException();
         }
+        JwtResponse jwtResponse = JwtResponse.builder()
+                .jwt(newToken)
+                .build();
+
+        Cookie jwtCookie = new Cookie("jwtToken", jwtResponse.getJwt());
+        jwtCookie.setPath("/");
+        response.addCookie(jwtCookie);
         return JwtResponse.builder()
                 .jwt(newToken)
                 .build();

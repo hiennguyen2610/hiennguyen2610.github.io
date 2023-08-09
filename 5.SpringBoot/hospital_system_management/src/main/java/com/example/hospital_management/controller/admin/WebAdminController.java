@@ -25,9 +25,6 @@ import java.util.List;
 
 public class WebAdminController {
 
-    DoctorService doctorService;
-    SpecialityService specialityService;
-
     @GetMapping("/login")
     public String login() {
         return "account/login";
@@ -37,39 +34,4 @@ public class WebAdminController {
     public String adminHome() {
         return "admin/index";
     }
-
-    @GetMapping("/admin/departments")
-    public String department(@RequestParam(required = false, defaultValue = "1") Integer page,
-                             @RequestParam(required = false, defaultValue = "6") Integer pageSize, Model model) {
-        Page<Speciality> pageInfo = specialityService.getAllSpecialityPage(page, pageSize);
-        List<Speciality> specialityList = specialityService.getAllSpecialities();
-        model.addAttribute("listAllSpecialities", specialityList);
-        model.addAttribute("pageInfo", pageInfo);
-        model.addAttribute("currentPage", page);
-        return "admin/departments";
-    }
-
-    @GetMapping("/admin/add-department")
-    public String addDepartment() {
-        return "admin/add-department";
-    }
-
-
-    @GetMapping("/admin/doctors")
-    public String doctorList(Model model) {
-        List<DoctorResponse> doctorResponsePage = doctorService.getAllDoctorResponse();
-        List<Speciality> specialityList = specialityService.getAllSpecialities();
-        model.addAttribute("getAllDoctor", doctorResponsePage);
-        model.addAttribute("listAllSpecialities", specialityList);
-
-        return "admin/doctors";
-    }
-
-    @GetMapping("/admin/add-doctor")
-    public String addDoctor(Model model) {
-        model.addAttribute("listAllSpecialities", specialityService.getAllSpecialities());
-        return "admin/add-doctor";
-    }
-
-
 }

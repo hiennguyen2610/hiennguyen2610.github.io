@@ -26,6 +26,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Set;
@@ -74,24 +76,21 @@ public class AuthenticationController {
                 .build();
         refreshTokenRepository.save(refreshTokenEntity);
 
-        return JwtResponse.builder()
+        JwtResponse jwtResponse = JwtResponse.builder()
                 .jwt(jwt)
                 .refreshToken(refreshToken)
                 .id(userDetails.getId())
-                .username(userDetails.getUsername())
+                .email(userDetails.getUsername())
                 .roles(roles)
+                .name(user.getName())
+                .avatar(user.getAvatar())
                 .build();
+        Cookie jwtCookie = new Cookie("jwtToken", jwtResponse.getJwt());
+        jwtCookie.setPath("/");
+        response.addCookie(jwtCookie);
+        return jwtResponse;
     }
 
-//    @PostMapping("/signup")
-//    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationRequest request) {
-//        return userRepository.findByEmail(request.getEmail())
-//                .map(user -> new ResponseEntity<>("Email is existed", HttpStatus.BAD_REQUEST))
-//                .orElseGet(() -> {
-//                    userService.registerUser(request);
-//                    return new ResponseEntity<>(null, HttpStatus.CREATED);
-//                });
-//    }
 
     @PostMapping("/signupDoctor")
     public ResponseEntity<?> registerDoctor(@Valid @RequestBody RegistrationRequest request) {
@@ -104,16 +103,20 @@ public class AuthenticationController {
     }
 
     @PostMapping("/refresh-token")
-    public ResponseEntity<?> refreshToken(@RequestBody @Valid RefreshTokenRequest request) {
+    public ResponseEntity<?> refreshToken(@RequestBody @Valid RefreshTokenRequest request, HttpServletResponse response) {
         try {
-            return ResponseEntity.ok(userService.refreshToken(request));
+            return ResponseEntity.ok(userService.refreshToken(request, response));
         } catch (RefreshTokenNotFoundException | UsernameNotFoundException ex) {
             return new ResponseEntity<>("Thông tin refreshToken không chính xác", HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<?> logout() {
+    public ResponseEntity<?> logout(HttpServletResponse response) {
+        Cookie jwtCookie = new Cookie("jwtToken", null);
+        jwtCookie.setMaxAge(0);
+        jwtCookie.setPath("/");
+        response.addCookie(jwtCookie);
         userService.logout();
         return ResponseEntity.ok(null);
     }
