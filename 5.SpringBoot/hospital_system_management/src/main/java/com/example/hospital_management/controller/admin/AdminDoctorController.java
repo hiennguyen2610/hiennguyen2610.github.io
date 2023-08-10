@@ -48,7 +48,7 @@ public class AdminDoctorController {
     }
 
     @PutMapping("/api/v1/admin/doctor/{id}")
-    public ResponseEntity<?> updateDoctor(@PathVariable Long id, @RequestBody @Valid RegistrationRequest registrationRequest) {
+    public ResponseEntity<?> updateDoctor(@PathVariable("id") Long id, @RequestBody @Valid updateDocterRequest registrationRequest) {
         doctorService.updateDoctor(id, registrationRequest);
         return ResponseEntity.ok(null);
     }

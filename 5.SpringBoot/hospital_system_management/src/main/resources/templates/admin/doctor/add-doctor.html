@@ -9,7 +9,7 @@
     <link rel="shortcut icon" type="image/x-icon" th:href="@{/img/favicon.ico}">
 
     <!-- Link select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 
     <title>Thêm bác sĩ</title>
 
@@ -167,10 +167,12 @@
                         <a href="../appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                     </li>
                     <li>
-                        <a href="../schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
+                        <a href="../schedule.html"><i class="fa fa-calendar-check-o"></i>
+                            <span>Doctor Schedule</span></a>
                     </li>
                     <li>
-                        <a href="../speciality/departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                        <a href="../speciality/departments.html"><i class="fa fa-hospital-o"></i>
+                            <span>Departments</span></a>
                     </li>
                     <li class="submenu">
                         <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
@@ -389,8 +391,11 @@
 
                             <div class="col-sm-6">
                                 <label for="speciality" class="form-label">Chuyên khoa</label>
-                                <select class="form-control" id="speciality" multiple="multiple" name="speciality" required>
-                                    <option th:each="speciality : ${listAllSpecialities}" th:value="${speciality.id}" th:text="${speciality.name}">Backend</option>
+                                <select class="form-control" id="speciality" multiple="multiple" name="speciality"
+                                        required>
+                                    <option th:each="speciality : ${listAllSpecialities}" th:value="${speciality.id}"
+                                            th:text="${speciality.name}">Backend
+                                    </option>
                                 </select>
                             </div>
 
@@ -425,28 +430,28 @@
                             <textarea class="form-control" rows="3" cols="30" id="introduce"></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <div class="fw-500">Images</div>
+                        <div class="mt-30">
+                            <div class="lh-1 text-16 text-light-1">Images</div>
                             <div class="row x-gap-20 y-gap-20 pt-15">
                                 <div class="col-auto">
                                     <div class="w-200">
-                                        <div id="image-book"
+                                        <div id="avatar-doctor"
                                              class="d-flex ratio ratio-1:1">
 
-                                            <button
-                                                    class="btn-upload-image flex-center flex-column text-center bg-blue-2 h-full w-1/1 absolute rounded-4 border-type-1">
+                                            <button class="btn-upload-image flex-center flex-column text-center bg-blue-2 h-full w-1/1 absolute rounded-4 border-type-1">
                                                 <div class="icon-upload-file text-40 text-blue-1 mb-10"></div>
-                                                <div class="text-blue-1 fw-500">Upload
-                                                    Images
-                                                </div>
+<!--                                                <div class="text-blue-1 fw-500">Upload-->
+<!--                                                    Images-->
+<!--                                                </div>-->
                                             </button>
                                         </div>
                                         <div class="text-center mt-10 text-14 text-light-1">
                                             <input type="file" id="fileInput"
-                                                   style="display:none">
+                                            >
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="m-t-20 text-center">
@@ -692,32 +697,62 @@
 
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!--<script type="text/javascript" src="jsmain/check-permission.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-<!--<script src="../../static/jsmain/add-doctor.js"></script>-->
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+
 
 <script th:inline="javascript">
 
     // Cấu hình thông tin Firebase của bạn
     let firebaseConfig = {
         apiKey: "AIzaSyCPfxKN6sz8b7ndgoENeNqZ3FnwVjKTCZM",
+        authDomain: "hospital-management-syst-24909.firebaseapp.com",
         projectId: "hospital-management-syst-24909",
         storageBucket: "hospital-management-syst-24909.appspot.com",
+        messagingSenderId: "516287285398",
+        appId: "1:516287285398:web:19ce4b60a5e6f83ea45ab7",
+        measurementId: "G-8PYB0H7K7R",
     };
 
     // Khởi tạo Firebase
-    // firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
 
     // Lấy tham chiếu đến Firebase Storage bucket
-    // let storage = firebase.storage();
-    // let storageRef = storage.ref();
+    let storage = firebase.storage();
+    let storageRef = storage.ref();
 
     $(document).ready(function () {
 
-        const doctor_speciality = $("#speciality");
+        //open chosen image form
+        // $('.btn-upload-image').click(() => {
+        //     $('#fileInput').click();
+        // });
+
+        // show image
+        let chosenFile = null;
+        $('#fileInput').change(event => {
+            const maxSizeInBytes = 5242880;
+            const tempFiles = event.target.files;
+            if (!tempFiles || tempFiles.length === 0) {
+                return;
+            }
+            chosenFile = tempFiles[0];
+            if (chosenFile && chosenFile.size > maxSizeInBytes) {
+                alert("File size exceeded the allowed limit (5MB)!");
+                this.value = '';
+                return;
+            }
+            const imageBlob = new Blob([chosenFile], {type: chosenFile.type});
+            const imageUrl = URL.createObjectURL(imageBlob);
+            $('#avatar-doctor .btn-upload-image').empty();
+            let showImageHtml = `<img alt='Avatar' style="width: 200px; height: 100%; object-fit: cover" src='${imageUrl}'/>`;
+            $('#avatar-doctor .btn-upload-image').append(showImageHtml)
+        });
 
         // Kích hoạt select2
+        const doctor_speciality = $("#speciality");
         doctor_speciality.select2({
             placeholder: "Chọn chuyên khoa",
         });
@@ -763,28 +798,22 @@
 
         })
 
-        $('#signup').click(function (event) {
-            event.preventDefault();
-
-            var isValidForm = $('.register-form').valid();
-            if (!isValidForm) return;
-
-            var name = $('#name').val();
-            var email = $('#email').val();
-            var phone = $('#phone').val();
-            var password = $('#password').val();
-            var address = $('#address').val();
-            var introduce = $('#introduce').val();
-            var dob = $('#dob').val();
-            var gender = $('#gender').val();
-            var avatar = $('#avatar').val();
-            var doctorLevel = $('#doctorLevel').val();
-            var selectedSpecialities = [];
+        async function uploadImageAndCreateDoctor() {
+            let name = $('#name').val();
+            let email = $('#email').val();
+            let phone = $('#phone').val();
+            let password = $('#password').val();
+            let address = $('#address').val();
+            let introduce = $('#introduce').val();
+            let dob = $('#dob').val();
+            let gender = $('#gender').val();
+            let doctorLevel = $('#doctorLevel').val();
+            let selectedSpecialities = [];
             $('#speciality option:selected').each(function () {
                 selectedSpecialities.push($(this).val());
             })
 
-            var formData = {
+            let newDoctor = {
                 name: name,
                 email: email,
                 phone: phone,
@@ -793,28 +822,113 @@
                 introduce: introduce,
                 dob: dob,
                 gender: gender,
-                avatar: avatar,
+                avatar: "",
                 specialityIds: selectedSpecialities,
                 doctorLevel: doctorLevel
-
             };
 
+            console.log(newDoctor);
+            // Upload the image first
+            if (chosenFile != null) {
+                newDoctor.avatar = await uploadImage(chosenFile);
+                createDoctor(newDoctor);
+            } else {
+                createDoctor(newDoctor);
+            }
+        }
+
+        function createDoctor(newDoctor) {
             $.ajax({
-                url: '/api/v1/authentication/signupDoctor',
                 type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify(formData),
+                url: '/api/v1/authentication/signupDoctor',
+                contentType: "application/json",
+                data: JSON.stringify(newDoctor),
                 success: function (response) {
-                    console.log(response);
-                    localStorage.setItem('formData', JSON.stringify(formData));
-                    toastr.success('Đăng ký thành công!');
-                    window.location.href = 'http://localhost:8080/admin/doctors';
+                    toastr.success("Create doctor success!");
+                    setTimeout(function () {
+                        $('#submitBtn').prop('disabled', false);
+                        window.location.reload();
+                    }, 800)
                 },
-                error: function (data) {
-                    toastr.error("Đăng ký không thành công!");
+                error: function () {
+                    toastr.warning("Create doctor not success!");
                 }
             });
+        }
+
+        async function uploadImage(chosenFile) {
+            try {
+                let imageName = chosenFile.name;
+                let imageRef = storageRef.child("images/" + imageName);
+                let snapshort = await imageRef.put(chosenFile);
+                return await snapshort.ref.getDownloadURL();
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        $('#signup').click(event => {
+            console.log("click");
+            event.preventDefault();
+            let isValidForm = $("#register-form").valid();
+            if (!isValidForm) return;
+            $('#signup').prop('disabled', true);
+            uploadImageAndCreateDoctor();
         })
+
+
+        // $('#signup').click(function (event) {
+        //     event.preventDefault();
+        //
+        //     var isValidForm = $('.register-form').valid();
+        //     if (!isValidForm) return;
+        //
+        //     var name = $('#name').val();
+        //     var email = $('#email').val();
+        //     var phone = $('#phone').val();
+        //     var password = $('#password').val();
+        //     var address = $('#address').val();
+        //     var introduce = $('#introduce').val();
+        //     var dob = $('#dob').val();
+        //     var gender = $('#gender').val();
+        //     var avatar = $('#avatar').val();
+        //     var doctorLevel = $('#doctorLevel').val();
+        //     var selectedSpecialities = [];
+        //     $('#speciality option:selected').each(function () {
+        //         selectedSpecialities.push($(this).val());
+        //     })
+        //
+        //     var formData = {
+        //         name: name,
+        //         email: email,
+        //         phone: phone,
+        //         password: password,
+        //         address: address,
+        //         introduce: introduce,
+        //         dob: dob,
+        //         gender: gender,
+        //         avatar: avatar,
+        //         specialityIds: selectedSpecialities,
+        //         doctorLevel: doctorLevel
+        //
+        //     };
+        //
+        //     $.ajax({
+        //         url: '/api/v1/authentication/signupDoctor',
+        //         type: 'POST',
+        //         contentType: "application/json; charset=utf-8",
+        //         data: JSON.stringify(formData),
+        //         success: function (response) {
+        //             console.log(response);
+        //             localStorage.setItem('formData', JSON.stringify(formData));
+        //             toastr.success('Đăng ký thành công!');
+        //             window.location.href = 'http://localhost:8080/admin/doctors';
+        //         },
+        //         error: function (data) {
+        //             toastr.error("Đăng ký không thành công!");
+        //         }
+        //     });
+        // })
     })
 </script>
 

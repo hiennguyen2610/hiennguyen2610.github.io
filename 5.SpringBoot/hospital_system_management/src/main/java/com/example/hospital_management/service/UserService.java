@@ -91,6 +91,7 @@ public class UserService {
                 .email(registrationRequest.getEmail())
                 .password(passwordEncoder.encode(registrationRequest.getPassword()))
                 .gender(Gender.valueOf(registrationRequest.getGender()))
+                .avatar(registrationRequest.getAvatar())
                 .roles(roles)
                 .build();
         userRepository.save(userDoctor);

@@ -5,6 +5,7 @@ import com.example.hospital_management.entity.Speciality;
 import com.example.hospital_management.entity.User;
 import com.example.hospital_management.exception.NotFoundException;
 import com.example.hospital_management.model.request.RegistrationRequest;
+import com.example.hospital_management.model.request.updateDocterRequest;
 import com.example.hospital_management.model.response.DoctorResponse;
 import com.example.hospital_management.repository.DoctorRepository;
 import com.example.hospital_management.repository.SpecialityRepository;
@@ -50,7 +51,7 @@ public class DoctorService {
         return doctorResponses;
     }
 
-    public void updateDoctor(Long id, RegistrationRequest registrationRequest) {
+    public void updateDoctor(Long id, updateDocterRequest registrationRequest) {
 
         Doctor doctor = doctorRepository.findById(id).orElse(null);
         Set<Speciality> specialities = new LinkedHashSet<>();
@@ -59,19 +60,14 @@ public class DoctorService {
         }
         if (doctor != null) {
             User user = doctor.getUser();
-            user.setName(registrationRequest.getName());
-            user.setEmail(registrationRequest.getEmail());
-            user.setGender(Gender.valueOf(registrationRequest.getGender()));
             userRepository.save(user);
 
             doctor.setUser(user);
             doctor.setPhone(registrationRequest.getPhone());
-            doctor.setDob(registrationRequest.getDob());
             doctor.setDoctorLevel(registrationRequest.getDoctorLevel());
             doctor.setAddress(registrationRequest.getAddress());
             doctor.setIntroduce(registrationRequest.getIntroduce());
             doctor.setSpecialities(specialities);
-
             doctorRepository.save(doctor);
         }
     }

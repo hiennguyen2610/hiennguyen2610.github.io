@@ -431,23 +431,21 @@
     $(".submit-update-btn").click(function () {
         let doctorId = $(this).attr("doctor-id");
         console.log(doctorId)
-        console.log("123")
         $.ajax({
             url: "/api/v1/admin/doctor/" + doctorId,
             type: "GET",
             success: function (response) {
-                console.log(response)
                 $("#update-doctor #phone").val(response.phone)
                 $("#update-doctor #doctorLevel").val(response.doctorLevel)
                 $("#update-doctor #address").val(response.address)
                 $("#update-doctor #introduce").val(response.introduce)
                 $("#update-doctor #id").val(doctorId)
-                const specialityIds = response.speciality.map(function (speciality) {
-                    return speciality.id;
-                })
-                $("#update-doctor #speciality").val(specialityIds).trigger('change')
+                let specialities = [];
+                response.specialities.forEach(speciality => {
+                    specialities.push(speciality.id);
+                });
+                $("#update-doctor #speciality").val(specialities).trigger('change')
                 $("#update-doctor-modal").modal("show");
-                console.log("alo alo alo")
             },
             error: function (response) {
                 console.log(response)
@@ -455,13 +453,15 @@
         })
     })
     $(".save-update").click(function () {
-        let doctorId = $("#update-doctor #id").val()
+        const doctorId = $('.submit-update-btn').attr("doctor-id")
+        console.log(doctorId)
         let isValid=$("#update-doctor").valid()
-        let phone= $("#update-doctor #phone")
-        let doctorLevel = $("#update-doctor #doctorLevel")
-        let address = $("#update-doctor #address")
-        let introduce = $("#update-doctor #introduce")
-        let speciality = $("#update-doctor #speciality")
+        let phone= $("#update-doctor #phone").val()
+        let doctorLevel = $("#update-doctor #doctorLevel").val()
+        let address = $("#update-doctor #address").val()
+        let introduce = $("#update-doctor #introduce").val()
+        let specialityIds = $("#update-doctor #speciality").val()
+        console.log(specialityIds)
         if (!isValid) {
             return;
         }
@@ -470,7 +470,7 @@
             doctorLevel: doctorLevel,
             address: address,
             introduce: introduce,
-            speciality: speciality
+            specialityIds: specialityIds
         }
         $.ajax({
             url:"/api/v1/admin/doctor/"+doctorId,
