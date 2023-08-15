@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class updateDocterRequest {
+public class UpdateDoctorRequest {
     String address;
 
     String phone;

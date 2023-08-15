@@ -2,6 +2,7 @@ package com.example.hospital_management.controller.admin;
 
 import com.example.hospital_management.entity.Speciality;
 import com.example.hospital_management.model.request.*;
+import com.example.hospital_management.model.response.CommonResponse;
 import com.example.hospital_management.model.response.DoctorResponse;
 import com.example.hospital_management.service.DoctorService;
 import com.example.hospital_management.service.SpecialityService;
@@ -26,13 +27,22 @@ public class AdminDoctorController {
     DoctorService doctorService;
     SpecialityService specialityService;
 
-    @GetMapping("/admin/doctors")
-    public String doctorList(Model model) {
-        List<DoctorResponse> doctorResponsePage = doctorService.getAllDoctorResponse();
-        List<Speciality> specialityList = specialityService.getAllSpecialities();
-        model.addAttribute("getAllDoctor", doctorResponsePage);
-        model.addAttribute("listAllSpecialities", specialityList);
+//    @GetMapping("/admin/doctors")
+//    public String doctorList(Model model) {
+//        List<DoctorResponse> doctorResponsePage = doctorService.getAllDoctorResponse();
+//        List<Speciality> specialityList = specialityService.getAllSpecialities();
+//        model.addAttribute("getAllDoctor", doctorResponsePage);
+//        model.addAttribute("listAllSpecialities", specialityList);
+//
+//        return "admin/doctor/doctors";
+//    }
 
+    @GetMapping("/admin/doctors")
+    public String searchDoctor(Model model, DoctorSearchRequest request) {
+        CommonResponse<?> commonResponse = doctorService.searchDoctor(request);
+        model.addAttribute("pageDoctorInfo", commonResponse);
+        model.addAttribute("currentPage", request.getPageIndex());
+        model.addAttribute("pageSize", request.getPageSize());
         return "admin/doctor/doctors";
     }
 
@@ -48,7 +58,7 @@ public class AdminDoctorController {
     }
 
     @PutMapping("/api/v1/admin/doctor/{id}")
-    public ResponseEntity<?> updateDoctor(@PathVariable("id") Long id, @RequestBody @Valid updateDocterRequest registrationRequest) {
+    public ResponseEntity<?> updateDoctor(@PathVariable("id") Long id, @RequestBody @Valid UpdateDoctorRequest registrationRequest) {
         doctorService.updateDoctor(id, registrationRequest);
         return ResponseEntity.ok(null);
     }

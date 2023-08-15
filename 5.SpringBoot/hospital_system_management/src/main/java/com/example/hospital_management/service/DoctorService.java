@@ -4,13 +4,15 @@ import com.example.hospital_management.entity.Doctor;
 import com.example.hospital_management.entity.Speciality;
 import com.example.hospital_management.entity.User;
 import com.example.hospital_management.exception.NotFoundException;
-import com.example.hospital_management.model.request.RegistrationRequest;
-import com.example.hospital_management.model.request.updateDocterRequest;
+import com.example.hospital_management.model.request.DoctorSearchRequest;
+import com.example.hospital_management.model.request.UpdateDoctorRequest;
+import com.example.hospital_management.model.response.CommonResponse;
+import com.example.hospital_management.model.response.Doctor2Response;
 import com.example.hospital_management.model.response.DoctorResponse;
 import com.example.hospital_management.repository.DoctorRepository;
 import com.example.hospital_management.repository.SpecialityRepository;
 import com.example.hospital_management.repository.UserRepository;
-import com.example.hospital_management.statics.Gender;
+import com.example.hospital_management.repository.custom.DoctorCustomRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,7 @@ public class DoctorService {
     DoctorRepository doctorRepository;
     final SpecialityRepository specialityRepository;
     UserRepository userRepository;
+    DoctorCustomRepository doctorCustomRepository;
 
     public List<Doctor> getAllDoctor() {
         return doctorRepository.findAll();
@@ -51,7 +54,7 @@ public class DoctorService {
         return doctorResponses;
     }
 
-    public void updateDoctor(Long id, updateDocterRequest registrationRequest) {
+    public void updateDoctor(Long id, UpdateDoctorRequest registrationRequest) {
 
         Doctor doctor = doctorRepository.findById(id).orElse(null);
         Set<Speciality> specialities = new LinkedHashSet<>();
@@ -80,5 +83,24 @@ public class DoctorService {
 
     public Doctor findById(Long id) {
         return doctorRepository.findById(id).orElse(null);
+    }
+
+    public CommonResponse<?> searchDoctor(DoctorSearchRequest request) {
+        try {
+            List<Doctor2Response> doctors = doctorCustomRepository.searchDoctor(request);
+            Integer pageIndex = request.getPageIndex();;
+            Integer pageSize = request.getPageSize();
+
+            PaginationUtils<Doctor2Response> paginationUtils = new PaginationUtils<>();
+            int pageNumber = paginationUtils.getPageNumber(doctors, pageSize);
+            doctors = paginationUtils.searchData(doctors, pageIndex, pageSize);
+
+            return CommonResponse.builder()
+                    .pageNumber(pageNumber)
+                    .data(doctors)
+                    .build();
+        } catch (Exception e) {
+            throw new NotFoundException("Page index out of bound");
+        }
     }
 }

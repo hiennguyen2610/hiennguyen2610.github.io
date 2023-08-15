@@ -104,13 +104,15 @@
                         <a href="../patients.html"><i class="fa fa-wheelchair"></i> <span>Patients</span></a>
                     </li>
                     <li>
-                        <a href="../appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
+                        <a href="../appointment/appointments.html"><i class="fa fa-calendar"></i> <span>Appointments</span></a>
                     </li>
                     <li>
-                        <a href="../schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Doctor Schedule</span></a>
+                        <a href="../schedule.html"><i class="fa fa-calendar-check-o"></i>
+                            <span>Doctor Schedule</span></a>
                     </li>
                     <li>
-                        <a href="../speciality/departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+                        <a href="../speciality/departments.html"><i class="fa fa-hospital-o"></i>
+                            <span>Departments</span></a>
                     </li>
                     <li class="submenu">
                         <a href="#"><i class="fa fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
@@ -276,6 +278,14 @@
 
             <div th:insert="admin/doctor/update-doctor-modal :: update-doctor-modal"></div>
 
+            <div class=" relative d-flex" style="margin-bottom: 20px">
+                <input class=" border-light search-admin"
+                       type="text"
+                       placeholder="Search" style="width: 200px; border-radius: 40px; padding: 10px 20px">
+                <button class="absolute d-flex items-center h-full" id="btn-search-admin">
+                    <i class="fas fa-search icon-search text-20 px-15 text-dark-1" id="icon-search-admin"></i>
+                </button>
+            </div>
 
             <div class="tabs__content pt-30 js-tabs-content" style="font-size: 15px">
                 <div class="tabs__pane -tab-item-1 is-tab-el-active">
@@ -294,8 +304,8 @@
                             </thead>
                             <tbody>
 
-                            <tr th:each="doctor:${getAllDoctor}">
-                                <td th:text="${doctor.user.name}">California, USA</td>
+                            <tr th:each="doctor:${pageDoctorInfo.data}">
+                                <td th:text="${doctor.name}">California, USA</td>
                                 <td th:with="specialities=${doctor.specialities}">
                                     <div th:each="speciality:${specialities}" class="mb-2">
                                             <span class="rounded-100 py-1 px-10 text-center text-12 fw-500 bg-blue-1-05 text-blue-1"
@@ -311,7 +321,8 @@
                                         <a class="btn btn-link p-0 submit-update-btn" th:attr="doctor-id=${doctor.id}">
                                             <i class="fa-solid fa-pencil fa-lg text-primary"></i>
                                         </a>
-                                        <button type="submit" class="btn btn-link p-0 mr-2 submit-delete-btn" th:attr="doctor-id=${doctor.id}">
+                                        <button type="submit" class="btn btn-link p-0 mr-2 submit-delete-btn"
+                                                th:attr="doctor-id=${doctor.id}">
                                             <span><i class="fa-solid fa-trash-can fa-lg text-danger"></i></span>
                                         </button>
                                     </div>
@@ -324,13 +335,15 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="see-all">
-                        <a class="see-all-btn" href="javascript:void(0);">Load More</a>
-                    </div>
-                </div>
-            </div>
+            <th:block th:replace="fragments/pagination::pagination(${currentPage},${pageDoctorInfo})"></th:block>
+
+            <!--            <div class="row">-->
+            <!--                <div class="col-sm-12">-->
+            <!--                    <div class="see-all">-->
+            <!--                        <a class="see-all-btn" href="javascript:void(0);">Load More</a>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
     </div>
     <div id="delete_doctor" class="modal fade delete-modal" role="dialog">
@@ -362,16 +375,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
 
 <!-- axios -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <!-- select2 -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.6.0/pagination.min.js" integrity="sha512-GzbaI5EsNzdEUq6/2XLYpr1y9CUZRIVsUeWTAFgULtQa5jZ3Nug8i0nZKM6jp9NffBCZhymPPQFcF0DK+JkRpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.6.0/pagination.min.js"
+        integrity="sha512-GzbaI5EsNzdEUq6/2XLYpr1y9CUZRIVsUeWTAFgULtQa5jZ3Nug8i0nZKM6jp9NffBCZhymPPQFcF0DK+JkRpw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!--Thư viện swal-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -455,8 +476,8 @@
     $(".save-update").click(function () {
         const doctorId = $('.submit-update-btn').attr("doctor-id")
         console.log(doctorId)
-        let isValid=$("#update-doctor").valid()
-        let phone= $("#update-doctor #phone").val()
+        let isValid = $("#update-doctor").valid()
+        let phone = $("#update-doctor #phone").val()
         let doctorLevel = $("#update-doctor #doctorLevel").val()
         let address = $("#update-doctor #address").val()
         let introduce = $("#update-doctor #introduce").val()
@@ -465,21 +486,21 @@
         if (!isValid) {
             return;
         }
-        let formData={
-            phone:phone,
+        let formData = {
+            phone: phone,
             doctorLevel: doctorLevel,
             address: address,
             introduce: introduce,
             specialityIds: specialityIds
         }
         $.ajax({
-            url:"/api/v1/admin/doctor/"+doctorId,
+            url: "/api/v1/admin/doctor/" + doctorId,
             type: "PUT",
             data: JSON.stringify(formData),
             contentType: "application/json",
             success: function () {
                 toastr.success("Cập nhật bác sĩ thành công!");
-                window.location.href="http://localhost:8080/admin/doctors"
+                window.location.href = "http://localhost:8080/admin/doctors"
             },
             error: function () {
                 toastr.warning("Update doctor not success!");
